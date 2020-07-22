@@ -52,6 +52,7 @@ Things you may want to cover:
 |Colum|Type|Options|
 |-----|----|-------|
 |title|text|null:false|
+|file|string|null:false|
 |room_id|references|null:false, foreign_key: true|
 
 ###Association
