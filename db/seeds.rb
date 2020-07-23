@@ -1,7 +1,19 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+# require "csv"
+
+# CSV.foreach('/Users/satouhiroshi/projects/digital-contact/db/monthData.csv') do |row|
+
+#   Month.create(:month => row[0])
+
+# end
+
+# CSV.foreach('/Users/satouhiroshi/projects/digital-contact/db/roomData.csv') do |row|
+
+#   Room.create(:number => row[0])
+
+# end
+
+# CSV.foreach('/Users/satouhiroshi/projects/digital-contact/db/contact_book-sampleData2.csv') do |row|
+
+#   ContactBook.create(:date => row[0], :letter => row[1], :bring => row[2], :schedule => row[3], :homework => row[4], :inform => row[5], :month_id => row[6])
+
+# end

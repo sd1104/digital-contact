@@ -44,7 +44,6 @@ ActiveRecord::Schema.define(version: 2020_07_23_101013) do
     t.string "number", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["number"], name: "index_rooms_on_number", unique: true
   end
 
   add_foreign_key "contact_books", "months"
