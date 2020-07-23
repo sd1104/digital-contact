@@ -1,0 +1,20 @@
+.sideBar
+  .sideBar__userBox
+    %h6 ログイン中のユーザー
+    .sideBar__userBox__userName 
+      高橋　さん
+  .sideBar__logOutBox
+    = link_to 'ログアウト', "/", method: :get, class: "logOutBtn"
+  %ul.sideBar__roomIndex
+    %li １−１
+    %li １−２
+    %li ２−１
+    %li ２−２
+    %li ３−１
+    %li ３−２
+    %li ４−１
+    %li ４−２
+    %li ５−１
+    %li ５−２
+    %li ６−１
+    %li ６−２
