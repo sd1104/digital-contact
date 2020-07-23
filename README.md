@@ -20,8 +20,8 @@ Things you may want to cover:
 
 ###Association
 - has_many :users
-- has_many :contact_books
-- has_many :letters
+- has_many :room_months
+- has_many :months, through: :room_months
 
 
 ##usersテーブル
@@ -35,9 +35,11 @@ Things you may want to cover:
 ###Association
 - belongs_to :room
 
+
 ##contact_booksテーブル
 |Colum|Type|Options|
 |-----|----|-------|
+|date|datetime|null:false|
 |letter|integer||
 |bring|text||
 |schedule|text||
@@ -46,7 +48,8 @@ Things you may want to cover:
 |room_id|references|null:false, foreign_key: true|
 
 ###Association
-- belongs_to :room
+- belongs_to :month
+
 
 ##lettersテーブル
 |Colum|Type|Options|
@@ -56,23 +59,29 @@ Things you may want to cover:
 |room_id|references|null:false, foreign_key: true|
 
 ###Association
-- belongs_to :room
+- belongs_to :month
 
-##contact_books_monthesテーブル
+
+##monthsテーブル
 |Colum|Type|Options|
 |-----|----|-------|
 |month|integer|null:false, unique:true|
 
 ###Association
+- has_many :room_months
+- has_many :rooms, through: :room_months
 - has_many :contact_books
+- has_many :letters
 
-##letters_monthesテーブル
+
+##room_monthsテーブル
 |Colum|Type|Options|
 |-----|----|-------|
 |month|integer|null:false, unique:true|
 
 ###Association
-- has_many :letters
+- belongs_to :room
+- belongs_to :month
 
 
 * Database initialization
