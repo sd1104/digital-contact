@@ -12,6 +12,30 @@ body {
   width: 100%;
 }
 
+@mixin headline_greenColor {
+  background: #C3EC52;
+  background: -webkit-gradient(linear, left top, left bottom, from(#C3EC52), to(#0BA29D));
+  background: -webkit-linear-gradient(top, #C3EC52 0%, #0BA29D 100%);
+  background: linear-gradient(to bottom, #C3EC52 0%, #0BA29D 100%);
+  -webkit-box-shadow: inset 1px 1px 1px #fff;
+  box-shadow: inset 1px 1px 1px #fff;
+}
+
+@mixin headBtn_greenColor {
+  border: 1px solid #ccc;
+  background: #C3EC52;
+  background: -webkit-gradient(linear, left top, left bottom, from(#C3EC52), to(#0BA29D));
+  background: -webkit-linear-gradient(top, #C3EC52 0%, #0BA29D 100%);
+  background: linear-gradient(to bottom, #C3EC52 0%, #0BA29D 100%);
+  -webkit-box-shadow: inset 1px 1px 1px #fff;
+  box-shadow: inset 1px 1px 1px #fff;
+}
+
+@mixin headBtn_greenColor_hover {
+  background: -webkit-gradient(linear, left bottom, left top, from(#C3EC52), to(#0BA29D));
+  background: -webkit-linear-gradient(bottom, #C3EC52 0%, #0BA29D 100%);
+  background: linear-gradient(to top, #C3EC52 0%, #0BA29D 100%);
+}
 
 header {
   height:80px;
@@ -23,7 +47,6 @@ header {
   text-align: center;
   line-height: 77px;
   border-bottom: 3px solid forestgreen;
-  // box-shadow: inset 0px -6px 20px 0 lightgreen;
 }
 
 .wrapper {
@@ -39,12 +62,7 @@ header {
       height:80px;
       color: black;
       padding: 2px 0  0 2px;
-      background: #C3EC52;
-      background: -webkit-gradient(linear, left top, left bottom, from(#C3EC52), to(#0BA29D));
-      background: -webkit-linear-gradient(top, #C3EC52 0%, #0BA29D 100%);
-      background: linear-gradient(to bottom, #C3EC52 0%, #0BA29D 100%);
-      -webkit-box-shadow: inset 1px 1px 1px #fff;
-      box-shadow: inset 1px 1px 1px #fff;
+      @include headline_greenColor();
       h6 {
         font-size: 6px;
       }
@@ -107,12 +125,7 @@ header {
       display: flex;
       justify-content: flex-start;
       align-items: flex-end;
-      background: #C3EC52;
-      background: -webkit-gradient(linear, left top, left bottom, from(#C3EC52), to(#0BA29D));
-      background: -webkit-linear-gradient(top, #C3EC52 0%, #0BA29D 100%);
-      background: linear-gradient(to bottom, #C3EC52 0%, #0BA29D 100%);
-      -webkit-box-shadow: inset 1px 1px 1px #fff;
-      box-shadow: inset 1px 1px 1px #fff;
+      @include headline_greenColor();
       &__userRoom {
         height: 80px;
         width: 15%;
@@ -139,18 +152,10 @@ header {
           text-decoration: none;
           font-size: 30px;
           text-align: center;
-          border: 1px solid #ccc;
-          background: #C3EC52;
-          background: -webkit-gradient(linear, left top, left bottom, from(#C3EC52), to(#0BA29D));
-          background: -webkit-linear-gradient(top, #C3EC52 0%, #0BA29D 100%);
-          background: linear-gradient(to bottom, #C3EC52 0%, #0BA29D 100%);
-          -webkit-box-shadow: inset 1px 1px 1px #fff;
-          box-shadow: inset 1px 1px 1px #fff;
+          @include headBtn_greenColor()
         }
         .headBtn:hover {
-          background: -webkit-gradient(linear, left bottom, left top, from(#C3EC52), to(#0BA29D));
-          background: -webkit-linear-gradient(bottom, #C3EC52 0%, #0BA29D 100%);
-          background: linear-gradient(to top, #C3EC52 0%, #0BA29D 100%);
+          @include headBtn_greenColor_hover()
         }
       }
     }
