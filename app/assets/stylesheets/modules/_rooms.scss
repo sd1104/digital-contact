@@ -21,7 +21,9 @@ header {
   background-color: green;
   font-size: 40px;
   text-align: center;
-  line-height: 80px;
+  line-height: 77px;
+  border-bottom: 3px solid forestgreen;
+  // box-shadow: inset 0px -6px 20px 0 lightgreen;
 }
 
 .wrapper {
@@ -29,15 +31,163 @@ header {
   width: 100%;
   background-color: lightpink;
   display: flex;
-  .side {
-    height:100%;
+  .sideBar {
+    height: 100%;
     width: 20vh;
-    background-color: lightslategrey;
+    border-right: 1px solid forestgreen;
+    &__userBox {
+      height:80px;
+      color: black;
+      padding: 2px 0  0 2px;
+      background: #C3EC52;
+      background: -webkit-gradient(linear, left top, left bottom, from(#C3EC52), to(#0BA29D));
+      background: -webkit-linear-gradient(top, #C3EC52 0%, #0BA29D 100%);
+      background: linear-gradient(to bottom, #C3EC52 0%, #0BA29D 100%);
+      -webkit-box-shadow: inset 1px 1px 1px #fff;
+      box-shadow: inset 1px 1px 1px #fff;
+      h6 {
+        font-size: 6px;
+      }
+      &__userName {
+        height: 64px;
+        line-height: 64px;
+        font-size: 20px;
+        font-weight: bolder;
+        text-align: center;
+        border-bottom: 2px solid orange;
+      }
+    }
+    &__logOutBox {
+      height: 50px;
+      background-color: ivory;
+      border-bottom: 1px solid forestgreen;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .logOutBtn {
+        border: 1px solid royalblue;
+        color: royalblue;
+        font-size: 12px;
+        font-weight: bolder;
+        text-align: center;
+        text-decoration: none;
+        background-color: #ffffff;
+        // padding: 5px 3px;
+        padding: 0.3rem 0.4rem;
+        cursor: pointer;
+        letter-spacing: 0.2em;
+        border-radius: 0.5rem;
+      }
+    }
+    &__roomIndex {
+      height:calc( 100% - 130px);
+      background-color: #ffffff;
+      color: black;
+      font-weight: bolder;
+      padding: 10px 0;
+      overflow: hidden;
+      overflow-y: scroll;
+      li {
+        height: 50px;
+        text-align: center;
+        line-height: 50px;
+      }
+    }
   }
-  .main {
+
+
+
+  .infoArea {
     height:100%;
     width: calc(100% - 20vh);
     background-color: mediumpurple;
+    &__infoHead {
+      height:80px;
+      border-bottom: 2px groove orange;
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-end;
+      background: #C3EC52;
+      background: -webkit-gradient(linear, left top, left bottom, from(#C3EC52), to(#0BA29D));
+      background: -webkit-linear-gradient(top, #C3EC52 0%, #0BA29D 100%);
+      background: linear-gradient(to bottom, #C3EC52 0%, #0BA29D 100%);
+      -webkit-box-shadow: inset 1px 1px 1px #fff;
+      box-shadow: inset 1px 1px 1px #fff;
+      &__userRoom {
+        height: 80px;
+        width: 15%;
+        padding: 4px 0 0 4px;
+        border-right: 1px solid forestgreen;
+        h6 {
+          font-size: 6px;
+        }
+        &__roomName {
+          font-size: 20px;
+          font-weight: bolder;
+          line-height: 60px;
+          text-align: center;
+          color: black;
+        }
+      }
+      &__headBox {
+        width: 85%;
+        display: flex;
+        justify-content: space-around;
+        .headBtn {
+          color: black;
+          width: 200px;
+          text-decoration: none;
+          font-size: 30px;
+          text-align: center;
+          border: 1px solid #ccc;
+          background: #C3EC52;
+          background: -webkit-gradient(linear, left top, left bottom, from(#C3EC52), to(#0BA29D));
+          background: -webkit-linear-gradient(top, #C3EC52 0%, #0BA29D 100%);
+          background: linear-gradient(to bottom, #C3EC52 0%, #0BA29D 100%);
+          -webkit-box-shadow: inset 1px 1px 1px #fff;
+          box-shadow: inset 1px 1px 1px #fff;
+        }
+        .headBtn:hover {
+          background: -webkit-gradient(linear, left bottom, left top, from(#C3EC52), to(#0BA29D));
+          background: -webkit-linear-gradient(bottom, #C3EC52 0%, #0BA29D 100%);
+          background: linear-gradient(to top, #C3EC52 0%, #0BA29D 100%);
+        }
+      }
+    }
+    .infoArea__infoMonths {
+      height:50px;
+      color: black;
+      background-color: ivory;
+      border-bottom: 1px solid forestgreen;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+    &__infoContent {
+      height:calc(100% - 130px);
+      background-color: #ffffff;
+      &__title {
+        font-size: 25px;
+        height: 15%;
+        text-align: center;
+        padding: 20px 0;
+        text-decoration: underline;
+      }
+      &__Index {
+        height: 85%;
+        display: flex;
+        flex-wrap: wrap;
+        padding: 30px 100px 10px;
+        .conte {
+          font-size: 30px;
+          text-align: center;
+          height: 15%;
+          width: 20%;
+          margin: 5px 0;
+        }
+      }
+    }
+
   }
 }
 
@@ -45,10 +195,11 @@ footer {
   height: 35px;
   width: 100%;
   color: #999999;
-  background-color: lightgray;
+  background-color: ghostwhite;
   font-size: 12px;
   text-align: end;
   line-height: 35px;
   padding-right: 15px;
+  border-top: 1px solid darkgray;
 }
 
