@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(version: 2020_07_23_073117) do
 
   create_table "contact_books", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "date"
     t.integer "letter"
     t.text "bring"
     t.text "schedule"

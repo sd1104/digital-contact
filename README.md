@@ -38,6 +38,7 @@ Things you may want to cover:
 ##contact_booksテーブル
 |Colum|Type|Options|
 |-----|----|-------|
+|date|datetime|null:false|
 |letter|integer||
 |bring|text||
 |schedule|text||

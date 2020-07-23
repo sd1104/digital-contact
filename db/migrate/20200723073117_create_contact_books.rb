@@ -1,6 +1,7 @@
 class CreateContactBooks < ActiveRecord::Migration[6.0]
   def change
     create_table :contact_books do |t|
+      t.datetime :date
       t.integer :letter
       t.text :bring
       t.text :schedule
