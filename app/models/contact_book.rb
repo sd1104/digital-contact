@@ -1,3 +1,3 @@
 class ContactBook < ApplicationRecord
-  belongs_to :romm
+  belongs_to :room
 end
