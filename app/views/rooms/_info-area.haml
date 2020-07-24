@@ -5,38 +5,50 @@
       .infoArea__infoHead__userRoom__roomName
         = @room.number
     .infoArea__infoHead__headBox
-      = link_to '欠席連絡', "/", class: "headBtn"
-      = link_to '連絡帳', "/", class: "headBtn"
-      = link_to '配布手紙', "/", class: "headBtn"
+      %ul.headBtns
+        %li.headBtn
+          = link_to '欠席連絡', "/", class: "HeadBtn"
+        %li.headBtn
+          = link_to '連絡帳', "/", class: "HeadBtn"
+        %li.headBtn
+          = link_to '配布手紙', "/", class: "HeadBtn"
   %ul.infoArea__infoMonths
     - @months.each do |m|
       %li.inforArea__infoMonth
         = m.month
-  .infoArea__infoContent
-    .infoArea__infoContent__title
-      連絡帳
-    .infoArea__infoContent__Index
-      %ul
-        %li.conte 1日
-      %li.conte 2日
-      %li.conte 3日
-      %li.conte 4日
-      %li.conte 5日
-      %li.conte 8日
-      %li.conte 9日
-      %li.conte 10日
-      %li.conte 11日
-      %li.conte 12日
-      %li.conte 15日
-      %li.conte 16日
-      %li.conte 17日
-      %li.conte 18日
-      %li.conte 19日
-      %li.conte 22日
-      %li.conte 23日
-      %li.conte 24日
-      %li.conte 25日
-      %li.conte 26日
-      %li.conte 29日
-      %li.conte 30日
-      %li.conte 31日
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  -# .infoArea__infoContent
+  -#   .infoArea__infoContent__title
+  -#     連絡帳
+  -#   .infoArea__infoContent__Index
+  -#     %ul
+  -#       %li.conte 1日
+  -#     %li.conte 2日
+  -#     %li.conte 3日
+  -#     %li.conte 4日
+  -#     %li.conte 5日
+  -#     %li.conte 8日
+  -#     %li.conte 9日
+  -#     %li.conte 10日
+  -#     %li.conte 11日
+  -#     %li.conte 12日
+  -#     %li.conte 15日
+  -#     %li.conte 16日
+  -#     %li.conte 17日
+  -#     %li.conte 18日
+  -#     %li.conte 19日
+  -#     %li.conte 22日
+  -#     %li.conte 23日
+  -#     %li.conte 24日
+  -#     %li.conte 25日
+  -#     %li.conte 26日
+  -#     %li.conte 29日
+  -#     %li.conte 30日
+  -#     %li.conte 31日
