@@ -65,7 +65,7 @@ Things you may want to cover:
 ##monthsテーブル
 |Colum|Type|Options|
 |-----|----|-------|
-|month|integer|null:false, unique:true|
+|month|string|null:false, unique:true|
 
 ###Association
 - has_many :room_months
@@ -77,7 +77,8 @@ Things you may want to cover:
 ##room_monthsテーブル
 |Colum|Type|Options|
 |-----|----|-------|
-|month|integer|null:false, unique:true|
+|room|references|null:false, unique:true|
+|month|references|null:false, unique:true|
 
 ###Association
 - belongs_to :room

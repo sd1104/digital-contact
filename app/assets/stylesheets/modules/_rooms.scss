@@ -52,7 +52,7 @@ header {
 .wrapper {
   height: calc(100% - 115px);
   width: 100%;
-  background-color: lightpink;
+  background-color: ivory;
   display: flex;
   .sideBar {
     height: 100%;
@@ -122,7 +122,7 @@ header {
   .infoArea {
     height:100%;
     width: calc(100% - 20vh);
-    background-color: mediumpurple;
+    background-color: ivory;
     &__infoHead {
       height:80px;
       border-bottom: 2px groove orange;
@@ -148,18 +148,26 @@ header {
       }
       &__headBox {
         width: 85%;
-        display: flex;
-        justify-content: space-around;
-        .headBtn {
-          color: black;
-          width: 200px;
-          text-decoration: none;
-          font-size: 30px;
-          text-align: center;
-          @include headBtn_greenColor()
-        }
-        .headBtn:hover {
-          @include headBtn_greenColor_hover()
+        .headBtns {
+          display: flex;
+          justify-content: space-around;
+          .headBtn {
+            width: 200px;
+            background-color: pink;
+            display: flex;
+            align-items: flex-end;
+            .HeadBtn {
+              color: black;
+              width: 100%;
+              text-decoration: none;
+              font-size: 30px;
+              text-align: center;
+              @include headBtn_greenColor()
+            }
+            .HeadBtn:hover {
+              @include headBtn_greenColor_hover()
+            }
+          } 
         }
       }
     }
