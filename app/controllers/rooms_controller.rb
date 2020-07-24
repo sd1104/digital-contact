@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
   def index
-    @rooms = Room.all.order("number ASC")
+    @rooms = Room.includes(:months).order("number ASC")
   end
 end

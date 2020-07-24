@@ -8,6 +8,6 @@
   %ul.sideBar__roomIndex
     - @rooms.each do |g|
       %li
-        = link_to "/", class: "roomNumberLink" do
+        = link_to room_months_path(g), class: "roomNumberLink" do
           = g.number 
       
