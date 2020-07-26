@@ -1,0 +1,34 @@
+.infoArea
+  .infoArea__infoHead
+    .infoArea__infoHead__userRoom
+      %h6 選択中のクラス
+      .infoArea__infoHead__userRoom__roomName
+        = @room.number
+    .infoArea__infoHead__headBox
+      %ul.headBtns
+        %li.headBtn
+          = link_to '連絡帳', "/", class: "HeadBtn contactBook"
+
+  .infoArea__infoMenu
+    =link_to '戻る', room_contact_books_path, class: "backBtn"
+    
+  .infoArea__infoContent
+    .infoArea__infoContent__itemsBox
+      .infoArea__infoContent__itemsBox__date
+        = @contact_book.set_date
+      .infoArea__infoContent__itemsBox__letter
+        手　紙：
+        = @contact_book.letter
+        枚
+      .infoArea__infoContent__itemsBox__schedule
+        時間割：
+        = @contact_book.schedule
+      .infoArea__infoContent__itemsBox__homework
+        宿　題：
+        = @contact_book.homework
+      .infoArea__infoContent__itemsBox__bring
+        持ち物：
+        = @contact_book.bring
+      .infoArea__infoContent__itemsBox__inform
+        連　絡：
+        = @contact_book.inform

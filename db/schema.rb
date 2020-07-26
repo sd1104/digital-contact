@@ -19,25 +19,10 @@ ActiveRecord::Schema.define(version: 2020_07_23_101013) do
     t.text "schedule"
     t.text "homework"
     t.text "inform"
-    t.bigint "month_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["month_id"], name: "index_contact_books_on_month_id"
-  end
-
-  create_table "months", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "month", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "room_months", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "room_id", null: false
-    t.bigint "month_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["month_id"], name: "index_room_months_on_month_id"
-    t.index ["room_id"], name: "index_room_months_on_room_id"
+    t.index ["room_id"], name: "index_contact_books_on_room_id"
   end
 
   create_table "rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -46,7 +31,4 @@ ActiveRecord::Schema.define(version: 2020_07_23_101013) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "contact_books", "months"
-  add_foreign_key "room_months", "months"
-  add_foreign_key "room_months", "rooms"
 end

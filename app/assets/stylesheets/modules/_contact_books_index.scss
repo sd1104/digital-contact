@@ -113,6 +113,9 @@ header {
           color: black;
           text-decoration: none;
         }
+        .roomNumberLink:hover {
+          text-decoration: underline;
+        }
       }
     }
   }
@@ -171,18 +174,24 @@ header {
         }
       }
     }
-    .infoArea__infoMonths {
+    &__infoMenu {
       height:50px;
       color: black;
       background-color: ivory;
       border-bottom: 1px solid forestgreen;
       display: flex;
-      justify-content: space-around;
       align-items: center;
+      .backBtn {
+        text-decoration: none;
+        color: purple;
+        margin-left: 30px;
+      }
     }
     &__infoContent {
       height:calc(100% - 130px);
       background-color: #ffffff;
+      overflow: hidden;
+      overflow-y: scroll;
       &__title {
         font-size: 25px;
         height: 15%;
@@ -192,15 +201,23 @@ header {
       }
       &__Index {
         height: 85%;
-        display: flex;
-        flex-wrap: wrap;
         padding: 30px 100px 10px;
-        .conte {
-          font-size: 30px;
-          text-align: center;
-          height: 15%;
-          width: 20%;
-          margin: 5px 0;
+        .cbs {
+          display: flex;
+          flex-wrap: wrap;
+            .cb {
+              height: 15%;
+              width: 20%;
+              margin: 5px 0;
+              .cbLink {
+              color: black;
+              font-size: 30px;
+              text-decoration: none;
+              }
+              .cbLink:hover {
+                border-bottom: 2px solid black;
+              }
+            }
         }
       }
     }

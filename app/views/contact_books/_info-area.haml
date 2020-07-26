@@ -1,0 +1,27 @@
+.infoArea
+  .infoArea__infoHead
+    .infoArea__infoHead__userRoom
+      %h6 選択中のクラス
+      .infoArea__infoHead__userRoom__roomName
+        = @room.number
+    .infoArea__infoHead__headBox
+      %ul.headBtns
+        -# %li.headBtn
+        -#   = link_to '欠席連絡', "/", class: "HeadBtn abscentContact"
+        %li.headBtn
+          = link_to '連絡帳', "/", class: "HeadBtn contactBook"
+        -# %li.headBtn
+        -#   = link_to '配布手紙', "/", class: "HeadBtn letters"
+  .infoArea__infoMenu
+    =link_to '戻る', room_contact_books_path, class: "backBtn"
+   
+  .infoArea__infoContent
+    -@everymonth.each do |month|
+      .infoArea__infoContent__title
+        = month[0]
+      .infoArea__infoContent__Index
+        %ul.cbs
+          -month[1].each do |m|
+            %li.cb
+              = link_to room_contact_book_path(@room, m),class: "cbLink" do
+                = m.set_date

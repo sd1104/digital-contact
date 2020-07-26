@@ -6,8 +6,8 @@
   .sideBar__logOutBox
     = link_to 'ログアウト', "/", method: :get, class: "logOutBtn"
   %ul.sideBar__roomIndex
-    - @rooms.each do |g|
+    - @rooms.each do |r|
       %li
-        = link_to room_months_path(g), class: "roomNumberLink" do
-          = g.number 
+        = link_to room_contact_books_path(r), class: "roomNumberLink" do
+          = r.number 
       

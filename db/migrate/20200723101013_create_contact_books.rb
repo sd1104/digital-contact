@@ -7,7 +7,7 @@ class CreateContactBooks < ActiveRecord::Migration[6.0]
       t.text :schedule
       t.text :homework
       t.text :inform
-      t.references :month, null: false, foreign_key: true
+      t.references :room, null:false, foreign_ky: true
       t.timestamps
     end
   end
