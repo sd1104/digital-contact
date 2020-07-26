@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root "rooms#index"
   
   resources :rooms, only: :index do
-    resources :contact_books, shallow: true
+    resources :contact_books, only: [:index, :show]
   end
 
 end

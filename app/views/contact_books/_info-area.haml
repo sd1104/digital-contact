@@ -12,7 +12,8 @@
           = link_to '連絡帳', "/", class: "HeadBtn contactBook"
         -# %li.headBtn
         -#   = link_to '配布手紙', "/", class: "HeadBtn letters"
-  .infoArea__infoMonths
+  .infoArea__infoMenu
+    =link_to '戻る', room_contact_books_path, class: "backBtn"
    
   .infoArea__infoContent
     -@everymonth.each do |month|
@@ -22,8 +23,5 @@
         %ul.cbs
           -month[1].each do |m|
             %li.cb
-              = link_to '/' ,class: "cbLink" do
+              = link_to room_contact_book_path(@room, m),class: "cbLink" do
                 = m.set_date
-
-
-  

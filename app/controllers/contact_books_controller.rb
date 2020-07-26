@@ -2,18 +2,18 @@ class ContactBooksController < ApplicationController
   before_action :set_foreign_instance
   
   def index
-    @april_contact_books = ContactBook.where(date: (20200401 .. 20200431)).where(room_id: (params[:room_id]))
-    @may_contact_books = ContactBook.where(date: (20200501 .. 20200531)).where(room_id: (params[:room_id]))
-    @june_contact_books = ContactBook.where(date: (20200601 .. 20200631)).where(room_id: (params[:room_id]))
-    @july_contact_books = ContactBook.where(date: (20200701 .. 20200731)).where(room_id: (params[:room_id]))
-    @august_contact_books = ContactBook.where(date: (20200801 .. 20200831)).where(room_id: (params[:room_id]))
-    @september_contact_books = ContactBook.where(date: (20200901 .. 20200931)).where(room_id: (params[:room_id]))
-    @october_contact_books = ContactBook.where(date: (20201001 .. 20201031)).where(room_id: (params[:room_id]))
-    @november_contact_books = ContactBook.where(date: (20201101 .. 20201101)).where(room_id: (params[:room_id]))
-    @december_contact_books = ContactBook.where(date: (20201201 .. 20201231)).where(room_id: (params[:room_id]))
-    @january_contact_books = ContactBook.where(date: (20200101 .. 20200131)).where(room_id: (params[:room_id]))
-    @februry_contact_books = ContactBook.where(date: (20200201 .. 20200231)).where(room_id: (params[:room_id]))
-    @march_contact_books = ContactBook.where(date: (20200301 .. 20200331)).where(room_id: (params[:room_id]))
+    @april_contact_books = ContactBook.where(date: (20200401 .. 20200431)).where(room_id: (params[:room_id])).includes(:room)
+    @may_contact_books = ContactBook.where(date: (20200501 .. 20200531)).where(room_id: (params[:room_id])).includes(:room)
+    @june_contact_books = ContactBook.where(date: (20200601 .. 20200631)).where(room_id: (params[:room_id])).includes(:room)
+    @july_contact_books = ContactBook.where(date: (20200701 .. 20200731)).where(room_id: (params[:room_id])).includes(:room)
+    @august_contact_books = ContactBook.where(date: (20200801 .. 20200831)).where(room_id: (params[:room_id])).includes(:room)
+    @september_contact_books = ContactBook.where(date: (20200901 .. 20200931)).where(room_id: (params[:room_id])).includes(:room)
+    @october_contact_books = ContactBook.where(date: (20201001 .. 20201031)).where(room_id: (params[:room_id])).includes(:room)
+    @november_contact_books = ContactBook.where(date: (20201101 .. 20201101)).where(room_id: (params[:room_id])).includes(:room)
+    @december_contact_books = ContactBook.where(date: (20201201 .. 20201231)).where(room_id: (params[:room_id])).includes(:room)
+    @january_contact_books = ContactBook.where(date: (20200101 .. 20200131)).where(room_id: (params[:room_id])).includes(:room)
+    @februry_contact_books = ContactBook.where(date: (20200201 .. 20200231)).where(room_id: (params[:room_id])).includes(:room)
+    @march_contact_books = ContactBook.where(date: (20200301 .. 20200331)).where(room_id: (params[:room_id])).includes(:room)
     @everymonth = {}
     @everymonth["４月の連絡帳"] = @april_contact_books
     @everymonth["５月の連絡帳"] = @may_contact_books
@@ -27,7 +27,11 @@ class ContactBooksController < ApplicationController
     @everymonth["１月の連絡帳"] = @january_contact_books
     @everymonth["２月の連絡帳"] = @februry_contact_books
     @everymonth["３月の連絡帳"] = @march_contact_books
-    return @everymonth
+    @everymonth
+  end
+
+  def show
+    @contact_book = ContactBook.find(params[:id])
   end
 
   private
