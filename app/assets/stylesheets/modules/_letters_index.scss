@@ -3,3 +3,30 @@
     margin-left: 30px;
   }
 }
+
+.infoArea__infoContent {
+  padding: 10px 30px;
+  &__letterHead {
+    margin-bottom: 30px;
+    .headTitle {
+      text-align: center;
+      font-size: 40px;
+    }
+  }
+  &__lettersBox {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    .Letter {
+      margin: 20px;
+      .letterFile {
+        color: black;
+        text-decoration: none;
+        margin-right: 20px;
+      }
+      .letterFile:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

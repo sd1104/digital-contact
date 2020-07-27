@@ -2,7 +2,7 @@ class LettersController < ApplicationController
   before_action :set_foreign_instance
 
   def index
-    @letters = Letter.all.order("release_at ASC").includes(:room)
+    @letters = Letter.all.order("released_at ASC").includes(:room)
   end
 
   def new
