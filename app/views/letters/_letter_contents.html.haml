@@ -12,7 +12,17 @@
           = link_to '配布手紙', room_letters_path, class: "HeadBtn letters"
 
   .infoArea__infoMenu
-    = link_to '戻る', room_contact_books_path, class: "backBtn"
+    %ul.breadCrumbsLink
+      %li
+        = link_to 'クラス選択', root_path, class: "roomSelectBtn"
+      %li
+        %i.fa.fa-chevron-right
+      %li
+        = link_to '連絡帳', room_contact_books_path, class: "contactBookSelectBtn"
+      %li
+        %i.fa.fa-chevron-right
+      %li
+        %p.letterSelect 配布手紙
     = link_to 'アップロード', new_room_letter_path(@room), class: "uploadBtn"
     
   .infoArea__infoContent
