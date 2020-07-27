@@ -1,18 +1,21 @@
 class LettersController < ApplicationController
-  before_action :set_params
+  before_action :letter_params
   before_action :set_foreign_instance
 
   def index
+    @letters = Letter.all.order("release_at ASC")
   end
 
   def new
   end
 
   def create
+    letter = Letter(params[:room_id])
+    letter.update(letter_params)
   end
 
   private
-  def set_params
+  def letter_params
     params.require(:letter).permit(:released_at, :name, :pdf)
   end
   
