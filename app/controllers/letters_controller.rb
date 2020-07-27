@@ -1,5 +1,4 @@
 class LettersController < ApplicationController
-  before_action :letter_params
   before_action :set_foreign_instance
 
   def index
@@ -16,7 +15,7 @@ class LettersController < ApplicationController
 
   private
   def letter_params
-    params.require(:letter).permit(:released_at, :name, :pdf)
+    params.require(:letters).permit(:released_at, :name, :pdf)
   end
   
   def set_foreign_instance

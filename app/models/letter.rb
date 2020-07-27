@@ -3,5 +3,5 @@ class Letter < ApplicationRecord
 
   validates :released_at, presence: true, uniqueness: true
 
-  mount_uploader :pif, PdfUploader
+  mount_uploader :pdf, PdfUploader
 end
