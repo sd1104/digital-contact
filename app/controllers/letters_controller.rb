@@ -1,5 +1,5 @@
 class LettersController < ApplicationController
-  before_action :set_foreign_instance, only: :index
+  before_action :set_foreign_instance
 
   def index
     @letters = Letter.all.order("released_at ASC").includes(:room)

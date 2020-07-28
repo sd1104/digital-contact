@@ -2,7 +2,7 @@
   .sideBar__userBox
     %h6 ログイン中のユーザー
     .sideBar__userBox__userName 
-      高橋　さん
+      = current_user.parent_name
   .sideBar__logOutBox
     = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logOutBtn"
   %ul.sideBar__roomIndex
