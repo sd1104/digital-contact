@@ -20,16 +20,30 @@ Things you may want to cover:
 
 ###Association
 - has_many :users
-- has_many :room_months
-- has_many :months, through: :room_months
+- has_many :absent_contacts
+- has_many :contact_books
+- has_many :letters
 
 
 ##usersテーブル
 |Colum|Type|Options|
 |-----|----|-------|
-|name|string|null:false|
+|p_name|string|null:false|
+|c_name|string|null:false|
 |email|string|null:false, unique:true|
 |password|string|null:false, unique:true|
+|room_id|references|null:false, foreign_key: true|
+
+###Association
+- belongs_to :room
+
+
+##absent_contactsテーブル
+|Colum|Type|Options|
+|-----|----|-------|
+|arised_at|date|null:false|
+|absent_kind|integer|null:false|
+|reason|text|null:false|
 |room_id|references|null:false, foreign_key: true|
 
 ###Association
@@ -48,41 +62,31 @@ Things you may want to cover:
 |room_id|references|null:false, foreign_key: true|
 
 ###Association
-- belongs_to :month
+- belongs_to :room
 
 
 ##lettersテーブル
 |Colum|Type|Options|
 |-----|----|-------|
-|title|text|null:false|
-|file|string|null:false|
+|release_at|date|null:false|
+|name|text|null:false|
+|pdf|string|null:false|
 |room_id|references|null:false, foreign_key: true|
 
 ###Association
-- belongs_to :month
+- belongs_to :room
 
 
-##monthsテーブル
+##absent_contactsテーブル
 |Colum|Type|Options|
 |-----|----|-------|
-|month|string|null:false, unique:true|
-
-###Association
-- has_many :room_months
-- has_many :rooms, through: :room_months
-- has_many :contact_books
-- has_many :letters
-
-
-##room_monthsテーブル
-|Colum|Type|Options|
-|-----|----|-------|
-|room|references|null:false, unique:true|
-|month|references|null:false, unique:true|
+|arised_at|date|null:false|
+|absent_kind|integer|null:false|
+|reason|text|null:false|
+|room_id|references|null:false, foreign_key: true|
 
 ###Association
 - belongs_to :room
-- belongs_to :month
 
 
 * Database initialization
