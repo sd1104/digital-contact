@@ -4,7 +4,7 @@
     .sideBar__userBox__userName 
       高橋　さん
   .sideBar__logOutBox
-    = link_to 'ログアウト', "/", method: :get, class: "logOutBtn"
+    = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logOutBtn"
   %ul.sideBar__roomIndex
     - @rooms.each do |r|
       %li
