@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_27_050901) do
+ActiveRecord::Schema.define(version: 2020_07_28_015408) do
+
+  create_table "absent_contacts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.date "arised_at", null: false
+    t.integer "absent_kind", null: false
+    t.text "reason", null: false
+    t.bigint "room_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["room_id"], name: "index_absent_contacts_on_room_id"
+  end
 
   create_table "contact_books", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "date"
@@ -41,5 +51,6 @@ ActiveRecord::Schema.define(version: 2020_07_27_050901) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "absent_contacts", "rooms"
   add_foreign_key "letters", "rooms"
 end
