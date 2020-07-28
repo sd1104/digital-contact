@@ -1,0 +1,31 @@
+.wall {
+  padding-top: 30px;
+  background-color: white;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  .FormBox {
+    padding: 30px 80px 10px 80px;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 4px solid lightgreen;
+    .field {
+      margin: 20px 0;
+    }
+    .actions {
+      margin-bottom: 30px;
+    }
+  }
+}
+
+.deviseLink {
+  text-decoration: none;
+}
+
+.deviseLink:hover {
+  text-decoration: underline;
+}

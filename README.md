@@ -36,6 +36,7 @@ Things you may want to cover:
 
 ###Association
 - belongs_to :room
+- has_many :absent_contacts
 
 
 ##absent_contactsテーブル
@@ -45,9 +46,11 @@ Things you may want to cover:
 |absent_kind|integer|null:false|
 |reason|text|null:false|
 |room_id|references|null:false, foreign_key: true|
+|user_id|references|null:false, foreign_key: true|
 
 ###Association
 - belongs_to :room
+- belongs_to :user
 
 
 ##contact_booksテーブル
@@ -71,18 +74,6 @@ Things you may want to cover:
 |release_at|date|null:false|
 |name|text|null:false|
 |pdf|string|null:false|
-|room_id|references|null:false, foreign_key: true|
-
-###Association
-- belongs_to :room
-
-
-##absent_contactsテーブル
-|Colum|Type|Options|
-|-----|----|-------|
-|arised_at|date|null:false|
-|absent_kind|integer|null:false|
-|reason|text|null:false|
 |room_id|references|null:false, foreign_key: true|
 
 ###Association
