@@ -1,0 +1,2 @@
+module AbsentContactsHelper
+end
