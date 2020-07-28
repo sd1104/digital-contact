@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :rooms, only: :index do
     resources :contact_books, only: [:index, :show]
     resources :letters, only:[:index, :new, :create]
+    resources :absent_contacts, only: :index
   end
 
 end

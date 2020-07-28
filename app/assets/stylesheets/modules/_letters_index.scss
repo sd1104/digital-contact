@@ -34,12 +34,13 @@
 }
 
 .infoArea__infoContent {
-  padding: 10px 30px;
-  &__letterHead {
+  padding: 10px 100px;
+  &__HeadTitle {
+    border-bottom: 1px solid black;
     margin-bottom: 30px;
     .headTitle {
       text-align: center;
-      font-size: 40px;
+      font-size: 30px;
     }
   }
   &__lettersBox {
@@ -49,6 +50,7 @@
     .Letter {
       margin: 20px;
       .letterFile {
+        font-size: 25px;
         color: black;
         text-decoration: none;
         margin-right: 20px;

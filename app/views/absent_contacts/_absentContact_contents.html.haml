@@ -24,16 +24,11 @@
       %li
         %i.fa.fa-chevron-right
       %li
-        %p.letterSelect 配布手紙
-    = link_to 'アップロード', new_room_letter_path(@room), class: "uploadBtn"
+        %p.letterSelect 欠席連絡
+    = link_to 'アップロード', "/", class: "uploadBtn"
     
   .infoArea__infoContent
     .infoArea__infoContent__HeadTitle
-      %p.headTitle 配布手紙
-    .infoArea__infoContent__lettersBox
-      - @letters.each do |le|
-        .Letter
-          = link_to image_url("#{le.pdf}"), class: "letterFile" do
-            = le.name
-          配布日：
-          = le.set_date
+      %p.headTitle 欠席連絡
+    .infoArea__infoContent__absentContactBox
+      hello new world
