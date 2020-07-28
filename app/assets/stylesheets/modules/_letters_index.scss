@@ -1,0 +1,61 @@
+.infoArea__infoMenu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  .breadCrumbsLink {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    .roomSelectBtn,
+    .contactBookSelectBtn {
+      text-decoration: none;
+    }
+    .roomSelectBtn:hover,
+    .contactBookSelectBtn:hover {
+      text-decoration: underline;
+    }
+    .fa.fa-chevron-right {
+      margin: 0 5px;
+    }
+  }
+  .uploadBtn {
+    text-decoration: none;
+    background-color: gold;
+    border: 2px solid lightgray;
+    padding: 3px;
+  }
+  .uploadBtn:hover {
+    text-decoration: none;
+    background-color: lightsalmon;
+    border: 2px solid lightgray;
+    padding: 3px;
+  }
+}
+
+.infoArea__infoContent {
+  padding: 10px 30px;
+  &__letterHead {
+    margin-bottom: 30px;
+    .headTitle {
+      text-align: center;
+      font-size: 40px;
+    }
+  }
+  &__lettersBox {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    .Letter {
+      margin: 20px;
+      .letterFile {
+        color: black;
+        text-decoration: none;
+        margin-right: 20px;
+      }
+      .letterFile:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

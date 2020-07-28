@@ -7,10 +7,21 @@
     .infoArea__infoHead__headBox
       %ul.headBtns
         %li.headBtn
-          = link_to '連絡帳', "/", class: "HeadBtn contactBook"
+          = link_to '連絡帳', room_contact_books_path, class: "HeadBtn contactBook"
 
   .infoArea__infoMenu
-    =link_to '戻る', room_contact_books_path, class: "backBtn"
+    %ul.breadCrumbsLink
+      %li
+        = link_to 'クラス選択', root_path, class: "roomSelectBtn"
+      %li
+        %i.fa.fa-chevron-right
+      %li
+        = link_to '連絡帳', room_contact_books_path, class: "contactBookSelectBtn"
+      %li
+        %i.fa.fa-chevron-right
+      %li
+        = @contact_book.set_date
+        の連絡帳
     
   .infoArea__infoContent
     .infoArea__infoContent__itemsBox

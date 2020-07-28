@@ -42,7 +42,3 @@ class ContactBooksController < ApplicationController
 
 end
 
-
-# @rooms = Room.includes(:contact_book).order("number ASC")
-# @room = Room.find(params[:room_id])
-
