@@ -7,15 +7,15 @@
         .field
           = f.label :保護者名
           %br/
-          = f.text_field :parent_name, autofocus: true, autocomplete: "parent_name", class: "deviseLink"
+          = f.text_field :parent_name, autofocus: true, autocomplete: "parent_name"
         .field
           = f.label :児童名
           %br/
-          = f.text_field :child_name, autofocus: true, autocomplete: "child_name", class: "deviseLink"
+          = f.text_field :child_name, autofocus: true, autocomplete: "child_name"
         .field
           = f.label :email
           %br/
-          = f.email_field :email, autofocus: true, autocomplete: "email", class: "deviseLink"
+          = f.email_field :email, autofocus: true, autocomplete: "email"
         .field
           = f.label :password
           - if @minimum_password_length
