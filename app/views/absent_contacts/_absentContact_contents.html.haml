@@ -35,13 +35,17 @@
         = form_with model: [@room, @absent_contact], class: "IputForm", local: true do |f|
           .InputBox
             .absentAt
+              日付：
               = f.date_field :absent_at, placeholder: "いつ", class: "inputAbsentAT"
             .absentKind
+              種類：
               = f.select :kind, AbsentContact.kinds_i18n.invert, {}, class: "inputKind"
             .absentReason
+              理由・連絡：
               = f.text_area :reason, placeholder: "理由,連絡", class: "inputReason"
             .afterContact
-              = f.select :after_contact, AbsentContact.after_contacts_i18n.invert, {}, placeholder: "放課後、連絡が", class: "inputAfterContact"
+              放課後担任から連絡が
+              = f.select :after_contact, AbsentContact.after_contacts_i18n.invert, {}, class: "inputAfterContact"
             .SubmitBtn
               = f.submit '送信', class: "submit-btn" 
       .infoArea__AbsentContact__contactsHistory

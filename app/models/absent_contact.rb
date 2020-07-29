@@ -4,5 +4,5 @@ class AbsentContact < ApplicationRecord
 
   enum kind: { absent: 0, latein: 1, earlyout: 2 }
 
-  enum after_contact: { necessary: true, unnecessary: false,  }
+  enum after_contact: {unnecessary: false, necessary: true}
 end
