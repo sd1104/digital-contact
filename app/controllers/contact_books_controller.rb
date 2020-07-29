@@ -30,6 +30,15 @@ class ContactBooksController < ApplicationController
     @everymonth
   end
 
+  def new
+    @contact_book = ContactBook.new
+  end
+
+  def create
+    ContactBook.create(contact_book_params)
+    redirect_to room_contact_books_path(@room)
+  end
+
   def show
     @contact_book = ContactBook.find(params[:id])
   end
@@ -38,6 +47,10 @@ class ContactBooksController < ApplicationController
   def set_foreign_instance
     @rooms = Room.includes(:contact_books).order("number ASC")
     @room = Room.find(params[:room_id])
+  end
+
+  def contact_book_params
+    params.require(:cotact_book).permit(:date, :letter, :bring, :schedule, :homework, :inform).merge(room_id: params[:room_id])
   end
 
 end
