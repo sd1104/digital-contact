@@ -59,6 +59,12 @@
       }
       &__index {
         padding: 10px 20px 0 20px;
+        .contactHistoryBox {
+          display: flex;
+          .contact {
+            margin: 20px 5px;
+          }
+        }
       }
     }
   }

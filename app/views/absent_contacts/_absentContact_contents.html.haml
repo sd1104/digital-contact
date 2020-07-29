@@ -25,7 +25,6 @@
         %i.fa.fa-chevron-right
       %li
         %p.letterSelect 欠席連絡
-    = link_to 'アップロード', "/", class: "uploadBtn"
     
   .infoArea__AbsentContact
     .infoArea__AbsentContact__absentContactForm
@@ -52,4 +51,11 @@
         .infoArea__AbsentContact__contactsHistory__title
           送信履歴
         .infoArea__AbsentContact__contactsHistory__index
-          hello new world
+          - @absent_contacts.each do |a|
+            .contactHistoryBox
+              .contact
+                =a.set_date
+              .contact
+                =a.kind
+              .contact
+                送信済

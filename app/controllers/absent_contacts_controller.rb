@@ -2,6 +2,7 @@ class AbsentContactsController < ApplicationController
   before_action :set_foreign_instance
   
   def index
+    @absent_contacts = AbsentContact.includes(:room, :user)
     @absent_contact = AbsentContact.new
   end
 
