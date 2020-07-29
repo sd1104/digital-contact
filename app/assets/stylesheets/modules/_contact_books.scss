@@ -1,3 +1,4 @@
+// sub reset scss
 * {
   box-sizing: border-box;
 }
@@ -12,6 +13,9 @@ body {
   width: 100%;
 }
 
+
+
+// refactoring scss
 @mixin headline_greenColor {
   background: #C3EC52;
   background: -webkit-gradient(linear, left top, left bottom, from(#C3EC52), to(#0BA29D));
@@ -37,6 +41,9 @@ body {
   background: linear-gradient(to top, #C3EC52 0%, #0BA29D 100%);
 }
 
+
+
+// application'scss
 header {
   height:80px;
   width: 100%;
@@ -49,6 +56,21 @@ header {
   border-bottom: 3px solid forestgreen;
 }
 
+footer {
+  height: 35px;
+  width: 100%;
+  color: #999999;
+  background-color: ghostwhite;
+  font-size: 12px;
+  text-align: end;
+  line-height: 35px;
+  padding-right: 15px;
+  border-top: 1px solid darkgray;
+}
+
+
+
+// index view's scss
 .wrapper {
   height: calc(100% - 115px);
   width: 100%;
@@ -121,8 +143,6 @@ header {
       }
     }
   }
-
-
 
   .infoArea {
     height:100%;
@@ -227,15 +247,67 @@ header {
   }
 }
 
-footer {
-  height: 35px;
-  width: 100%;
-  color: #999999;
-  background-color: ghostwhite;
-  font-size: 12px;
-  text-align: end;
-  line-height: 35px;
-  padding-right: 15px;
-  border-top: 1px solid darkgray;
+
+
+// new view's scss
+.wall {
+  .CotactBookField {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px 0 0 50px ;
+    .head {
+      font-size: 30px;
+    }
+    .FormField {
+      width: 650px;
+      padding: 10px 50px;
+      border: 1px solid black;
+      &__labelDate,
+      &__labelLetter,
+      &__labelSchedule,
+      &__labelHomework,
+      &__labelInform {
+        font-size: 20px;
+      }
+      &__inputDate,
+      &__inputLetter,
+      &__inputSchedule,
+      &__inputHomework,
+      &__inputInform {
+        height: 50px;
+        font-size: 25px;
+        margin: 10px 0 0 40px;
+      }
+      &__submit {
+        font-size: 40px;
+        margin: 60px 0 0 80px;
+      }
+      .submit-btn {
+
+      }
+    }
+  }
 }
 
+
+
+// show view's scss
+.infoArea__infoContent__itemsBox {
+  &__date {
+    height: 14%;
+    font-size: 40px;
+    padding: 20px;
+    margin-bottom: 10px;
+  }
+  &__letter,
+  &__schedule,
+  &__homework,
+  &__bring,
+  &__inform {
+    height: 14%;
+    font-size: 35px;
+    padding: 0 0 10px 50px;
+  }
+}

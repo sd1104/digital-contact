@@ -1,19 +1,20 @@
 .wrapper
-  .letterField
-    %p.head "配布手紙アップロードフォーム"
-    =form_with model: [@room, @letter], method: :post, local: true do |f|
-      .FormField
-        .FormField__labelReleased_at
-          = f.label :"配布日", class: "releasedAt"
-        .FormField__inputReleased_at
-          = f.date_select :released_at, placeholder: "配布日"
-        .FormField__labelName
-          = f.label :"タイトル"
-        .FormField__inputName
-          = f.text_field :name, placeholder: "タイトル" 
-        .FormField__labelPdf
-          = f.label :"ファイル"
-        .FormField__inputPdf
-          = f.file_field :pdf, placeholder: "ファイル"
-        .FormField__submit
-          = f.submit "アップロード", class:"submit-btn"
+  .wall
+    .letterField
+      %p.head "配布手紙アップロードフォーム"
+      =form_with model: [@room, @letter], method: :post, local: true do |f|
+        .FormField
+          .FormField__labelReleased_at
+            = f.label :"配布日", class: "releasedAt"
+          .FormField__inputReleased_at
+            = f.date_select :released_at, placeholder: "配布日"
+          .FormField__labelName
+            = f.label :"タイトル"
+          .FormField__inputName
+            = f.text_field :name, placeholder: "タイトル" 
+          .FormField__labelPdf
+            = f.label :"ファイル"
+          .FormField__inputPdf
+            = f.file_field :pdf, placeholder: "ファイル"
+          .FormField__submit
+            = f.submit "アップロード", class:"submit-btn"
