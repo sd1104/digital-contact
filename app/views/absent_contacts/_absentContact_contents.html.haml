@@ -27,8 +27,25 @@
         %p.letterSelect 欠席連絡
     = link_to 'アップロード', "/", class: "uploadBtn"
     
-  .infoArea__infoContent
-    .infoArea__infoContent__HeadTitle
-      %p.headTitle 欠席連絡
-    .infoArea__infoContent__absentContactBox
-      hello new world
+  .infoArea__AbsentContact
+    .infoArea__AbsentContact__absentContactForm
+      .infoArea__AbsentContact__absentContactForm__FormHead
+        連絡フォーム
+      .infoArea__AbsentContact__absentContactForm__FormBox
+        = form_with model: [@room, @absent_contact], class: "IputForm", local: true do |f|
+          .InputBox
+            .absentAt
+              = f.date_field :absent_at, placeholder: "いつ", class: "inputAbsentAT"
+            .absentKind
+              = f.select :kind, AbsentContact.kinds.keys, {}, class: "inputKind"
+            .absentReason
+              = f.text_area :reason, placeholder: "理由,連絡", class: "inputReason"
+            .afterContact
+              = f.select :after_contact, AbsentContact.after_contacts.keys, {}, placeholder: "放課後、連絡が", class: "inputAfterContact"
+            .SubmitBtn
+              = f.submit '送信', class: "submit-btn" 
+      .infoArea__AbsentContact__contactsHistory
+        .infoArea__AbsentContact__contactsHistory__title
+          送信履歴
+        .infoArea__AbsentContact__contactsHistory__index
+          hello new world
