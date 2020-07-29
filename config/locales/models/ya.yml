@@ -7,8 +7,8 @@ ja:
         latein: "遅刻"
         earlyout: "早退"
       after_contact:
-        necessary: "必要です"
-        unnecessary: "必要なし"
+        necessary: "担任から放課後連絡が必要"
+        unnecessary: "担任から放課後連絡が必要なし"
   activerecord:
     errors:
       messages:
