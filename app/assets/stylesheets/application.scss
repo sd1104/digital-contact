@@ -1,9 +1,7 @@
 @import "reset";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-@import "modules/contact_books_index";
-@import "modules/contact_books_show";
-@import "modules/letters_index";
-@import "modules/letters_new";
+@import "modules/contact_books";
+@import "modules/letters";
 @import "modules/absent_contacts";
 @import "modules/_devise";
