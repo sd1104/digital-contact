@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :rooms, only: :index do
     resources :contact_books, only: [:index, :new, :create, :show]
     resources :letters, only:[:index, :new, :create]
-    resources :absent_contacts, only: :index
+    resources :absent_contacts, only: [:index, :create]
   end
 
 end
