@@ -1,0 +1,11 @@
+---
+ja:
+  enums:
+    absent_contact:
+      kind:
+        absent: "欠席"
+        latein: "遅刻"
+        earlyout: "早退"
+      after_contact:
+        necessary: "必要です"
+        unnecessary: "必要なし"

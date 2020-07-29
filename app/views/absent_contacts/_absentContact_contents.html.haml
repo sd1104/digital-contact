@@ -37,11 +37,11 @@
             .absentAt
               = f.date_field :absent_at, placeholder: "いつ", class: "inputAbsentAT"
             .absentKind
-              = f.select :kind, AbsentContact.kinds.keys, {}, class: "inputKind"
+              = f.select :kind, AbsentContact.kinds_i18n.invert, {}, class: "inputKind"
             .absentReason
               = f.text_area :reason, placeholder: "理由,連絡", class: "inputReason"
             .afterContact
-              = f.select :after_contact, AbsentContact.after_contacts.keys, {}, placeholder: "放課後、連絡が", class: "inputAfterContact"
+              = f.select :after_contact, AbsentContact.after_contacts_i18n.invert, {}, placeholder: "放課後、連絡が", class: "inputAfterContact"
             .SubmitBtn
               = f.submit '送信', class: "submit-btn" 
       .infoArea__AbsentContact__contactsHistory
