@@ -1,5 +1,5 @@
 .wrapper
-  .wall
+  .Wall
     .CotactBookField
       %p.head "連絡帳アップロードフォーム"
       =form_with model: [@room, @contact_book], method: :post, local: true do |f|
@@ -15,14 +15,18 @@
           .FormField__labelSchedule
             = f.label :"時間割"
           .FormField__inputSchedule
-            = f.text_field :schedule, placeholder: "時間割"
+            = f.text_field :schedule, placeholder: "国　国　国　国　国　国", class: "scheduleInput"
           .FormField__labelHomework
             = f.label :"宿題"
           .FormField__inputHomework
-            = f.text_field :homework, placeholder: "宿題"
+            = f.text_area :homework, placeholder: "宿題", class: "homeworkInput"
+          .FormField__labelbring
+            = f.label :"持ち物"
+          .FormField__inputbring
+            = f.text_area :bring, placeholder: "持ち物", class: "inputBring"
           .FormField__labelInform
             = f.label :"連絡"
           .FormField__inputInform
-            = f.text_field :inform, placeholder: "連絡", rows:10 
+            = f.text_area :inform, placeholder: "連絡", class: "informInput"
           .FormField__submit
             = f.submit "アップロード", class:"submit-btn"

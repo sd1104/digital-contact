@@ -63,37 +63,46 @@
 }
 
 // new view's scss
-.letterField {
+.Wall {
+  padding-top: 30px;
+  background-color: white;
+  width: 100%;
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  flex-direction: column;
-  padding: 10px 0 0 50px ;
-  .head {
-    font-size: 30px;
-  }
-  .FormField {
-    width: 650px;
-    padding: 10px 50px;
-    border: 1px solid black;
-    &__labelReleased_at,
-    &__labelName,
-    &__labelPdf {
+  justify-content: center;
+  align-items: flex-start;
+  .letterField {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px 0 0 50px ;
+    .head {
       font-size: 30px;
     }
-    &__inputReleased_at,
-    &__inputName,
-    &__inputPdf {
-      height: 50px;
-      font-size: 30px;
-      margin: 10px 0 0 40px;
-    }
-    &__submit {
-      font-size: 40px;
-      margin: 60px 0 0 80px;
-    }
-    .submit-btn {
-
+    .FormField {
+      width: 650px;
+      padding: 10px 50px;
+      border: 1px solid black;
+      &__labelReleased_at,
+      &__labelName,
+      &__labelPdf {
+        font-size: 30px;
+      }
+      &__inputReleased_at,
+      &__inputName,
+      &__inputPdf {
+        height: 50px;
+        font-size: 30px;
+        margin: 10px 0 0 40px;
+      }
+      &__submit {
+        font-size: 40px;
+        margin: 60px 0 0 80px;
+      }
+      .submit-btn {
+  
+      }
     }
   }
 }
+
