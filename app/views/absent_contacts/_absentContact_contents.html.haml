@@ -31,7 +31,7 @@
       .infoArea__AbsentContact__absentContactForm
         .infoArea__AbsentContact__contactsHistory
           .infoArea__AbsentContact__contactsHistory__title
-            送信履歴
+            受診履歴
           .infoArea__AbsentContact__contactsHistory__index
             - @absent_contacts_for_teacher.each do |a|
               .contactHistoryBox
@@ -46,10 +46,10 @@
                     遅刻
                   - else
                     早退
-                .contact
-                  連絡済
-                .contact
-                  先生未確認
+                .contactReason 
+                  = a.reason
+                .contactConfirm
+                  確認
   - else
     .infoArea__AbsentContact
       .infoArea__AbsentContact__absentContactForm

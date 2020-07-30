@@ -66,6 +66,13 @@
           .contact {
             margin: 20px 5px;
           }
+          .contactReason {
+            @extend .contact;
+            width: 70%;
+          }
+          .contactConfirm {
+            @extend .contact;
+          }
         }
       }
     }
