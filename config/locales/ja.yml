@@ -9,7 +9,28 @@ ja:
       after_contact:
         necessary: "担任から放課後連絡が必要"
         unnecessary: "担任から放課後連絡が必要なし"
+  absent_contact:
+    kind:
+      absent: "欠席"
+      latein: "遅刻"
+      earlyout: "早退"
   activerecord:
+    absent_contact:
+      kind:
+        absent: "欠席"
+        latein: "遅刻"
+        earlyout: "早退"
+    models:
+      absent_contact:
+    attributes:
+      absent_contact:
+        kind:
+          absent: "欠席"
+          latein: "遅刻"
+          earlyout: "早退"
+        after_contact:
+          necessary: "担任から放課後連絡が必要"
+          unnecessary: "担任から放課後連絡が必要なし"
     errors:
       messages:
         record_invalid: "バリデーションに失敗しました: %{errors}"
