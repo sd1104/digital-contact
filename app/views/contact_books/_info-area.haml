@@ -20,7 +20,9 @@
         %i.fa.fa-chevron-right
       %li
         %p.contactBookSelect 連絡帳
-    = link_to 'アップロード', new_room_contact_book_path(@room), class: "uploadBtn"   
+    - if current_user && current_user.admin?
+      = link_to 'アップロード', new_room_contact_book_path(@room), class: "uploadBtn"   
+  
   .infoArea__infoContent
     -@everymonth.each do |month|
       .infoArea__infoContent__title
