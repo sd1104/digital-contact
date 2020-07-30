@@ -229,6 +229,11 @@ footer {
         &__TodayContactBook {
           display: flex;
           justify-content: center;
+          .makingMessage {
+            font-size: 40px;
+            padding: 50px 0;
+            margin-bottom: 20px;
+          }
           .todayCb {
             padding: 50px 0;
             margin-bottom: 20px;
