@@ -25,31 +25,42 @@
         %i.fa.fa-chevron-right
       %li
         %p.letterSelect 欠席連絡
-  
+  -# trueがteacher side、falseがparent side
   -if current_user && current_user.admin?
     .infoArea__AbsentContact
       .infoArea__AbsentContact__absentContactForm
-        .infoArea__AbsentContact__contactsHistory
-          .infoArea__AbsentContact__contactsHistory__title
-            受信履歴
-          .infoArea__AbsentContact__contactsHistory__index
-            - @absent_contacts_for_teacher.each do |a|
-              .contactHistoryBox
-                .contact
-                  =a.set_date
-                .contact
-                  = a.user.child_name
-                .contact
-                  - if a.kind == "absent"
-                    欠席
-                  - elsif a.kind == "latein"
-                    遅刻
-                  - else
-                    早退
-                .contactReason 
-                  = a.reason
-                .contactConfirm
-                  確認
+      .infoArea__AbsentContact__contactsHistory
+        .infoArea__AbsentContact__contactsHistory__todayAbsentContactTitle
+          本日の連絡
+        .infoArea__AbsentContact__contactsHistory__TodayAbsentContact
+          hello new world
+          -# - if @today_absent_contact == nil
+            今日は連絡がありません。
+          -# - else
+            -# - @today_absent_contact.each do |t|
+            -#   .todayAc
+            -#     = link_to room_absent_contact_path(@room, t), class: "todayAcLink" do
+            -#       = t.set_date
+        .infoArea__AbsentContact__contactsHistory__title
+          受信履歴
+        .infoArea__AbsentContact__contactsHistory__index
+          - @absent_contacts_for_teacher.each do |a|
+            .contactHistoryBox
+              .contact
+                =a.set_date
+              .contact
+                = a.user.child_name
+              .contact
+                - if a.kind == "absent"
+                  欠席
+                - elsif a.kind == "latein"
+                  遅刻
+                - else
+                  早退
+              .contactReason 
+                = a.reason
+              .contactConfirm
+                確認
   - else
     .infoArea__AbsentContact
       .infoArea__AbsentContact__absentContactForm
