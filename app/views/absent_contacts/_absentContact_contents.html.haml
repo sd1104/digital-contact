@@ -51,7 +51,7 @@
         .infoArea__AbsentContact__contactsHistory__title
           送信履歴
         .infoArea__AbsentContact__contactsHistory__index
-          - @absent_contacts.each do |a|
+          - @absent_contacts_for_parent.each do |a|
             .contactHistoryBox
               .contact
                 =a.set_date
@@ -66,3 +66,5 @@
                   早退
               .contact
                 連絡済
+              .contact
+                先生未確認

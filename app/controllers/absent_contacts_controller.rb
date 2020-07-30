@@ -2,7 +2,8 @@ class AbsentContactsController < ApplicationController
   before_action :set_foreign_instance
   
   def index
-    @absent_contacts = AbsentContact.includes(:room, :user)
+    @absent_contacts_for_parent = AbsentContact.includes(:room, :user).where(user_id: current_user.id, room_id: (params[:room_id]))
+    @absent_contacts_for_teacher = AbsentContact.includes(:room, :user).where(room_id: (params[:room_id]))
     @absent_contact = AbsentContact.new
   end
 
