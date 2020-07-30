@@ -196,6 +196,8 @@ footer {
         }
       }
     }
+
+
     &__infoMenu {
       height:50px;
       color: black;
@@ -209,41 +211,75 @@ footer {
         margin-left: 30px;
       }
     }
+
+
     &__infoContent {
       height:calc(100% - 130px);
-      background-color: #ffffff;
+      background-color: ivory;
       overflow: hidden;
       overflow-y: scroll;
-      &__title {
-        font-size: 25px;
-        height: 15%;
-        text-align: center;
-        padding: 20px 0;
-        text-decoration: underline;
-      }
-      &__Index {
-        height: 85%;
-        padding: 30px 100px 10px;
-        .cbs {
+      padding: 50px 0 0 50px;
+      &__todayContactBook {
+        &__todayContactBookTitle {
+          font-size: 20px;
+          padding: 2px;
+          border-bottom: 2px solid black;
+          margin-bottom: 20px;
+        }
+        &__TodayContactBook {
           display: flex;
-          flex-wrap: wrap;
-            .cb {
-              height: 15%;
-              width: 20%;
-              margin: 5px 0;
-              .cbLink {
+          justify-content: center;
+          .todayCb {
+            padding: 50px 0;
+            margin-bottom: 20px;
+            .todayCbLink {
               color: black;
-              font-size: 30px;
+              font-size: 40px;
               text-decoration: none;
-              }
-              .cbLink:hover {
-                border-bottom: 2px solid black;
-              }
             }
+            .todayCbLink:hover {
+              border-bottom: 1px solid black;
+            }
+          }
+        }
+      }
+      &__historyContactBookTitle {
+        font-size: 20px;
+        padding: 2px;
+        border-bottom: 2px solid black;
+        margin-bottom: 20px;
+      }
+      &__historyContactBookBox {
+        &__title {
+          font-size: 16px;
+          height: 15%;
+          text-align: left;
+          padding: 20px 0 0 40px;
+          text-decoration: underline;
+        }
+        &__Index {
+          height: 85%;
+          padding: 10px 0 30px 70px;
+          .cbs {
+            display: flex;
+            flex-wrap: wrap;
+              .cb {
+                height: 15%;
+                width: 10%;
+                margin: 5px 0;
+                .cbLink {
+                color: black;
+                font-size: 18px;
+                text-decoration: none;
+                }
+                .cbLink:hover {
+                  border-bottom: 2px solid black;
+                }
+              }
+          }
         }
       }
     }
-
   }
 }
 
