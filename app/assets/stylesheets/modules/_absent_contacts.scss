@@ -4,7 +4,8 @@
   .contactHead {
     margin: 20px 5px 10px 5px;
     border-bottom: 1px solid lightgray;
-    background:linear-gradient(0deg, #eeeeee 30%, none 50%);
+    text-align: center;
+    background:linear-gradient(0deg, #eeeeee 10%, #eeeeee 10%, #eeeeee 10%, white 10%);
   }
   .contactDateHead {
     @extend  .contactHead;

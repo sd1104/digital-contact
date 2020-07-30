@@ -1,0 +1,20 @@
+.AbsentContactBox
+  .contactDate
+    =absentcontact.set_date
+  .contactName
+    = absentcontact.user.child_name
+  .contactKind
+    - if absentcontact.kind == "absent"
+      欠席
+    - elsif absentcontact.kind == "latein"
+      遅刻
+    - else
+      早退
+  .contactReason 
+    = absentcontact.reason
+  .contactConfirm
+    %i.fa.fa-check-square
+    完了
+  .contact_T_Confirm
+    %i.far.fa-square
+    未確認

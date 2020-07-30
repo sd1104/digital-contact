@@ -25,6 +25,8 @@
         %i.fa.fa-chevron-right
       %li
         %p.letterSelect 欠席連絡
+
+        
   -# trueがteacher side、falseがparent side
   -if current_user && current_user.admin?
     .infoArea__AbsentContact
@@ -33,46 +35,18 @@
         .infoArea__AbsentContact__contactsHistory__todayAbsentContactTitle
           本日の連絡
         .infoArea__AbsentContact__contactsHistory__TodayAbsentContact
+          = render 'absent_contacts/AbsentContactBoxTable'
           - if @today_absent_contact_for_teacher == nil
             今日は連絡がありません。
           - else
             - @today_absent_contact_for_teacher.each do |absentcontact|
-              .AbsentContactBox
-                .contactDate
-                  =absentcontact.set_date
-                .contactName
-                  = absentcontact.user.child_name
-                .contactKind
-                  - if absentcontact.kind == "absent"
-                    欠席
-                  - elsif absentcontact.kind == "latein"
-                    遅刻
-                  - else
-                    早退
-                .contactReason 
-                  = absentcontact.reason
-                .contactConfirm
-                  確認
+              =render partial: 'AbsentContactBox', locals: { absentcontact: absentcontact }
         .infoArea__AbsentContact__contactsHistory__title
           受信履歴
         .infoArea__AbsentContact__contactsHistory__index
+          = render 'absent_contacts/AbsentContactBoxTable'
           - @absent_contacts_for_teacher.each do |absentcontact|
-            .AbsentContactBox
-              .contactDate
-                =absentcontact.set_date
-              .contactName
-                = absentcontact.user.child_name
-              .contactKind
-                - if absentcontact.kind == "absent"
-                  欠席
-                - elsif absentcontact.kind == "latein"
-                  遅刻
-                - else
-                  早退
-              .contactReason 
-                = absentcontact.reason
-              .contactConfirm
-                確認
+            =render partial: 'AbsentContactBox', locals: { absentcontact: absentcontact }
   - else
     .infoArea__AbsentContact
       .infoArea__AbsentContact__absentContactForm
@@ -102,74 +76,13 @@
             - if @today_absent_contact_for_parent == nil
               今日は連絡がありません。
             - else
-              .AbsentContactBoxTable
-                .contactDateHead
-                  いつ（欠席等）
-                .contactNameHead
-                  名前
-                .contactKindHead
-                  種類
-                .contactReasonHead
-                  理由
-                .contactConfirmHead
-                  送信
-                .contact_T_ConfirmHead
-                  先生確認
+              = render 'absent_contacts/AbsentContactBoxTable'
               - @today_absent_contact_for_parent.each do |absentcontact|
-                .AbsentContactBox
-                  .contactDate
-                    =absentcontact.set_date
-                  .contactName
-                    = absentcontact.user.child_name
-                  .contactKind
-                    - if absentcontact.kind == "absent"
-                      欠席
-                    - elsif absentcontact.kind == "latein"
-                      遅刻
-                    - else
-                      早退
-                  .contactReason 
-                    = absentcontact.reason
-                  .contactConfirm
-                    %i.fa.fa-check-square
-                    完了
-                  .contact_T_Confirm
-                    %i.far.fa-square
-                    未確認
+                =render partial: 'AbsentContactBox', locals: { absentcontact: absentcontact }
           .infoArea__AbsentContact__contactsHistory__title
             送信履歴
           .infoArea__AbsentContact__contactsHistory__index
-            .AbsentContactBoxTable
-              .contactDateHead
-                いつ（欠席等）
-              .contactNameHead
-                名前
-              .contactKindHead
-                種類
-              .contactReasonHead
-                理由
-              .contactConfirmHead
-                送信
-              .contact_T_ConfirmHead
-                先生確認
+            = render 'absent_contacts/AbsentContactBoxTable'
             - @absent_contacts_for_parent.each do |absentcontact|
-              .AbsentContactBox
-                .contactDate
-                  =absentcontact.set_date
-                .contactName
-                  = absentcontact.user.child_name
-                .contactKind
-                  - if absentcontact.kind == "absent"
-                    欠席
-                  - elsif absentcontact.kind == "latein"
-                    遅刻
-                  - else
-                    早退
-                .contactReason 
-                  = absentcontact.reason
-                .contactConfirm
-                  %i.fa.fa-check-square
-                  完了
-                .contact_T_Confirm
-                  %i.far.fa-square
-                  未確認
+              =render partial: 'AbsentContactBox', locals: { absentcontact: absentcontact }
+
