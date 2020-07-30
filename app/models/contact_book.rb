@@ -7,6 +7,8 @@ class ContactBook < ApplicationRecord
     date.strftime("%-m月%-d日(#{week})")
   end
 
+
+
   # def everymonth
   #   @april_contact_books = self.where(date: (20200401 .. 20200431)).where(room_id: (params[:room_id]))
   #   @may_contact_books = self.where(date: (20200501 .. 20200531)).where(room_id: (params[:room_id]))
