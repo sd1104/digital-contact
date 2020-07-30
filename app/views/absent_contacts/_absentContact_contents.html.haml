@@ -56,6 +56,13 @@
               .contact
                 =a.set_date
               .contact
-                =a.kind
+                = current_user.child_name
               .contact
-                送信済
+                - if a.kind == "absent"
+                  欠席
+                - elsif a.kind == "latein"
+                  遅刻
+                - else
+                  早退
+              .contact
+                連絡済
