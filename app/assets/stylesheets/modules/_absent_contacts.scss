@@ -1,8 +1,39 @@
+@mixin AbsentContactBoxTable {
+  padding: 0 20px;
+  display: flex;
+  .contactHead {
+    margin: 20px 5px 10px 5px;
+    border-bottom: 1px solid lightgray;
+    background:linear-gradient(0deg, #eeeeee 30%, none 50%);
+  }
+  .contactDateHead {
+    @extend  .contactHead;
+    width: 150px;
+  }
+  .contactNameHead {
+    @extend  .contactDateHead;
+  }
+  .contactKindHead {
+    @extend  .contactHead;
+    width: 120px;
+  }
+  .contactReasonHead {
+    @extend  .contactHead;
+    width: 900px;
+  }
+  .contactConfirmHead {
+    @extend  .contactKindHead;
+  }
+  .contact_T_ConfirmHead {
+    @extend .contactDateHead;
+  }
+}
+
 @mixin AbsentContactBox {
-  padding: 0 20px 0 20px;
+  padding: 0 20px;
   display: flex;
   .contact {
-    margin: 20px 5px;
+    margin: 10px 5px;
   }
   .contactDate {
     @extend  .contact;
@@ -13,7 +44,7 @@
   }
   .contactKind {
     @extend  .contact;
-    width: 80px;
+    width: 120px;
   }
   .contactReason {
     @extend  .contact;
@@ -24,6 +55,10 @@
   }
   .contact_T_Confirm {
     @extend .contactDate;
+    .fa.fa-square {
+      color: white;
+      background-color: black;
+    }
   }
 }
 
@@ -96,6 +131,9 @@
       }
       &__TodayAbsentContact {
         margin-bottom: 80px;
+        .AbsentContactBoxTable {
+          @include AbsentContactBoxTable;
+        }
         .AbsentContactBox {
           @include AbsentContactBox;
         }
@@ -104,6 +142,9 @@
           @include headline;
       }
       &__index {
+        .AbsentContactBoxTable {
+          @include AbsentContactBoxTable;
+        }
         .AbsentContactBox {
           @include AbsentContactBox;
         }

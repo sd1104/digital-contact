@@ -35,6 +35,7 @@
       - @letters.each do |le|
         .Letter
           = link_to image_url("#{le.pdf}"), class: "letterFile" do
+            %i.fa.fa-file-pdf
             = le.name
           配布日：
           = le.set_date

@@ -29,7 +29,9 @@
         本日の連絡帳
       .infoArea__infoContent__todayContactBook__TodayContactBook
         - if !@today_contact_book.present?
+          %i.fa.fa-hammer
           .makingMessage ただいま作成中です
+          %i.fa.fa-hammer
         - else
           - @today_contact_book.each do |t|
             .todayCb

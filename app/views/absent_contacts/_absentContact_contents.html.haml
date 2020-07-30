@@ -102,6 +102,19 @@
             - if @today_absent_contact_for_parent == nil
               今日は連絡がありません。
             - else
+              .AbsentContactBoxTable
+                .contactDateHead
+                  いつ（欠席等）
+                .contactNameHead
+                  名前
+                .contactKindHead
+                  種類
+                .contactReasonHead
+                  理由
+                .contactConfirmHead
+                  送信
+                .contact_T_ConfirmHead
+                  先生確認
               - @today_absent_contact_for_parent.each do |absentcontact|
                 .AbsentContactBox
                   .contactDate
@@ -118,18 +131,33 @@
                   .contactReason 
                     = absentcontact.reason
                   .contactConfirm
-                    連絡済
+                    %i.fa.fa-check-square
+                    完了
                   .contact_T_Confirm
-                    先生未確認
+                    %i.far.fa-square
+                    未確認
           .infoArea__AbsentContact__contactsHistory__title
             送信履歴
           .infoArea__AbsentContact__contactsHistory__index
+            .AbsentContactBoxTable
+              .contactDateHead
+                いつ（欠席等）
+              .contactNameHead
+                名前
+              .contactKindHead
+                種類
+              .contactReasonHead
+                理由
+              .contactConfirmHead
+                送信
+              .contact_T_ConfirmHead
+                先生確認
             - @absent_contacts_for_parent.each do |absentcontact|
               .AbsentContactBox
                 .contactDate
                   =absentcontact.set_date
                 .contactName
-                  = current_user.child_name
+                  = absentcontact.user.child_name
                 .contactKind
                   - if absentcontact.kind == "absent"
                     欠席
@@ -140,6 +168,8 @@
                 .contactReason 
                   = absentcontact.reason
                 .contactConfirm
-                  連絡済
+                  %i.fa.fa-check-square
+                  完了
                 .contact_T_Confirm
-                  先生未確認
+                  %i.far.fa-square
+                  未確認
