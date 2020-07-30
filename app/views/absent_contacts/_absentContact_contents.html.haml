@@ -25,46 +25,71 @@
         %i.fa.fa-chevron-right
       %li
         %p.letterSelect 欠席連絡
-    
-  .infoArea__AbsentContact
-    .infoArea__AbsentContact__absentContactForm
-      .infoArea__AbsentContact__absentContactForm__FormHead
-        連絡フォーム
-      .infoArea__AbsentContact__absentContactForm__FormBox
-        = form_with model: [@room, @absent_contact], class: "IputForm", local: true do |f|
-          .InputBox
-            .absentAt
-              日付：
-              = f.date_field :absent_at, placeholder: "いつ", class: "inputAbsentAT"
-            .absentKind
-              種類：
-              = f.select :kind, AbsentContact.kinds_i18n.invert, {}, class: "inputKind"
-            .absentReason
-              理由・連絡：
-              = f.text_area :reason, placeholder: "理由,連絡", class: "inputReason"
-            .afterContact
-              放課後担任から連絡が
-              = f.select :after_contact, AbsentContact.after_contacts_i18n.invert, {}, class: "inputAfterContact"
-            .SubmitBtn
-              = f.submit '送信', class: "submit-btn" 
-      .infoArea__AbsentContact__contactsHistory
-        .infoArea__AbsentContact__contactsHistory__title
-          送信履歴
-        .infoArea__AbsentContact__contactsHistory__index
-          - @absent_contacts_for_parent.each do |a|
-            .contactHistoryBox
-              .contact
-                =a.set_date
-              .contact
-                = current_user.child_name
-              .contact
-                - if a.kind == "absent"
-                  欠席
-                - elsif a.kind == "latein"
-                  遅刻
-                - else
-                  早退
-              .contact
-                連絡済
-              .contact
-                先生未確認
+  
+  -if current_user && current_user.admin?
+    .infoArea__AbsentContact
+      .infoArea__AbsentContact__absentContactForm
+        .infoArea__AbsentContact__contactsHistory
+          .infoArea__AbsentContact__contactsHistory__title
+            送信履歴
+          .infoArea__AbsentContact__contactsHistory__index
+            - @absent_contacts_for_teacher.each do |a|
+              .contactHistoryBox
+                .contact
+                  =a.set_date
+                .contact
+                  = a.user.child_name
+                .contact
+                  - if a.kind == "absent"
+                    欠席
+                  - elsif a.kind == "latein"
+                    遅刻
+                  - else
+                    早退
+                .contact
+                  連絡済
+                .contact
+                  先生未確認
+  - else
+    .infoArea__AbsentContact
+      .infoArea__AbsentContact__absentContactForm
+        .infoArea__AbsentContact__absentContactForm__FormHead
+          連絡フォーム
+        .infoArea__AbsentContact__absentContactForm__FormBox
+          = form_with model: [@room, @absent_contact], class: "IputForm", local: true do |f|
+            .InputBox
+              .absentAt
+                日付：
+                = f.date_field :absent_at, placeholder: "いつ", class: "inputAbsentAT"
+              .absentKind
+                種類：
+                = f.select :kind, AbsentContact.kinds_i18n.invert, {}, class: "inputKind"
+              .absentReason
+                理由・連絡：
+                = f.text_area :reason, placeholder: "理由,連絡", class: "inputReason"
+              .afterContact
+                放課後担任から連絡が
+                = f.select :after_contact, AbsentContact.after_contacts_i18n.invert, {}, class: "inputAfterContact"
+              .SubmitBtn
+                = f.submit '送信', class: "submit-btn" 
+        .infoArea__AbsentContact__contactsHistory
+          .infoArea__AbsentContact__contactsHistory__title
+            送信履歴
+          .infoArea__AbsentContact__contactsHistory__index
+            - @absent_contacts_for_parent.each do |a|
+              .contactHistoryBox
+                .contact
+                  =a.set_date
+                .contact
+                  = current_user.child_name
+                .contact
+                  - if a.kind == "absent"
+                    欠席
+                  - elsif a.kind == "latein"
+                    遅刻
+                  - else
+                    早退
+                .contact
+                  連絡済
+                .contact
+                  先生未確認
