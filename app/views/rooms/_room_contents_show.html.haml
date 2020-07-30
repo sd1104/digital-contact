@@ -1,0 +1,22 @@
+.infoArea
+  .infoArea__infoHead
+    .infoArea__infoHead__userRoom
+      %h6 選択中のクラス
+      .infoArea__infoHead__userRoom__roomName
+        未選択
+    .infoArea__infoHead__headBox
+      %ul.headBtns
+        %li.headBtn
+          = link_to '欠席連絡', room_absent_contacts_path(@room), class: "HeadBtn abscentContact"
+        %li.headBtn
+          = link_to '連絡帳', room_contact_books_path(@room), class: "HeadBtn contactBook"
+        %li.headBtn
+          = link_to '配布手紙', room_letters_path(@room), class: "HeadBtn letters"
+  .infoArea__infoMenu
+    %ul.breadCrumbsLink
+      %li
+        = link_to 'クラス選択', root_path, class: "roomSelectBtn"
+      %li
+        %i.fa.fa-chevron-right
+      %li
+        %p.contactBookSelect 連絡帳

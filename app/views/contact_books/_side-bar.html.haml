@@ -8,6 +8,6 @@
   %ul.sideBar__roomIndex
     - @rooms.each do |r|
       %li
-        = link_to room_contact_books_path(r), class: "roomNumberLink" do
+        = link_to room_path(r), class: "roomNumberLink" do
           = r.number 
       
