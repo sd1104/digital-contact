@@ -1,15 +1,52 @@
+@mixin AbsentContactBox {
+  padding: 0 20px 0 20px;
+  display: flex;
+  .contact {
+    margin: 20px 5px;
+  }
+  .contactDate {
+    @extend  .contact;
+    width: 150px;
+  }
+  .contactName {
+    @extend  .contactDate;
+  }
+  .contactKind {
+    @extend  .contact;
+    width: 80px;
+  }
+  .contactReason {
+    @extend  .contact;
+    width: 900px;
+  }
+  .contactConfirm {
+    @extend  .contactKind;
+  }
+  .contact_T_Confirm {
+    @extend .contactDate;
+  }
+}
+
+@mixin headline {
+  font-size: 20px;
+  padding: 2px;
+  border-bottom: 2px solid black;
+}
+
+
+
+
 .infoArea {
   &__AbsentContact {
-    padding: 30px 30px;
+    padding: 40px 40px;
     &__absentContactForm {
 
     &__FormHead {
-      font-size: 20px;
-      padding: 2px;
-      border-bottom: 2px solid black;
+      @include headline;
     }
     &__FormBox {
       padding: 10px 20px 0 20px;
+      margin-bottom: 80px;
       .InputBox {
         display: flex;
         justify-content: flex-start;
@@ -54,48 +91,21 @@
     }
     }
     &__contactsHistory {
-      margin-top: 40px;
       &__todayAbsentContactTitle {
-        font-size: 20px;
-        padding: 2px;
-        border-bottom: 2px solid black;
-        margin-bottom: 20px;
+        @include headline;
       }
       &__TodayAbsentContact {
-        display: flex;
-        justify-content: center;
-        .todayAc {
-          padding: 50px 0;
-          margin-bottom: 20px;
-          .todayAcLink {
-            color: black;
-            font-size: 40px;
-            text-decoration: none;
-          }
-          .todayAcLink:hover {
-            border-bottom: 1px solid black;
-          }
+        margin-bottom: 80px;
+        .AbsentContactBox {
+          @include AbsentContactBox;
         }
       }
       &__title {
-        font-size: 20px;
-        padding: 2px;
-        border-bottom: 2px solid black;
+          @include headline;
       }
       &__index {
-        padding: 10px 20px 0 20px;
-        .contactHistoryBox {
-          display: flex;
-          .contact {
-            margin: 20px 5px;
-          }
-          .contactReason {
-            @extend .contact;
-            width: 70%;
-          }
-          .contactConfirm {
-            @extend .contact;
-          }
+        .AbsentContactBox {
+          @include AbsentContactBox;
         }
       }
     }
