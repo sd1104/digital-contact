@@ -3,7 +3,7 @@
     .infoArea__infoHead__userRoom
       %h6 選択中のクラス
       .infoArea__infoHead__userRoom__roomName
-        未選択
+        = @room.number
     .infoArea__infoHead__headBox
       %ul.headBtns
         %li.headBtn
@@ -19,4 +19,4 @@
       %li
         %i.fa.fa-chevron-right
       %li
-        %p.contactBookSelect 連絡帳
+        %p 機能選択
