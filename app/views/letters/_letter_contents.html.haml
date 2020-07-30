@@ -25,7 +25,8 @@
         %i.fa.fa-chevron-right
       %li
         %p.letterSelect 配布手紙
-    = link_to 'アップロード', new_room_letter_path(@room), class: "uploadBtn"
+    - if current_user && current_user.admin?
+      = link_to 'アップロード', new_room_letter_path(@room), class: "uploadBtn"
     
   .infoArea__infoContent
     .infoArea__infoContent__HeadTitle
