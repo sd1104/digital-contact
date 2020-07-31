@@ -13,11 +13,13 @@
   .contactReason 
     = absentcontact.reason
   .contactConfirm
-    %i.fa.fa-check-square
-    完了
+    済
   .contact_T_Confirm
-    %i.far.fa-square
-    未確認
+    - if current_user && !current_user.admin?
+      %i.far.fa-square
+      未確認
+    - else 
+      未確認
   - if current_user && !current_user.admin?
     .contact_edit_delete_btn
       = link_to room_absent_contacts_path(@room), method: :get, class: "EditBtn" do
