@@ -40,7 +40,7 @@
                 = t.set_date
               - if current_user && current_user.admin?
                 .contact_edit_delete_btn
-                  = link_to room_contact_books_path(@room), method: :get, class: "EditBtn" do
+                  = link_to edit_room_contact_book_path(@room, t), method: :get, class: "EditBtn" do
                     %i.fas.fa-file-signature
                   = link_to room_contact_book_path(@room, t), method: :delete, class: "DeleteBtn" do
                     %i.fas.fa-trash-alt
@@ -61,7 +61,7 @@
                 %li.cb
                   - if current_user && current_user.admin?
                     .contact_edit_delete_btn
-                      = link_to room_contact_books_path(@room), method: :patch, class: "EditBtn" do
+                      = link_to edit_room_contact_book_path(@room, m), class: "EditBtn" do
                         %i.fas.fa-file-signature
                       = link_to room_contact_book_path(@room, m), method: :delete, class: "DeleteBtn" do
                         %i.fas.fa-trash-alt

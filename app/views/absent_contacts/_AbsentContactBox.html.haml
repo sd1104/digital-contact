@@ -22,7 +22,7 @@
       未確認
   - if current_user && !current_user.admin?
     .contact_edit_delete_btn
-      = link_to room_absent_contacts_path(@room), method: :get, class: "EditBtn" do
+      = link_to edit_room_absent_contact_path(@room, absentcontact), method: :get, class: "EditBtn" do
         %i.fas.fa-file-signature
       = link_to room_absent_contact_path(@room, absentcontact), method: :delete, class: "DeleteBtn" do
         %i.fas.fa-trash-alt

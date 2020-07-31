@@ -44,11 +44,25 @@ class ContactBooksController < ApplicationController
     @contact_book = ContactBook.find(params[:id])
   end
 
+  def edit
+    @contact_book = ContactBook.find(params[:id])
+  end
+
+  def update
+    @contact_book = ContactBook.find(params[:id])
+    if @contact_book.update(contact_book_params)
+      redirect_to room_contact_books_path(@room)
+    else
+      render :edit
+    end
+  end
+
   def destroy
     contact_book = ContactBook.find(params[:id])
     contact_book.destroy
     redirect_to room_contact_books_path(@room)
   end
+  
   private
   def set_foreign_instance
     @rooms = Room.includes(:contact_books).order("number ASC")
