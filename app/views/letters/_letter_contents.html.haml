@@ -35,6 +35,10 @@
       - @letters.each do |le|
         .Letter
           = link_to image_url("#{le.pdf}"), class: "letterFile" do
+            %i.fa.fa-file-pdf
             = le.name
           配布日：
           = le.set_date
+          - if current_user && current_user.admin?
+            = link_to new_room_letter_path(@room), method: :get, class: "DeleteBtn" do
+              %i.fas.fa-trash-alt

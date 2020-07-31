@@ -1,0 +1,29 @@
+.AbsentContactBox
+  .contactDate
+    =absentcontact.set_date
+  .contactName
+    = absentcontact.user.child_name
+  .contactKind
+    - if absentcontact.kind == "absent"
+      欠席
+    - elsif absentcontact.kind == "latein"
+      遅刻
+    - else
+      早退
+  .contactReason 
+    = absentcontact.reason
+  .contactConfirm
+    済
+  .contact_T_Confirm
+    - if current_user && !current_user.admin?
+      %i.far.fa-square
+      未確認
+    - else 
+      未確認
+  - if current_user && !current_user.admin?
+    .contact_edit_delete_btn
+      = link_to room_absent_contacts_path(@room), method: :get, class: "EditBtn" do
+        %i.fas.fa-file-signature
+      = link_to room_absent_contacts_path(@room), method: :get, class: "DeleteBtn" do
+        %i.fas.fa-trash-alt
+
