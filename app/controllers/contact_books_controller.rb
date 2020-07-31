@@ -62,7 +62,7 @@ class ContactBooksController < ApplicationController
     contact_book.destroy
     redirect_to room_contact_books_path(@room)
   end
-  
+
   private
   def set_foreign_instance
     @rooms = Room.includes(:contact_books).order("number ASC")
