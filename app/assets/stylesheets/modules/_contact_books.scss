@@ -325,16 +325,18 @@ footer {
 .Wall {
   padding-top: 30px;
   background-color: white;
-  width: 100%;
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  overflow: hidden;
+  overflow-y: scroll;
   .CotactBookField {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
     margin-bottom: 20px;
+
     .head {
       font-size: 30px;
     }
