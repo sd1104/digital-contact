@@ -17,6 +17,7 @@ class LettersController < ApplicationController
   def destroy
     @letter = Letter.find(params[:id])
     letter.destroy
+    redirect_to room_letters_path(@room)
   end
 
   private

@@ -13,6 +13,12 @@ class AbsentContactsController < ApplicationController
     AbsentContact.create(absent_contact_params)
     redirect_to room_absent_contacts_path(@room)
   end
+
+  def destroy
+    absent_book = AbsentContact.find(params[:id])
+    absent_book.destroy
+    redirect_to room_absent_contacts_path(@room)
+  end
   
   private
   def set_foreign_instance

@@ -1,6 +1,6 @@
 .AbsentContactBox
   .contactDate
-    =absentcontact.set_date
+    = absentcontact.set_date
   .contactName
     = absentcontact.user.child_name
   .contactKind
@@ -24,6 +24,6 @@
     .contact_edit_delete_btn
       = link_to room_absent_contacts_path(@room), method: :get, class: "EditBtn" do
         %i.fas.fa-file-signature
-      = link_to room_absent_contacts_path(@room), method: :get, class: "DeleteBtn" do
+      = link_to room_absent_contact_path(@room, absentcontact), method: :delete, class: "DeleteBtn" do
         %i.fas.fa-trash-alt
 
