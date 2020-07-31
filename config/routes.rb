@@ -4,9 +4,9 @@ Rails.application.routes.draw do
   root "rooms#index"
   
   resources :rooms, only: [:index, :show] do
-    resources :contact_books, only: [:index, :new, :create, :show]
-    resources :letters, only:[:index, :new, :create]
-    resources :absent_contacts, only: [:index, :create]
+    resources :contact_books
+    resources :letters, only:[:index, :new, :create, :destroy]
+    resources :absent_contacts, only: [:index, :create, :edit, :update, :destroy]
   end
 
 end

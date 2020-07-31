@@ -7,7 +7,7 @@
     .infoArea__infoHead__headBox
       %ul.headBtns
         %li.headBtn
-          = link_to '欠席連絡', room_contact_books_path, class: "HeadBtn abscentContact"
+          = link_to '欠席連絡', room_absent_contacts_path, class: "HeadBtn abscentContact"
         %li.headBtn
           = link_to '連絡帳', room_contact_books_path, class: "HeadBtn contactBook"
         %li.headBtn
@@ -40,9 +40,9 @@
                 = t.set_date
               - if current_user && current_user.admin?
                 .contact_edit_delete_btn
-                  = link_to room_contact_books_path(@room), method: :get, class: "EditBtn" do
+                  = link_to edit_room_contact_book_path(@room, t), method: :get, class: "EditBtn" do
                     %i.fas.fa-file-signature
-                  = link_to room_contact_books_path(@room), method: :get, class: "DeleteBtn" do
+                  = link_to room_contact_book_path(@room, t), method: :delete, class: "DeleteBtn" do
                     %i.fas.fa-trash-alt
 
     .infoArea__infoContent__historyContactBookTitle
@@ -61,7 +61,7 @@
                 %li.cb
                   - if current_user && current_user.admin?
                     .contact_edit_delete_btn
-                      = link_to room_contact_books_path(@room), method: :get, class: "EditBtn" do
+                      = link_to edit_room_contact_book_path(@room, m), class: "EditBtn" do
                         %i.fas.fa-file-signature
-                      = link_to room_contact_books_path(@room), method: :get, class: "DeleteBtn" do
+                      = link_to room_contact_book_path(@room, m), method: :delete, class: "DeleteBtn" do
                         %i.fas.fa-trash-alt
