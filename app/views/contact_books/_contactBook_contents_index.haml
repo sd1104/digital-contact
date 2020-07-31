@@ -23,16 +23,7 @@
           .makingMessage ただいま作成中です
           %i.fa.fa-hammer
         - else
-          - @today_contact_book.each do |t|
-            .todayCb
-              = link_to room_contact_book_path(@room, t), class: "todayCbLink" do
-                = t.set_date
-              - if current_user && current_user.admin?
-                .contact_edit_delete_btn
-                  = link_to edit_room_contact_book_path(@room, t), method: :get, class: "EditBtn" do
-                    %i.fas.fa-file-signature
-                  = link_to room_contact_book_path(@room, t), method: :delete, class: "DeleteBtn" do
-                    %i.fas.fa-trash-alt
+          =render partial: "today_contact_book", collection: @today_contact_book
 
     .infoArea__infoContent__historyContactBookTitle
       過去の連絡帳      

@@ -1,0 +1,15 @@
+.InputBox
+  .absentAt
+    日付：
+    = f.date_field :absent_at, class: "inputAbsentAT"
+  .absentKind
+    種類：
+    = f.select :kind, AbsentContact.kinds_i18n.invert, {}, class: "inputKind"
+  .absentReason
+    理由・連絡：
+    = f.text_area :reason, class: "inputReason"
+  .afterContact
+    放課後担任から連絡が
+    = f.select :after_contact, AbsentContact.after_contacts_i18n.invert, {}, class: "inputAfterContact"
+  .SubmitBtn
+    = f.submit '送信', class: "submit-btn" 

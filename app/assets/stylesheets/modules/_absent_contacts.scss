@@ -1,6 +1,7 @@
 @mixin AbsentContactBox_and_Table {
   .AbsentContactBoxTable {
     display: flex;
+    margin-bottom: 80px;
     .contactHead {
       margin: 20px 5px 10px 5px;
       border-bottom: 1px solid lightgray;
@@ -37,7 +38,6 @@
   }
   .AbsentContactBox {
     display: flex;
-    margin-bottom: 80px;
     .contact {
       margin: 10px 5px;
     }
