@@ -38,7 +38,8 @@
             %i.fa.fa-file-pdf
             = le.name
           配布日：
-          = le.set_date
+          .releasedAtBox
+            = le.set_date
           - if current_user && current_user.admin?
-            = link_to new_room_letter_path(@room), method: :get, class: "DeleteBtn" do
+            = link_to room_letter_path(@room, le), method: :delete, class: "DeleteBtn" do
               %i.fas.fa-trash-alt

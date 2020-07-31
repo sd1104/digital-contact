@@ -9,4 +9,5 @@ class Letter < ApplicationRecord
     week = %w(日 月 火 水 木 金 土)[self.released_at.wday]
     released_at.strftime("%-m月%-d日(#{week})")
   end
+
 end

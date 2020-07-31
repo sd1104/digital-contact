@@ -2,7 +2,7 @@ class LettersController < ApplicationController
   before_action :set_foreign_instance
 
   def index
-    @letters = Letter.all.order("released_at ASC").includes(:room)
+    @letters = Letter.includes(:room).order("released_at ASC")
   end
 
   def new
@@ -15,7 +15,7 @@ class LettersController < ApplicationController
   end
 
   def destroy
-    letter = Letter.find(params[:id])
+    @letter = Letter.find(params[:id])
     letter.destroy
   end
 
