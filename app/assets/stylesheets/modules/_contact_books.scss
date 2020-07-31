@@ -10,7 +10,7 @@ html {
 
 body {
   height:100%;
-  width: 100%;
+  min-width: 1400px;
 }
 
 
@@ -46,7 +46,6 @@ body {
 // application'scss
 header {
   height:80px;
-  width: 100%;
   color: #ffffff;
   font-weight: bold;
   background-color: green;
@@ -58,7 +57,6 @@ header {
 
 footer {
   height: 35px;
-  width: 100%;
   color: #999999;
   background-color: ghostwhite;
   font-size: 12px;
@@ -72,15 +70,11 @@ footer {
 
 // index view's scss
 .wrapper {
-  height: calc(100% - 115px);
-  width: 100%;
+  height: calc( 100% - 115px );
   background-color: ivory;
   display: flex;
-  overflow: hidden;
-  overflow-y: scroll;
   .sideBar {
-    height: 100%;
-    width: 20vh;
+    width: 150px;
     border-right: 1px solid forestgreen;
     &__userBox {
       height:80px;
@@ -145,8 +139,10 @@ footer {
   }
 
   .infoArea {
-    height:100%;
-    width: calc(100% - 20vh);
+    display: inline-block;
+    overflow: hidden;
+    overflow-x: scroll;
+    width: calc( 100% - 150px );
     background-color: ivory;
     &__infoHead {
       height:80px;
