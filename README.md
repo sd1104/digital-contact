@@ -34,6 +34,7 @@ Things you may want to cover:
 |email|string|null:false, unique:true|
 |password|string|null:false, unique:true|
 |room_id|references|null:false, foreign_key: true|
+|admin|boolean|default: false|
 
 ###Association
 - has_many :room_users
