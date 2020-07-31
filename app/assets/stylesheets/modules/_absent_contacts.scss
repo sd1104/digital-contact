@@ -21,7 +21,10 @@
     }
     .contactReasonHead {
       @extend  .contactHead;
-      width: 500px;
+      width: 400px;
+    }
+    .contactAfterContactHead {
+      @extend  .contactKindHead;
     }
     .contactConfirmHead {
       @extend  .contactKindHead;
@@ -54,7 +57,10 @@
     }
     .contactReason {
       @extend  .contact;
-      width: 500px;
+      width: 400px;
+    }
+    .contactAfterContact {
+      @extend  .contactKind;
     }
     .contactConfirm {
       @extend  .contactKind;
