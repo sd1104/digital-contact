@@ -247,6 +247,21 @@ footer {
             .todayCbLink:hover {
               border-bottom: 1px solid black;
             }
+            .contact_edit_delete_btn {
+              display: inline;
+              line-height: 26px;
+              margin-left: 10px;
+              .EditBtn,
+              .DeleteBtn {
+              color: black;
+              text-decoration: none;
+              padding: 0 2px;
+              }
+              .EditBtn:hover,
+              .DeleteBtn:hover {
+              color: gray;
+              }
+            }
           }
         }
       }
@@ -271,9 +286,9 @@ footer {
             display: flex;
             flex-wrap: wrap;
               .cb {
-                height: 15%;
-                width: 10%;
+                height: 16px;
                 margin: 5px 0;
+                padding-right: 20px;
                 .cbLink {
                 color: black;
                 font-size: 18px;
@@ -281,6 +296,20 @@ footer {
                 }
                 .cbLink:hover {
                   border-bottom: 2px solid black;
+                }
+                .contact_edit_delete_btn {
+                  line-height: 26px;
+                  margin-right:20px;
+                  .EditBtn,
+                  .DeleteBtn {
+                  color: black;
+                  text-decoration: none;
+                  padding: 0 2px;
+                  }
+                  .EditBtn:hover,
+                  .DeleteBtn:hover {
+                  color: gray;
+                  }
                 }
               }
           }

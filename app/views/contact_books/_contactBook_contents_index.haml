@@ -7,7 +7,7 @@
     .infoArea__infoHead__headBox
       %ul.headBtns
         %li.headBtn
-          = link_to '欠席連絡', room_absent_contacts_path, class: "HeadBtn abscentContact"
+          = link_to '欠席連絡', room_contact_books_path, class: "HeadBtn abscentContact"
         %li.headBtn
           = link_to '連絡帳', room_contact_books_path, class: "HeadBtn contactBook"
         %li.headBtn
@@ -23,6 +23,7 @@
     - if current_user && current_user.admin?
       = link_to 'アップロード', new_room_contact_book_path(@room), class: "uploadBtn"
   
+  
   .infoArea__infoContent
     .infoArea__infoContent__todayContactBook
       .infoArea__infoContent__todayContactBook__todayContactBookTitle
@@ -37,6 +38,13 @@
             .todayCb
               = link_to room_contact_book_path(@room, t), class: "todayCbLink" do
                 = t.set_date
+              - if current_user && current_user.admin?
+                .contact_edit_delete_btn
+                  = link_to room_contact_books_path(@room), method: :get, class: "EditBtn" do
+                    %i.fas.fa-file-signature
+                  = link_to room_contact_books_path(@room), method: :get, class: "DeleteBtn" do
+                    %i.fas.fa-trash-alt
+
     .infoArea__infoContent__historyContactBookTitle
       過去の連絡帳      
     .infoArea__infoContent__historyContactBookBox
@@ -50,3 +58,10 @@
                 %li.cb
                   = link_to room_contact_book_path(@room, m),class: "cbLink" do
                     = m.set_date
+                %li.cb
+                  - if current_user && current_user.admin?
+                    .contact_edit_delete_btn
+                      = link_to room_contact_books_path(@room), method: :get, class: "EditBtn" do
+                        %i.fas.fa-file-signature
+                      = link_to room_contact_books_path(@room), method: :get, class: "DeleteBtn" do
+                        %i.fas.fa-trash-alt
