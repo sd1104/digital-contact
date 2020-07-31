@@ -1,0 +1,21 @@
+.infoArea__AbsentContact__contactsHistory__title
+  本日の連絡
+.infoArea__AbsentContact__contactsHistory__index
+  - if @today_absent_contact_for_teacher == nil
+    今日は連絡がありません。
+  - else
+    = render 'absent_contacts/AbsentContactBoxTable'
+    - @today_absent_contact_for_teacher.each do |absentcontact|
+      =render partial: 'AbsentContactBox', locals: { absentcontact: absentcontact }
+.infoArea__AbsentContact__contactsHistory__title
+  今日以降の欠席連絡
+.infoArea__AbsentContact__contactsHistory__index
+  = render 'absent_contacts/AbsentContactBoxTable'
+  - @future_absent_contacts_for_teacher.each do |absentcontact|
+    =render partial: 'AbsentContactBox', locals: { absentcontact: absentcontact }
+.infoArea__AbsentContact__contactsHistory__title
+  送信履歴
+.infoArea__AbsentContact__contactsHistory__index
+  = render 'absent_contacts/AbsentContactBoxTable'
+  - @past_absent_contacts_for_teacher.each do |absentcontact|
+    =render partial: 'AbsentContactBox', locals: { absentcontact: absentcontact }

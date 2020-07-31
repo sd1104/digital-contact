@@ -7,7 +7,7 @@ ja:
         latein: "遅刻"
         earlyout: "早退"
       after_contact:
-        necessary: "担任から放課後連絡が必要"
+        necessary: "担任から放課後連絡が必要です"
         unnecessary: "担任から放課後連絡が必要なし"
   absent_contact:
     kind:
@@ -29,8 +29,8 @@ ja:
           latein: "遅刻"
           earlyout: "早退"
         after_contact:
-          necessary: "担任から放課後連絡が必要"
-          unnecessary: "担任から放課後連絡が必要なし"
+          necessary: "必要です"
+          unnecessary: "必要なし"
     errors:
       messages:
         record_invalid: "バリデーションに失敗しました: %{errors}"
