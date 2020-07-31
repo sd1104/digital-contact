@@ -6,9 +6,9 @@ class AbsentContactsController < ApplicationController
     @future_absent_contacts_for_teacher = AbsentContact.includes(:room, :user).where.not(absent_at: Date.today).where.not( "absent_at < #{Date.today} ").where(room_id: (params[:room_id])).order('absent_at DESC')
     @past_absent_contacts_for_parent = AbsentContact.includes(:room, :user).where.not(absent_at: Date.today).where.not( "absent_at > #{Date.today} ").where(user_id: current_user.id, room_id: (params[:room_id])).order('absent_at DESC')
     @past_absent_contacts_for_teacher = AbsentContact.includes(:room, :user).where.not(absent_at: Date.today).where.not( "absent_at > #{Date.today} ").where(room_id: (params[:room_id])).order('absent_at DESC')
-    @absent_contact = AbsentContact.new
     @today_absent_contact_for_parent = AbsentContact.includes(:room, :user).where(absent_at: Date.today, user_id: current_user.id, room_id: (params[:room_id])).order('absent_at DESC')
     @today_absent_contact_for_teacher = AbsentContact.includes(:room, :user).where(absent_at: Date.today, room_id: (params[:room_id])).order('absent_at DESC')
+    @absent_contact = AbsentContact.new
   end
 
   def create
