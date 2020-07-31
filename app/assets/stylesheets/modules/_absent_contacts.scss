@@ -1,6 +1,5 @@
 @mixin AbsentContactBox_and_Table {
   .AbsentContactBoxTable {
-    padding: 0 20px;
     display: flex;
     .contactHead {
       margin: 20px 5px 10px 5px;
@@ -37,8 +36,8 @@
     }
   }
   .AbsentContactBox {
-    padding: 0 20px;
     display: flex;
+    margin-bottom: 80px;
     .contact {
       margin: 10px 5px;
     }
@@ -102,65 +101,62 @@
 
 .infoArea {
   &__AbsentContact {
-    padding: 40px 40px;
-    &__absentContactForm {
-    &__FormHead {
-      @include headline;
-    }
-    &__FormBox {
-      width: 1070px;
-      padding: 10px 20px 0 20px;
-      margin: 20px 0 80px 0;
-      .InputBox {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        background-color: #eeeeee;
-        padding: 2px 10px;
-        border: 2px solid lightgray;
-        .absentAt,
-        .inputAbsentAt{
-          width: 150px;
-        }
-        .absentKind {
-          width: 90px;
-        }
-        .absentReason {
-          width: 500px;
-        }
-        .afterContact {
-          width: 156px;
-        }
-        .absentAt,
-        .absentKind,
-        .absentReason,
-        .afterContact {
-          font-size: 12px;
-          padding-right: 15px;
-          .inputAbsentAT,
-          .inputKind,
-          .inputReason,
-          .inputAfterContact {
-            height: 50px;
-            width: 100%;
+    &__contactsHistory {
+      padding: 40px 40px;
+      &__title {
+        @include headline;
+      }
+      &__FormBox {
+        width: 1070px;
+        padding: 10px 20px 0 20px;
+        margin: 20px 0 80px 0;
+        .InputBox {
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          background-color: #eeeeee;
+          padding: 2px 10px;
+          border: 2px solid lightgray;
+          .absentAt,
+          .inputAbsentAt{
+            width: 150px;
           }
-        }
-        .SubmitBtn {
-          width: 100px;
-          text-align: center;
-          .submit-btn {
-            margin-top: 12px;
+          .absentKind {
+            width: 90px;
+          }
+          .absentReason {
+            width: 500px;
+          }
+          .afterContact {
+            width: 156px;
+          }
+          .absentAt,
+          .absentKind,
+          .absentReason,
+          .afterContact {
+            font-size: 12px;
+            padding-right: 15px;
+            .inputAbsentAT,
+            .inputKind,
+            .inputReason,
+            .inputAfterContact {
+              height: 50px;
+              width: 100%;
+            }
+          }
+          .SubmitBtn {
+            width: 100px;
+            text-align: center;
+            .submit-btn {
+              margin-top: 12px;
+            }
           }
         }
       }
-    }
-    }
-    &__contactsHistory {
       &__todayAbsentContactTitle {
         @include headline;
       }
       &__TodayAbsentContact {
-        margin-bottom: 80px;
         @include AbsentContactBox_and_Table;
       }
       &__title {

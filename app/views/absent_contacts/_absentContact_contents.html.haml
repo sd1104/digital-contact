@@ -1,17 +1,5 @@
 .infoArea
-  .infoArea__infoHead
-    .infoArea__infoHead__userRoom
-      %h6 選択中のクラス
-      .infoArea__infoHead__userRoom__roomName
-        = @room.number
-    .infoArea__infoHead__headBox
-      %ul.headBtns
-        %li.headBtn
-          = link_to '欠席連絡', room_absent_contacts_path, class: "HeadBtn abscentContact"
-        %li.headBtn
-          = link_to '連絡帳', room_contact_books_path, class: "HeadBtn contactBook"
-        %li.headBtn
-          = link_to '配布手紙', room_letters_path, class: "HeadBtn letters"
+  =render 'contact_books/headButtonLinks'
 
   .infoArea__infoMenu
     %ul.breadCrumbsLink
@@ -26,39 +14,17 @@
       %li
         %p.letterSelect 欠席連絡
 
-        
   -# trueがteacher side、falseがparent side
   -if current_user && current_user.admin?
     .infoArea__AbsentContact
-      .infoArea__AbsentContact__absentContactForm
       .infoArea__AbsentContact__contactsHistory
-        .infoArea__AbsentContact__contactsHistory__todayAbsentContactTitle
-          本日の連絡
-        .infoArea__AbsentContact__contactsHistory__TodayAbsentContact
-          = render 'absent_contacts/AbsentContactBoxTable'
-          - if @today_absent_contact_for_teacher == nil
-            今日は連絡がありません。
-          - else
-            - @today_absent_contact_for_teacher.each do |absentcontact|
-              =render partial: 'AbsentContactBox', locals: { absentcontact: absentcontact }
-        .infoArea__AbsentContact__contactsHistory__title
-          今日以降の連絡
-        .infoArea__AbsentContact__contactsHistory__index
-          = render 'absent_contacts/AbsentContactBoxTable'
-          - @future_absent_contacts_for_teacher.each do |absentcontact|
-            =render partial: 'AbsentContactBox', locals: { absentcontact: absentcontact }
-        .infoArea__AbsentContact__contactsHistory__title
-          受信履歴
-        .infoArea__AbsentContact__contactsHistory__index
-          = render 'absent_contacts/AbsentContactBoxTable'
-          - @past_absent_contacts_for_teacher.each do |absentcontact|
-            =render partial: 'AbsentContactBox', locals: { absentcontact: absentcontact }
+        =render 'absent_contacts/AbsentContactHistoryTeachers'
   - else
     .infoArea__AbsentContact
-      .infoArea__AbsentContact__absentContactForm
-        .infoArea__AbsentContact__absentContactForm__FormHead
-          連絡フォーム
-        .infoArea__AbsentContact__absentContactForm__FormBox
+      .infoArea__AbsentContact__contactsHistory
+        .infoArea__AbsentContact__contactsHistory__title
+          欠席連絡フォーム
+        .infoArea__AbsentContact__contactsHistory__FormBox
           = form_with model: [@room, @absent_contact], class: "IputForm", local: true do |f|
             .InputBox
               .absentAt
@@ -75,26 +41,5 @@
                 = f.select :after_contact, AbsentContact.after_contacts_i18n.invert, {}, class: "inputAfterContact"
               .SubmitBtn
                 = f.submit '送信', class: "submit-btn" 
-        .infoArea__AbsentContact__contactsHistory
-          .infoArea__AbsentContact__contactsHistory__todayAbsentContactTitle
-            本日の連絡
-          .infoArea__AbsentContact__contactsHistory__TodayAbsentContact
-            - if @today_absent_contact_for_parent == nil
-              今日は連絡がありません。
-            - else
-              = render 'absent_contacts/AbsentContactBoxTable'
-              - @today_absent_contact_for_parent.each do |absentcontact|
-                =render partial: 'AbsentContactBox', locals: { absentcontact: absentcontact }
-          .infoArea__AbsentContact__contactsHistory__title
-            欠席等の予定
-          .infoArea__AbsentContact__contactsHistory__index
-            = render 'absent_contacts/AbsentContactBoxTable'
-            - @future_absent_contacts_for_parent.each do |absentcontact|
-              =render partial: 'AbsentContactBox', locals: { absentcontact: absentcontact }
-          .infoArea__AbsentContact__contactsHistory__title
-            送信履歴
-          .infoArea__AbsentContact__contactsHistory__index
-            = render 'absent_contacts/AbsentContactBoxTable'
-            - @past_absent_contacts_for_parent.each do |absentcontact|
-              =render partial: 'AbsentContactBox', locals: { absentcontact: absentcontact }
+        =render 'absent_contacts/AbsentContactHistoryParents'
 
