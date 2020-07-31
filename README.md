@@ -19,7 +19,8 @@ Things you may want to cover:
 |number|string|null:false, unique:true|
 
 ###Association
-- has_many :users
+- has_many :room_users
+- has_many :users, through: :room_users
 - has_many :absent_contacts
 - has_many :contact_books
 - has_many :letters
@@ -35,8 +36,20 @@ Things you may want to cover:
 |room_id|references|null:false, foreign_key: true|
 
 ###Association
-- belongs_to :room
+- has_many :room_users
+- has_many :rooms, through: :room_users
 - has_many :absent_contacts
+
+
+##room_usersテーブル
+|Colum|Type|Options|
+|-----|----|-------|
+|room_id|references|null:false, foreign_key: true|
+|user_id|references|null:false, foreign_key: true|
+
+###Association
+- belongs_to :room
+- belongs_to :user
 
 
 ##absent_contactsテーブル
