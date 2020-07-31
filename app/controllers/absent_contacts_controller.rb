@@ -14,6 +14,19 @@ class AbsentContactsController < ApplicationController
     redirect_to room_absent_contacts_path(@room)
   end
 
+  def edit
+    @absent_contact = AbsentContact.find(params[:id])
+  end
+
+  def update
+    @absent_contact = AbsentContact.find(params[:id])
+    if @absent_contact.update(absent_contact_params)
+      redirect_to room_absent_contacts_path(@room)
+    else
+      render :edit
+    end
+  end
+
   def destroy
     absent_book = AbsentContact.find(params[:id])
     absent_book.destroy

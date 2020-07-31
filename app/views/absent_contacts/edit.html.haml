@@ -1,0 +1,40 @@
+-# absent_contact#edit
+
+.wrapper
+  .sideBar
+    .sideBar__userBox
+      %h6 ログイン中のユーザー
+      .sideBar__userBox__userName 
+        = current_user.parent_name
+    .sideBar__logOutBox
+    %ul.sideBar__roomIndex
+  .infoArea
+    .infoArea__infoHead
+      .infoArea__infoHead__userRoom
+        %h6 選択中のクラス
+        .infoArea__infoHead__userRoom__roomName
+          = @room.number
+      .infoArea__infoHead__headBox
+    .infoArea__infoMenu
+      欠席連絡編集中
+    .infoArea__AbsentContact
+      .infoArea__AbsentContact__absentContactForm
+        .infoArea__AbsentContact__absentContactForm__FormHead
+          連絡フォーム
+        .infoArea__AbsentContact__absentContactForm__FormBox
+          = form_with model: [@room, @absent_contact], class: "IputForm", local: true do |f|
+            .InputBox
+              .absentAt
+                日付：
+                = f.date_field :absent_at, class: "inputAbsentAT"
+              .absentKind
+                種類：
+                = f.select :kind, AbsentContact.kinds_i18n.invert, {}, class: "inputKind"
+              .absentReason
+                理由・連絡：
+                = f.text_area :reason, class: "inputReason"
+              .afterContact
+                放課後担任から連絡が
+                = f.select :after_contact, AbsentContact.after_contacts_i18n.invert, {}, class: "inputAfterContact"
+              .SubmitBtn
+                = f.submit '送信', class: "submit-btn" 
