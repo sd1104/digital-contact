@@ -14,6 +14,11 @@ class LettersController < ApplicationController
     redirect_to room_letters_path(@room)
   end
 
+  def destroy
+    letter = Letter.find(params[:id])
+    letter.destroy
+  end
+
   private
   def letter_params
     params.require(:letter).permit(:released_at, :name, :pdf).merge(room_id: params[:room_id])
