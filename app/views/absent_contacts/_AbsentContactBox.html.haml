@@ -4,16 +4,11 @@
   .contactName
     = absentcontact.user.child_name
   .contactKind
-    - if absentcontact.kind == "absent"
-      欠席
-    - elsif absentcontact.kind == "latein"
-      遅刻
-    - else
-      早退
+    = t("activerecord.attributes.absent_contact.kind.#{absentcontact.kind}")
   .contactReason 
     = absentcontact.reason
   .contactAfterContact
-    = absentcontact.after_contact
+    = t("activerecord.attributes.absent_contact.after_contact.#{absentcontact.after_contact}")
   .contactConfirm
     済
   .contact_T_Confirm

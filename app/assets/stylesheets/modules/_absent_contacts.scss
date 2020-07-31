@@ -100,9 +100,9 @@
 
 
 .infoArea {
-  overflow: hidden;
-  overflow: scroll;
   &__AbsentContact {
+    overflow: hidden;
+    overflow: scroll;
     &__contactsHistory {
       padding: 40px 40px;
       &__title {
