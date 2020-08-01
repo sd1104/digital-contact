@@ -13,10 +13,10 @@
     済
   .contact_T_Confirm
     - if current_user && !current_user.admin?
-      %i.far.fa-square
       未確認
     - else 
-      未確認
+      .not-confirm-btn
+        未確認
   - if current_user && !current_user.admin?
     .contact_edit_delete_btn
       = link_to edit_room_absent_contact_path(@room, absentcontact), class: "EditBtn" do

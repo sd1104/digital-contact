@@ -19,7 +19,7 @@
   -if current_user && current_user.admin?
     .infoArea__AbsentContact
       .infoArea__AbsentContact__contactsHistory
-      -# 本日の連絡、今日以降の欠席連絡、送信履歴（先生側）
+        -# 本日の連絡、今日以降の欠席連絡、送信履歴（先生側）
         =render 'absent_contacts/AbsentContactHistoryTeachers'
   - else
     .infoArea__AbsentContact

@@ -1,7 +1,6 @@
 @mixin AbsentContactBox_and_Table {
   .AbsentContactBoxTable {
     display: flex;
-    margin-bottom: 80px;
     .contactHead {
       margin: 20px 5px 10px 5px;
       border-bottom: 1px solid lightgray;
@@ -66,9 +65,13 @@
     }
     .contact_T_Confirm {
       @extend .contactKind;
-      .fa.fa-square {
-        color: white;
-        background-color: black;
+      .not-confirm-btn {
+        color: red;
+        cursor: pointer;
+        display: inline-block;
+      }
+      .not-confirm-btn:hover {
+        color: black;
       }
     }
     .contact_edit_delete_btn {
@@ -159,12 +162,14 @@
         @include headline;
       }
       &__TodayAbsentContact {
+        margin-bottom: 80px;
         @include AbsentContactBox_and_Table;
       }
       &__title {
           @include headline;
       }
       &__index {
+        margin-bottom: 80px;
         @include AbsentContactBox_and_Table;
       }
     }
