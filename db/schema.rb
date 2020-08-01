@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_30_020250) do
+ActiveRecord::Schema.define(version: 2020_08_01_090539) do
 
   create_table "absent_contacts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.date "absent_at", null: false
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2020_07_30_020250) do
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "t_checked", default: false, null: false
     t.index ["room_id"], name: "index_absent_contacts_on_room_id"
     t.index ["user_id"], name: "index_absent_contacts_on_user_id"
   end
