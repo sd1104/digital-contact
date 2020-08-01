@@ -27,10 +27,6 @@ class AbsentContactsController < ApplicationController
     else
       render :edit
     end
-    respond_to do |format|
-      format.html
-      format.json
-    end
   end
 
   def destroy
@@ -38,6 +34,16 @@ class AbsentContactsController < ApplicationController
     absent_book.destroy
     redirect_to room_absent_contacts_path(@room)
   end
+
+  def absent_contact_t_checked
+    @absent_contact = AbsentContact.find(params[:format])
+    if @absent_contact.update(confirm_params)
+      redirect_to room_absent_contacts_path(@room)
+    else
+      render :edit
+    end
+  end
+
   
   private
   def set_foreign_instance
@@ -46,6 +52,11 @@ class AbsentContactsController < ApplicationController
   end
 
   def absent_contact_params
-    params.require(:absent_contact).permit(:absent_at, :kind, :reason, :after_contact).merge(room_id: params[:room_id], user_id: current_user.id)
+    params.require(:absent_contact).permit(:absent_at, :kind, :reason, :after_contact, :t_checked).merge(room_id: params[:room_id], user_id: current_user.id)
   end
+
+  def confirm_params
+    params.permit(:t_checked)
+  end
+
 end
