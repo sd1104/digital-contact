@@ -29,7 +29,7 @@
       @extend  .contactKindHead;
     }
     .contact_T_ConfirmHead {
-      @extend .contactKindHead;
+      @extend .contactDateHead;
     }
     .contact_edit_delete_btnHead {
       @extend .contactKindHead;
@@ -64,14 +64,21 @@
       @extend  .contactKind;
     }
     .contact_T_Confirm {
-      @extend .contactKind;
-      .teacher-not-confirm-btn {
-        color: red;
-        cursor: pointer;
-        display: inline-block;
-      }
-      .teacher-not-confirm-btn:hover {
+      @extend .contactDate;
+      .teacher-confirm-btn {
         color: black;
+        text-align: center;
+        margin-bottom: 5px;
+        .t_checked {
+          display: none;
+        }
+      }
+      .confirmed {
+        color: black;
+      }
+      .unconfirmed {
+        display: inline-block;
+        color: red;
       }
     }
     .contact_edit_delete_btn {

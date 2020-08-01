@@ -19,14 +19,18 @@
         - else
           未確認
     - else 
-      .teacher-not-confirm-btn
+      .teacher-confirm-btn
         = form_with url: absent_contact_t_checked_room_absent_contacts_path(@room, absentcontact), method: :patch, local: true do |f|
-          = f.check_box  :t_checked, { checked: true }, { class: "t_checked" }
+          .t_checked
+            = f.check_box  :t_checked, { checked: true }
           = f.submit '確認'
         - if absentcontact.t_checked == true
-          Status: 確認済
+          .confirmed
+            Status: 確認済
         - else
-          未確認
+          Status: 
+          .unconfirmed
+            未確認
   - if current_user && !current_user.admin?
     .contact_edit_delete_btn
       = link_to edit_room_absent_contact_path(@room, absentcontact), class: "EditBtn" do
