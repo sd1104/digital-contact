@@ -14,10 +14,10 @@
   .contact_T_Confirm
     - if current_user && !current_user.admin?
       .parent-confirm-button
-        = absentcontact.t_checked
+        = t("activerecord.attributes.absent_contact.t_checked.#{absentcontact.t_checked}")
     - else 
       .teacher-not-confirm-btn
-        = absentcontact.t_checked
+        = t("activerecord.attributes.absent_contact.t_checked.#{absentcontact.t_checked}")
   - if current_user && !current_user.admin?
     .contact_edit_delete_btn
       = link_to edit_room_absent_contact_path(@room, absentcontact), class: "EditBtn" do
