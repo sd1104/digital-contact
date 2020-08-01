@@ -65,12 +65,12 @@
     }
     .contact_T_Confirm {
       @extend .contactKind;
-      .not-confirm-btn {
+      .teacher-not-confirm-btn {
         color: red;
         cursor: pointer;
         display: inline-block;
       }
-      .not-confirm-btn:hover {
+      .teacher-not-confirm-btn:hover {
         color: black;
       }
     }
