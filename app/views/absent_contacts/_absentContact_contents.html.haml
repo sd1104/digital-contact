@@ -27,7 +27,7 @@
         .infoArea__AbsentContact__contactsHistory__title
           欠席連絡フォーム
         .infoArea__AbsentContact__contactsHistory__FormBox
-          = form_with model: [@room, @absent_contact], class: "IputForm", local: true do |f|
+          = form_with model: [@room, @absent_contact], class: "IputForm", id: "ParentSubmit", local: true do |f|
             =render partial: "absent_contact_form", locals: { f: f}
         -# 本日の連絡、今日以降の欠席連絡、送信履歴（親側）
         =render 'absent_contacts/AbsentContactHistoryParents'
