@@ -5,9 +5,16 @@
       = current_user.parent_name
   .sideBar__logOutBox
     = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logOutBtn"
-  %ul.sideBar__roomIndex
-    - @rooms.each do |r|
-      %li
-        = link_to room_path(r), class: "roomNumberLink" do
-          = r.number 
+  .sideBar__roomIndex
+    .RoomIndex
+      - @rooms.each do |r|
+        %ul
+          %li
+            = link_to room_path(r), class: "roomNumberLink" do
+              = r.number
+          - if current_user && current_user.admin? && ( AbsentContact.includes(:room).where(room_id: r.id, t_checked: false).count != 0 )
+            .noticeImage
+              %i.far.fa-paper-plane
+              .yet_notice_count
+                = AbsentContact.includes(:room).where(room_id: r.id, t_checked: false).count
       

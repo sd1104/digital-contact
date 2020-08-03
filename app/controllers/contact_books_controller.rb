@@ -30,6 +30,7 @@ class ContactBooksController < ApplicationController
     @everymonth["５月の連絡帳"] = @may_contact_books
     @everymonth["４月の連絡帳"] = @april_contact_books
     @everymonth
+    # @counts_notices = @notices.where(room_id: )
   end
 
   def new
@@ -78,6 +79,7 @@ class ContactBooksController < ApplicationController
   def set_foreign_instance
     @rooms = Room.includes(:contact_books).order("number ASC")
     @room = Room.find(params[:room_id])
+    @notices = AbsentContact.indcludes(:room)
   end
 
   def contact_book_params

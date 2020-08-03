@@ -33,4 +33,5 @@ $(function(){
     setTimeout(deleteFlashMessage, TIMEOUT_DELAY)
     }
   });
+
 });
