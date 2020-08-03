@@ -1,0 +1,9 @@
+.todayCb
+  = link_to room_contact_book_path(@room, today_contact_book), class: "todayCbLink" do
+    = today_contact_book.set_date
+  - if current_user && current_user.admin?
+    .contact_edit_delete_btn
+      = link_to edit_room_contact_book_path(@room, today_contact_book), method: :get, class: "EditBtn" do
+        %i.fas.fa-file-signature
+      = link_to room_contact_book_path(@room, today_contact_book), method: :delete, class: "DeleteBtn" do
+        %i.fas.fa-trash-alt

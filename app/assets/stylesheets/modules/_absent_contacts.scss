@@ -29,7 +29,7 @@
       @extend  .contactKindHead;
     }
     .contact_T_ConfirmHead {
-      @extend .contactKindHead;
+      @extend .contactDateHead;
     }
     .contact_edit_delete_btnHead {
       @extend .contactKindHead;
@@ -37,7 +37,6 @@
   }
   .AbsentContactBox {
     display: flex;
-    margin-bottom: 80px;
     .contact {
       margin: 10px 5px;
     }
@@ -65,10 +64,21 @@
       @extend  .contactKind;
     }
     .contact_T_Confirm {
-      @extend .contactKind;
-      .fa.fa-square {
-        color: white;
-        background-color: black;
+      @extend .contactDate;
+      .teacher-confirm-btn {
+        color: black;
+        text-align: center;
+        margin-bottom: 5px;
+        .t_checked {
+          display: none;
+        }
+      }
+      .confirmed {
+        color: black;
+      }
+      .unconfirmed {
+        display: inline-block;
+        color: red;
       }
     }
     .contact_edit_delete_btn {
@@ -159,12 +169,14 @@
         @include headline;
       }
       &__TodayAbsentContact {
+        margin-bottom: 80px;
         @include AbsentContactBox_and_Table;
       }
       &__title {
           @include headline;
       }
       &__index {
+        margin-bottom: 80px;
         @include AbsentContactBox_and_Table;
       }
     }

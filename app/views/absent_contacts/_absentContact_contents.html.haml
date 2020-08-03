@@ -1,4 +1,5 @@
 .infoArea
+  -# 右側のヘッダー（選択したクラス、機能選択ボタン）
   =render 'contact_books/headButtonLinks'
 
   .infoArea__infoMenu
@@ -18,6 +19,7 @@
   -if current_user && current_user.admin?
     .infoArea__AbsentContact
       .infoArea__AbsentContact__contactsHistory
+        -# 本日の連絡、今日以降の欠席連絡、送信履歴（先生側）
         =render 'absent_contacts/AbsentContactHistoryTeachers'
   - else
     .infoArea__AbsentContact
@@ -25,21 +27,8 @@
         .infoArea__AbsentContact__contactsHistory__title
           欠席連絡フォーム
         .infoArea__AbsentContact__contactsHistory__FormBox
-          = form_with model: [@room, @absent_contact], class: "IputForm", local: true do |f|
-            .InputBox
-              .absentAt
-                日付：
-                = f.date_field :absent_at, class: "inputAbsentAT"
-              .absentKind
-                種類：
-                = f.select :kind, AbsentContact.kinds_i18n.invert, {}, class: "inputKind"
-              .absentReason
-                理由・連絡：
-                = f.text_area :reason, class: "inputReason"
-              .afterContact
-                放課後担任から連絡が
-                = f.select :after_contact, AbsentContact.after_contacts_i18n.invert, {}, class: "inputAfterContact"
-              .SubmitBtn
-                = f.submit '送信', class: "submit-btn" 
+          = form_with model: [@room, @absent_contact], class: "IputForm", id: "ParentSubmit", local: true do |f|
+            =render partial: "absent_contact_form", locals: { f: f}
+        -# 本日の連絡、今日以降の欠席連絡、送信履歴（親側）
         =render 'absent_contacts/AbsentContactHistoryParents'
 

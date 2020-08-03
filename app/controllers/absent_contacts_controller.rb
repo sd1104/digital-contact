@@ -6,14 +6,27 @@ class AbsentContactsController < ApplicationController
     @future_absent_contacts_for_teacher = AbsentContact.includes(:room, :user).where.not(absent_at: Date.today).where.not( "absent_at < #{Date.today} ").where(room_id: (params[:room_id])).order('absent_at DESC')
     @past_absent_contacts_for_parent = AbsentContact.includes(:room, :user).where.not(absent_at: Date.today).where.not( "absent_at > #{Date.today} ").where(user_id: current_user.id, room_id: (params[:room_id])).order('absent_at DESC')
     @past_absent_contacts_for_teacher = AbsentContact.includes(:room, :user).where.not(absent_at: Date.today).where.not( "absent_at > #{Date.today} ").where(room_id: (params[:room_id])).order('absent_at DESC')
-    @absent_contact = AbsentContact.new
     @today_absent_contact_for_parent = AbsentContact.includes(:room, :user).where(absent_at: Date.today, user_id: current_user.id, room_id: (params[:room_id])).order('absent_at DESC')
     @today_absent_contact_for_teacher = AbsentContact.includes(:room, :user).where(absent_at: Date.today, room_id: (params[:room_id])).order('absent_at DESC')
+    @absent_contact = AbsentContact.new
   end
 
   def create
-    AbsentContact.create(absent_contact_params)
-    redirect_to room_absent_contacts_path(@room)
+    @absent_contact = @room.absent_contacts.new(absent_contact_params)
+    if @absent_contact.absent_at > Date.today
+      AbsentContact.create(absent_contact_params)
+      redirect_to room_absent_contacts_path(@room)
+    else
+      @future_absent_contacts_for_parent = AbsentContact.includes(:room, :user).where.not(absent_at: Date.today).where.not( "absent_at < #{Date.today } ").where(user_id: current_user.id, room_id: (params[:room_id])).order('absent_at DESC')
+      @future_absent_contacts_for_teacher = AbsentContact.includes(:room, :user).where.not(absent_at: Date.today).where.not( "absent_at < #{Date.today} ").where(room_id: (params[:room_id])).order('absent_at DESC')
+      @past_absent_contacts_for_parent = AbsentContact.includes(:room, :user).where.not(absent_at: Date.today).where.not( "absent_at > #{Date.today} ").where(user_id: current_user.id, room_id: (params[:room_id])).order('absent_at DESC')
+      @past_absent_contacts_for_teacher = AbsentContact.includes(:room, :user).where.not(absent_at: Date.today).where.not( "absent_at > #{Date.today} ").where(room_id: (params[:room_id])).order('absent_at DESC')
+      @today_absent_contact_for_parent = AbsentContact.includes(:room, :user).where(absent_at: Date.today, user_id: current_user.id, room_id: (params[:room_id])).order('absent_at DESC')
+      @today_absent_contact_for_teacher = AbsentContact.includes(:room, :user).where(absent_at: Date.today, room_id: (params[:room_id])).order('absent_at DESC')
+      @absent_contact = AbsentContact.new
+      flash.now[:alert] = '本日以降の日付を入力してください。'
+      render :index
+    end
   end
 
   def edit
@@ -34,6 +47,16 @@ class AbsentContactsController < ApplicationController
     absent_book.destroy
     redirect_to room_absent_contacts_path(@room)
   end
+
+  def absent_contact_t_checked
+    @absent_contact = AbsentContact.find(params[:format])
+    if @absent_contact.update(confirm_params)
+      redirect_to room_absent_contacts_path(@room)
+    else
+      render :edit
+    end
+  end
+
   
   private
   def set_foreign_instance
@@ -42,6 +65,11 @@ class AbsentContactsController < ApplicationController
   end
 
   def absent_contact_params
-    params.require(:absent_contact).permit(:absent_at, :kind, :reason, :after_contact).merge(room_id: params[:room_id], user_id: current_user.id)
+    params.require(:absent_contact).permit(:absent_at, :kind, :reason, :after_contact, :t_checked).merge(room_id: params[:room_id], user_id: current_user.id)
   end
+
+  def confirm_params
+    params.permit(:t_checked)
+  end
+
 end

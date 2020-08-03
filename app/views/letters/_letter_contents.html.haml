@@ -20,14 +20,4 @@
     .infoArea__infoContent__HeadTitle
       %p.headTitle 配布手紙
     .infoArea__infoContent__lettersBox
-      - @letters.each do |le|
-        .Letter
-          = link_to image_url("#{le.pdf}"), class: "letterFile" do
-            %i.fa.fa-file-pdf
-            = le.name
-          配布日：
-          .releasedAtBox
-            = le.set_date
-          - if current_user && current_user.admin?
-            = link_to room_letter_path(@room, le), method: :delete, class: "DeleteBtn" do
-              %i.fas.fa-trash-alt
+      =render @letters

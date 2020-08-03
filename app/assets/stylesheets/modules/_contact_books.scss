@@ -274,14 +274,12 @@ footer {
       &__historyContactBookBox {
         &__title {
           font-size: 16px;
-          height: 15%;
           text-align: left;
           padding: 20px 0 0 40px;
           text-decoration: underline;
         }
         &__Index {
-          height: 85%;
-          padding: 10px 0 30px 70px;
+          padding: 10px 0 50px 60px;
           .cbs {
             display: flex;
             flex-wrap: wrap;
