@@ -8,6 +8,7 @@
         = current_user.parent_name
     .sideBar__logOutBox
     %ul.sideBar__roomIndex
+
   .infoArea
     .infoArea__infoHead
       .infoArea__infoHead__userRoom
@@ -18,10 +19,10 @@
     .infoArea__infoMenu
       欠席連絡編集中
     .infoArea__AbsentContact
-      .infoArea__AbsentContact__absentContactForm
-        .infoArea__AbsentContact__absentContactForm__FormHead
+      .infoArea__AbsentContact__contactsHistory
+        .infoArea__AbsentContact__contactsHistory__title
           連絡フォーム
-        .infoArea__AbsentContact__absentContactForm__FormBox
+        .infoArea__AbsentContact__contactsHistory__FormBox
           = form_with model: [@room, @absent_contact], class: "IputForm", local: true do |f|
             .InputBox
               .absentAt

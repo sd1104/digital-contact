@@ -2,20 +2,20 @@ class ContactBooksController < ApplicationController
   before_action :set_foreign_instance
   
   def index
-    @all_contact_books = ContactBook.includes(:room).where(room_id: (params[:room_id]))
-    @today_contact_book = ContactBook.includes(:room).get_today.where(room_id: (params[:room_id]))
-    @april_contact_books = ContactBook.includes(:room).get_april.get_past.where(room_id: (params[:room_id]))
-    @may_contact_books = ContactBook.includes(:room).get_may.get_past.where(room_id: (params[:room_id]))
-    @june_contact_books = ContactBook.includes(:room).get_june.get_past.where(room_id: (params[:room_id]))
-    @july_contact_books = ContactBook.includes(:room).get_july.get_past.where(room_id: (params[:room_id]))
-    @august_contact_books = ContactBook.includes(:room).get_august.get_past.where(room_id: (params[:room_id]))
-    @september_contact_books = ContactBook.includes(:room).get_september.get_past.where(room_id: (params[:room_id]))
-    @october_contact_books = ContactBook.includes(:room).get_october.get_past.where(room_id: (params[:room_id]))
-    @november_contact_books = ContactBook.includes(:room).get_november.get_past.where(room_id: (params[:room_id]))
-    @december_contact_books = ContactBook.includes(:room).get_december.get_past.where(room_id: (params[:room_id]))
-    @january_contact_books = ContactBook.includes(:room).get_january.get_past.where(room_id: (params[:room_id]))
-    @februry_contact_books = ContactBook.includes(:room).get_februry.get_past.where(room_id: (params[:room_id]))
-    @march_contact_books = ContactBook.includes(:room).get_march.get_past.where(room_id: (params[:room_id]))
+    @all_contact_books = ContactBook.includes(:room).omit_today.where(room_id: (params[:room_id])).order("date ASC")
+    @today_contact_book = ContactBook.includes(:room).get_today.where(room_id: (params[:room_id])).order("date ASC")
+    @april_contact_books = ContactBook.includes(:room).get_april.get_past.where(room_id: (params[:room_id])).order("date ASC")
+    @may_contact_books = ContactBook.includes(:room).get_may.get_past.where(room_id: (params[:room_id])).order("date ASC")
+    @june_contact_books = ContactBook.includes(:room).get_june.get_past.where(room_id: (params[:room_id])).order("date ASC")
+    @july_contact_books = ContactBook.includes(:room).get_july.get_past.where(room_id: (params[:room_id])).order("date ASC")
+    @august_contact_books = ContactBook.includes(:room).get_august.get_past.where(room_id: (params[:room_id])).order("date ASC")
+    @september_contact_books = ContactBook.includes(:room).get_september.get_past.where(room_id: (params[:room_id])).order("date ASC")
+    @october_contact_books = ContactBook.includes(:room).get_october.get_past.where(room_id: (params[:room_id])).order("date ASC")
+    @november_contact_books = ContactBook.includes(:room).get_november.get_past.where(room_id: (params[:room_id])).order("date ASC")
+    @december_contact_books = ContactBook.includes(:room).get_december.get_past.where(room_id: (params[:room_id])).order("date ASC")
+    @january_contact_books = ContactBook.includes(:room).get_january.get_past.where(room_id: (params[:room_id])).order("date ASC")
+    @februry_contact_books = ContactBook.includes(:room).get_februry.get_past.where(room_id: (params[:room_id])).order("date ASC")
+    @march_contact_books = ContactBook.includes(:room).get_march.get_past.where(room_id: (params[:room_id])).order("date ASC")
     @everymonth = {}
     @everymonth["３月の連絡帳"] = @march_contact_books
     @everymonth["２月の連絡帳"] = @februry_contact_books
@@ -37,8 +37,14 @@ class ContactBooksController < ApplicationController
   end
 
   def create
-    ContactBook.create(contact_book_params)
-    redirect_to room_contact_books_path(@room)
+    @contact_book = @room.contact_books.new(contact_book_params)
+    if @contact_book.save
+      flash[:notice] = "保存されました。"
+      redirect_to room_contact_books_path(@room)
+    else
+      flash.now[:alert] = 'この内容では保存できません。'
+      render :new
+    end
   end
 
   def show
@@ -53,14 +59,18 @@ class ContactBooksController < ApplicationController
     @contact_book = ContactBook.find(params[:id])
     if @contact_book.update(contact_book_params)
       redirect_to room_contact_books_path(@room)
+      flash.now[:notice] = '連絡帳の内容を更新しました。'
     else
-      render :edit
+      flash.now[:alert] = '保存できません。'
+      render :edi¥
+      
     end
   end
 
   def destroy
     contact_book = ContactBook.find(params[:id])
     contact_book.destroy
+    flash[:notice] = "無事削除されました。"
     redirect_to room_contact_books_path(@room)
   end
 

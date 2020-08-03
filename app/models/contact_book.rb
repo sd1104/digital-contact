@@ -1,6 +1,6 @@
 class ContactBook < ApplicationRecord
   belongs_to :room
-  validates :date, presence: true, uniqueness: true
+  validates :date, presence: true
 
   def set_date
     week = %w(日 月 火 水 木 金 土)[self.date.wday]
