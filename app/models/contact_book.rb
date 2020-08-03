@@ -6,11 +6,12 @@ class ContactBook < ApplicationRecord
     week = %w(日 月 火 水 木 金 土)[self.date.wday]
     date.strftime("%-m月%-d日(#{week})")
   end
-  scope :omit_today,  -> { where.not(absent_at: Date.today) }
-  scope :get_today, -> { where(absent_at: Date.today) }
+  
+  scope :omit_today,  -> { where.not(date: Date.today) }
+  scope :get_today, -> { where(date: Date.today) }
   scope :get_future, -> { where( 'date > ?', Date.today )}
   scope :get_past, -> { where( 'date < ?', Date.today )}
-  
+
   scope :get_april, -> { where(date: (20200401 .. 20200431)) }
   scope :get_may, -> { where(date: (20200501 .. 20200531)) }
   scope :get_june, -> { where(date: (20200601 .. 20200631)) }
