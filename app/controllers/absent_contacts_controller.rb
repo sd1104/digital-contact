@@ -44,7 +44,6 @@ class AbsentContactsController < ApplicationController
     if @absent_contact.update(absent_contact_params)
       flash.now[:notice] = '内容を更新しました。'
       redirect_to room_absent_contacts_path(@room)
-      binding.pry
     else
       flash.now[:alert] = 'この内容では保存できません。日付が過去では？'
       render :edit
