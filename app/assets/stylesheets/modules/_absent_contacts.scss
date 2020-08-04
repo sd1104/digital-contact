@@ -65,7 +65,8 @@
     }
     .contact_T_Confirm {
       @extend .contactDate;
-      .teacher-confirm-btn {
+      .teacher-confirm-btn,
+      .parent-confirm {
         color: black;
         text-align: center;
         margin-bottom: 5px;
