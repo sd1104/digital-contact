@@ -9,7 +9,6 @@ class AbsentContactsController < ApplicationController
     @today_absent_contact_for_parent = AbsentContact.includes(:room, :user).get_today.where(user_id: current_user.id, room_id: (params[:room_id])).order('absent_at DESC')
     @today_absent_contact_for_teacher = AbsentContact.includes(:room, :user).get_today.where(room_id: (params[:room_id])).order('absent_at DESC')
     @absent_contact = AbsentContact.new
-    
   end
 
   def create
