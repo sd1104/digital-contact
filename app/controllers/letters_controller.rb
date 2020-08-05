@@ -10,13 +10,20 @@ class LettersController < ApplicationController
   end
 
   def create
-    Letter.create(letter_params)
-    redirect_to room_letters_path(@room)
+    @letter = @room.letters.new(letter_params)
+    if @letter.save
+      flash[:notice] = "保存されました。"
+      redirect_to room_letters_path(@room)
+    else
+      flash.now[:alert] = '未入力があります。'
+      render :new
+    end
   end
 
   def destroy
     @letter = Letter.find(params[:id])
-    letter.destroy
+    @letter.destroy
+    flash[:notice] = "無事削除されました。"
     redirect_to room_letters_path(@room)
   end
 

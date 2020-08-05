@@ -13,17 +13,17 @@
     済
   .contact_T_Confirm
     - if current_user && !current_user.admin?
-      .parent-confirm-button
+      .parent-confirm
         - if absentcontact.t_checked == true
           確認済
         - else
           未確認
     - else 
       .teacher-confirm-btn
-        = form_with url: absent_contact_t_checked_room_absent_contacts_path(@room, absentcontact), method: :patch, local: true do |f|
+        = form_with url: absent_contact_t_checked_room_absent_contacts_path(@room, absentcontact), method: :patch, id: "teacherConfirmBtn", local: true do |f|
           .t_checked
             = f.check_box  :t_checked, { checked: true }
-          = f.submit '確認'
+          = f.submit '確認', class: 't_checked_SubmitBtn'
         - if absentcontact.t_checked == true
           .confirmed
             Status: 確認済
