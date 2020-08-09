@@ -2,9 +2,12 @@
   .sideBar__userBox
     %h6 ログイン中のユーザー
     .sideBar__userBox__userName 
-      = current_user.parent_name
+      
   .sideBar__logOutBox
-    = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logOutBtn"
+    %ul
+      %li= link_to "学校ログアウト", destroy_school_session_path, method: :delete
+      %li= link_to "ユーザーログアウト", destroy_user_session_path, method: :delete
+
   .sideBar__roomIndex
     .RoomIndex
       - @rooms.each do |r|
