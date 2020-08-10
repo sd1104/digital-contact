@@ -1,4 +1,4 @@
-require "csv"
+# require "csv"
 
 # CSV.foreach('/Users/satouhiroshi/projects/digital-contact/db/roomData.csv') do |row|
 
@@ -12,8 +12,8 @@ require "csv"
 
 # end
 
-CSV.foreach('/Users/satouhiroshi/projects/digital-contact/db/userDataSample.csv') do |row|
+# CSV.foreach('/Users/satouhiroshi/projects/digital-contact/db/userDataSample.csv') do |row|
 
-  User.create(:parent_name => row[0], :child_name => row[1], :email => row[2], :password => row[3])
+#   User.create(:parent_name => row[0], :child_name => row[1], :email => row[2], :password => row[3])
 
-end
+# end

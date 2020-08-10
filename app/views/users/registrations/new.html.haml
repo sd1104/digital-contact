@@ -5,6 +5,10 @@
       = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
         = render "devise/shared/error_messages", resource: resource
         .field
+          = f.label :学校名
+          %br/
+          = f.collection_select :school_id, School.all.collect, :id, :id, { include_blank: "選択してください"}
+        .field
           = f.label :保護者名
           %br/
           = f.text_field :parent_name, autofocus: true, autocomplete: "parent_name"
@@ -30,3 +34,6 @@
         .actions
           = f.submit "登録する"
       = render "devise/shared/links"
+
+-# = f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, selected: 27
+-# = f.collection_select :category_id, @category_parent_array, :id, :name,{ include_blank: "選択してください"}, {class: "product-form__details-container__category-box", id: 'parent_category'}
