@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     passwords:     'schools/passwords',
     registrations: 'schools/registrations'
   }
+  resources :schools, only: :index
   devise_for :users, controllers: {
     sessions:      'users/sessions',
     passwords:     'users/passwords',
