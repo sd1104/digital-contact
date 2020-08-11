@@ -1,11 +1,13 @@
 .wall {
   padding-top: 30px;
-  background-color: white;
+  background-color: ivory;
+  height: 100%;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   .FormBox {
+    width: 700px;
     padding: 30px 80px 10px 80px;
     background-color: #fff;
     display: flex;
