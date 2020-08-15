@@ -183,6 +183,22 @@ footer {
       justify-content: flex-start;
       align-items: flex-end;
       @include headline_greenColor();
+      &__userschool {
+        height: 80px;
+        width: 15%;
+        padding: 4px 0 0 4px;
+        border-right: 1px solid forestgreen;
+        h6 {
+          font-size: 6px;
+        }
+        &__schoolName {
+          line-height: 80px;
+          font-weight: bolder;
+          line-height: 60px;
+          text-align: center;
+          color: black;
+        }
+      }
       &__userRoom {
         height: 80px;
         width: 15%;
