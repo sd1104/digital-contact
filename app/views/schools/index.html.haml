@@ -1,5 +1,37 @@
-.hello
-  hello
-.link
-  = link_to 'userLogOut', destroy_user_session_path, method: :delete
-  = link_to 'schoolLogOut', destroy_school_session_path, method: :delete
+.SchoolWrapper
+  .TopNav
+    .Left
+      .Left__userBox
+        %h6 ログイン中のユーザー
+        .Left__userBox__userName 
+          = current_school.school_admin
+      .Left__logOutBox
+        = link_to 'schoolLogOut', destroy_school_session_path, method: :delete, class: "logOutBtn"
+    .Right  
+      .Right__infoHead
+        .Right__infoHead__userschool
+          %h6 学校名
+          .Right__infoHead__userschool__schoolName
+            = current_school.school_name
+        .Right__infoHead__headBox
+      .Right__infoMenu
+        %ul.breadCrumbsLink
+          %li
+            以下よりメニューを選んでください。
+  .MainNav
+    .MainNav__FunctionsBox
+      .MainNav__FunctionsBox__head
+        機 能 選 択
+      %ul.schoolFunctions
+        %li
+          = link_to "/", class: "schoolFunction" do
+            .LinkBox
+              教室作成
+        %li
+          = link_to "/", class: "schoolFunction" do
+            .LinkBox
+              先生登録
+        %li
+          = link_to "/", class: "schoolFunction" do
+            .LinkBox
+              ユーザー管理
