@@ -4,7 +4,11 @@ Rails.application.routes.draw do
     passwords:     'schools/passwords',
     registrations: 'schools/registrations'
   }
-  resources :schools, only: :index
+  resources :schools, only: :index do
+    collection do
+      get 'room_control'
+    end
+  end
   resources :users, only: :index
   devise_for :users, controllers: {
     sessions:      'users/sessions',
@@ -25,4 +29,3 @@ Rails.application.routes.draw do
   end
 
 end
-
