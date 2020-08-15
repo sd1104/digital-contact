@@ -209,3 +209,72 @@
     }
   }
 }
+
+.MainNav__userSelect {
+  &__head {
+    height: 100px;
+    width: 1200px;
+    color: #fff;
+    background-color: #aaaaaa;
+    font-size: 25px;
+    text-align: center;
+    border-bottom: 1px solid #eeeeee;
+    line-height: 100px;
+  }
+}
+
+// ドロップダウン
+.dropdwn{
+  height: 40px;
+  max-width: 1200px;
+  display: flex;
+}
+
+.orderList {
+  text-align: center;
+  list-style-type: none;
+  margin: 0 auto;
+  padding: 0;
+  color: #fff;
+}
+.list{
+  max-width: calc(1200px/5);
+  position: relative;
+  padding: 5px;
+  display: block;
+  cursor: pointer;
+}
+
+.dropdwn > .list{
+  width: 1200px;
+  margin: 1px;
+  background: #bbbbbb;
+  display: inline;
+}
+
+.dropdwn_menu{
+  width: 100%;
+  display: none;
+  position: absolute;
+  margin-left: -5px;
+  margin-top: 5px;
+  padding: 0;
+  background: #aaaaaa;
+  border-radius: 2px;
+}
+
+.dropdwn_menu,
+.list{
+  width: 100%px;
+}
+
+.dropdwn_menu .dropLink{
+  padding: 5px 0;
+  display: block;
+  color: #fff;
+}
+
+.list .dropLink:hover{
+  background: #eeeeee;
+  color: #aaaaaa;
+}

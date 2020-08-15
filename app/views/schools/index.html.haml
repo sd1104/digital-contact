@@ -28,10 +28,10 @@
             .LinkBox
               教室作成
         %li
-          = link_to "/", class: "schoolFunction" do
+          = link_to  new_user_registration_path, class: "schoolFunction" do
             .LinkBox
               先生登録
         %li
-          = link_to "/", class: "schoolFunction" do
+          = link_to users_path, class: "schoolFunction" do
             .LinkBox
               ユーザー管理

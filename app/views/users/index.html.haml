@@ -1,0 +1,133 @@
+.SchoolWrapper
+  .TopNav
+    .Left
+      .Left__userBox
+        %h6 ログイン中のユーザー
+        .Left__userBox__userName 
+          = current_school.school_admin
+      .Left__logOutBox
+        = link_to 'schoolLogOut', destroy_school_session_path, method: :delete, class: "logOutBtn"
+    .Right  
+      .Right__infoHead
+        .Right__infoHead__userschool
+          %h6 学校名
+          .Right__infoHead__userschool__schoolName
+            = current_school.school_name
+        .Right__infoHead__headBox
+      .Right__infoMenu
+        %ul.breadCrumbsLink
+          %li
+            以下よりクラスを選んでください。
+  .MainNav
+    .MainNav__userSelect
+      .MainNav__userSelect__head
+        ク ラ ス 選 択
+      %ul.dropdwn.orderList
+        %li.list
+          1年
+          %ul.dropdwn_menu.orderList
+            %li.list
+              = link_to "/" , class: "dropLink" do
+                １−１
+            %li.list
+              = link_to "/", class: "dropLink" do
+                １−２
+        %li.list
+          2年
+          %ul.dropdwn_menu.orderList
+            %li.list
+              = link_to "/", class: "dropLink" do
+                ２−１
+            %li.list
+              = link_to "/", class: "dropLink" do
+                ２−２
+            %li.list
+              = link_to "/", class: "dropLink" do
+                ２−３
+        %li.list
+          3年
+          %ul.dropdwn_menu.orderList
+            %li.list
+              = link_to "/", class: "dropLink" do
+                ３−１
+            %li.list
+              = link_to "/", class: "dropLink" do
+                ３−１
+            %li.list
+              = link_to "/", class: "dropLink" do
+                ３−１
+            %li.list
+              = link_to "/", class: "dropLink" do
+                ３−１
+        %li.list
+          4年
+          %ul.dropdwn_menu.orderList
+            %li.list
+              = link_to "/", class: "dropLink" do
+                ４−１
+            %li.list
+              = link_to "/", class: "dropLink" do
+                ４−１
+            %li.list
+              = link_to "/", class: "dropLink" do
+                ４−１
+            %li.list
+              = link_to "/", class: "dropLink" do
+                ４−１
+            %li.list
+              = link_to "/", class: "dropLink" do
+                ４−１
+        %li.list
+          ５年
+          %ul.dropdwn_menu.orderList
+            %li.list
+              = link_to "/", class: "dropLink" do
+                ４−１
+            %li.list
+              = link_to "/", class: "dropLink" do
+                ４−１
+            %li.list
+              = link_to "/", class: "dropLink" do
+                ４−１
+            %li.list
+              = link_to "/", class: "dropLink" do
+                ４−１
+            %li.list
+              = link_to "/", class: "dropLink" do
+                ４−１
+        %li.list
+          ６年
+          %ul.dropdwn_menu.orderList
+            %li.list
+              = link_to "/", class: "dropLink" do
+                ４−１
+            %li.list
+              = link_to "/", class: "dropLink" do
+                ４−１
+            %li.list
+              = link_to "/", class: "dropLink" do
+                ４−１
+            %li.list
+              = link_to "/", class: "dropLink" do
+                ４−１
+            %li.list
+              = link_to "/", class: "dropLink" do
+                ４−１
+        %li.list
+          その他
+          %ul.dropdwn_menu.orderList
+            %li.list
+              = link_to "/", class: "dropLink" do
+                ４−１
+            %li.list
+              = link_to "/", class: "dropLink" do
+                ４−１
+            %li.list
+              = link_to "/", class: "dropLink" do
+                ４−１
+            %li.list
+              = link_to "/", class: "dropLink" do
+                ４−１
+            %li.list
+              = link_to "/", class: "dropLink" do
+                ４−１
