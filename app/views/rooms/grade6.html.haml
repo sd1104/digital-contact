@@ -1,0 +1,43 @@
+.SchoolWrapper
+  .TopNav
+    .Left
+      .Left__userBox
+        %h6 ログイン中のユーザー
+        .Left__userBox__userName 
+          = current_school.school_admin
+      .Left__logOutBox
+        = link_to 'schoolLogOut', destroy_school_session_path, method: :delete, class: "logOutBtn"
+    .Right  
+      .Right__infoHead
+        .Right__infoHead__userschool
+          %h6 学校名
+          .Right__infoHead__userschool__schoolName
+            = current_school.school_name
+        .Right__infoHead__headBox
+      .Right__infoMenu
+        %ul.breadCrumbsLink
+          %li
+            クラスを登録します
+  .MainNav
+    .MainNav__head
+      クラス登録 6年
+    %p.guideline-explanation
+      学年ごとに必要な教室を入力してください。
+      ※必要のないクラスを作ってしまうと、使いづらくなります。
+      学年ごとに７学年分の登録をします。
+      ７学年全て登録した時点で、全ての入力が保存されます。
+      登録するときは、途中で入力を止めないでください。
+    .MainNav__form
+      = form_for @rooms, url: grade7_rooms_path, method: :post do |form|
+        - @rooms.collection.each do |room|
+          = fields_for 'rooms[]', room do |field|
+            .field
+              = field.label :クラス名
+              = field.text_field :number, placeholder: "例）６−１"
+            .field
+              = field.hidden_field :grade, value: 1, readonly: true
+            .field
+              = field.hidden_field :school_id, value: current_school.id, readonly: true
+        .actions
+          = form.submit
+      = link_to 'Back', schools_path
