@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   protected
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:parent_name, :child_name, :school_name, :school_admin, :school_id])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:parent_name, :child_name, :school_name, :school_admin, :school_id, :admin])
   end
 
   def after_sign_in_path_for(resource)

@@ -6,35 +6,42 @@ Rails.application.routes.draw do
   }
   resources :schools, only: :index do
     collection do
-      get 'room_control'
+      get 'users_control'
     end
   end
-  resources :users, only: :index
   devise_for :users, controllers: {
     sessions:      'users/sessions',
     passwords:     'users/passwords',
-    registrations: 'users/registrations'
+    registrations: 'users/registrations',
   }
-  
+  devise_scope :user do
+    get "users/registrations/new_teacher"
+    post "users/registrations/create_teacher"
+  end
+
   root "rooms#index"
   
-  resources :rooms, only: [:index, :new, :create, :show] do
+  resources :users, only: :destroy
+  resources :rooms, only: [:index, :show, :edit, :update, :destroy ] do
     collection do
-      get 'grade1'
-      get 'grade2'
-      get 'grade3'
-      get 'grade4'
-      get 'grade5'
-      get 'grade6'
-      get 'grade7'
-      get 'end'
-      post 'grade1_post'
-      post 'grade2_post'
-      post 'grade3_post'
-      post 'grade4_post'
-      post 'grade5_post'
-      post 'grade6_post'
-      post 'grade7_post'
+      get 'control'
+      get 'new1'
+      get 'new2'
+      get 'new3'
+      get 'new4'
+      get 'new5'
+      get 'new6'
+      get 'new7'
+      post 'create_new1'
+      post 'create_new2'
+      post 'create_new3'
+      post 'create_new4'
+      post 'create_new5'
+      post 'create_new6'
+      post 'create_new7'
+      get 'confirm'
+      get 'room_edit'
+      get 'room_show'
     end
     resources :contact_books
     resources :letters, only:[:index, :new, :create, :destroy]
@@ -44,5 +51,4 @@ Rails.application.routes.draw do
       end
     end
   end
-
 end

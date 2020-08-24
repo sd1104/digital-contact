@@ -6,95 +6,126 @@ class RoomsController < ApplicationController
   def index
   end
 
-  def grade1
-    @grade1 = RoomCollection.new
+  def control
   end
 
-  def grade1_post
-    @grade1 = RoomCollection.new(rooms_params)
-    unless @grade1.valid?
-      flash[:alert] = @user.errors.full_messages
-      render :grade1 and return
+  def confirm
+    @rooms = Room.includes(:school).where(school_id: current_school.id)
+  end
+
+  def new1
+    @rooms = RoomCollection.new
+  end
+  def new2
+    @rooms = RoomCollection.new
+  end
+  def new3
+    @rooms = RoomCollection.new
+  end
+  def new4
+    @rooms = RoomCollection.new
+  end
+  def new5
+    @rooms = RoomCollection.new
+  end
+  def new6
+    @rooms = RoomCollection.new
+  end
+  def new7
+    @rooms = RoomCollection.new
+  end
+
+  def create_new1
+    @rooms = RoomCollection.new(rooms_params)
+    if @rooms.save
+      redirect_to control_rooms_path
+    else
+      render :new1
     end
-    session["room_data"] = {room: @grade1 }
-    @grade2 = RoomCollection.new
-    render :grade2
   end
-
-  def grade2_post
-    @rooms = RoomCollection.new(session["room_data"]["room"])
-    grade2 = RoomCollection.new(rooms_params)
-    unless @grade2.valid?
-      flash[:alert] = @grade2.errors.full_messages
-      render :grade1 and return
+  def create_new2
+    @rooms = RoomCollection.new(rooms_params)
+    if @rooms.save
+      redirect_to control_rooms_path
+    else
+      render :new2
     end
-    session["room_data"] = {room: @grade2 }
-    @grade3 = RoomCollection.new(rooms_params)
-    render :grade3
   end
-
-  def grade3_post
-    @grade3 = RoomCollection.new(rooms_params)
-    unless @grade3.valid?
-      flash[:alert] = @grade3.errors.full_messages
-      render :grade1 and return
+  def create_new3
+    @rooms = RoomCollection.new(rooms_params)
+    if @rooms.save
+      redirect_to control_rooms_path
+    else
+      render :new3
     end
-    session["room_data"] = {room: @grade3 }
-    @grade4 = RoomCollection.new(rooms_params)
-    render :grade4
   end
-
-  def grade4_post
-    @grade4 = RoomCollection.new(rooms_params)
-    unless @grade4.valid?
-      flash[:alert] = @grade4.errors.full_messages
-      render :grade1 and return
+  def create_new4
+    @rooms = RoomCollection.new(rooms_params)
+    if @rooms.save
+      redirect_to control_rooms_path
+    else
+      render :new4
     end
-    session["room_data"] = {room: @grade4 }
-    @grade5 = RoomCollection.new
-    render :grade5
   end
-
-  def grade5_post
-    @grade5 = RoomCollection.new(rooms_params)
-    unless @grade5.valid?
-      flash[:alert] = @grade5.errors.full_messages
-      render :grade1 and return
+  def create_new5
+    @rooms = RoomCollection.new(rooms_params)
+    if @rooms.save
+      redirect_to control_rooms_path
+    else
+      render :new5
     end
-    session["room_data"] = {room: @grade5 }
-    @grade6 = RoomCollection.new
-    render :grade6
   end
-
-  def grade6_post
-    @grade6 = RoomCollection.new(rooms_params)
-    unless @grade6.valid?
-      flash[:alert] = @grade6.errors.full_messages
-      render :grade1 and return
+  def create_new6
+    @rooms = RoomCollection.new(rooms_params)
+    if @rooms.save
+      redirect_to control_rooms_path
+    else
+      render :new6
     end
-    session["room_data"] = {room: @grade6 }
-    @grade7 = RoomCollection.new
-    render :grade7
   end
-
-  def grade7_post
-    @grade7 = RoomCollection.new(rooms_params)
-    unless @grade7.valid?
-      flash[:alert] = @grade7.errors.full_messages
-      render :grade1 and return
+  def create_new7
+    @rooms = RoomCollection.new(rooms_params)
+    if @rooms.save
+      redirect_to control_rooms_path
+    else
+      render :new7
     end
-    session["room_data"] = {room: @grade7 }
-
-    render :end
   end
 
+  def room_show
+    @rooms = Room.all
+  end
 
-  def end
+  def room_edit
+    @rooms = Room.new(rooms_params).where(school_id: current_school.id)
   end
 
   def show
     @room = Room.find(params[:id])
   end
+
+  def edit
+    @room = Room.find(params[:id])
+  end
+
+  def update
+    @room = Room.find(params[:id])
+    if @room.update(room_params)
+      redirect_to control_rooms_path
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @room = Room.find(params[:id])
+    if @room.destroy
+      redirect_to control_rooms_path
+    else
+      render :confirm
+    end
+  end
+
 
   private
   def set_rooms
@@ -103,5 +134,9 @@ class RoomsController < ApplicationController
 
   def rooms_params
     params.require(:rooms)
+  end
+
+  def room_params
+    params.require(:room).permit(:number, :grade).merge(school_id: current_school.id)
   end
 end

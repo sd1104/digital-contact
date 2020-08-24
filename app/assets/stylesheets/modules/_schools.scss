@@ -24,9 +24,10 @@
   background: linear-gradient(to top, #f7f7f7 0%, #bbbbbb 100%);
 }
 .SchoolWrapper {
-  height: 100%;
+  overflow: hidden;
+  overflow-y: scroll;
   .TopNav {
-    height: 115px;
+    height: 130px;
     background-color: #bbbbbb;
     display: flex;
     .Left {
@@ -155,15 +156,15 @@
     }
   }
   .MainNav {
-    height: calc( 100% - 115px);
+    min-height: calc(100vh - 245px);
+    overflow: hidden;
+    overflow-y: scroll;
     background-color:#e0e0e0;
     padding: 80px;
     display: flex;
     justify-content: center;
     &__FunctionsBox {
-      height: 420px;
       width: 700px;
-      background-color: #bbbbbb;
       &__head {
         height: 100px;
         width: 700px;
@@ -212,7 +213,6 @@
 
 .MainNav__userSelect {
   &__head {
-    height: 100px;
     width: 1200px;
     color: #fff;
     background-color: #aaaaaa;

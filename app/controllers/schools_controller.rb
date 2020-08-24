@@ -3,6 +3,7 @@ class SchoolsController < ApplicationController
   def index
   end
 
-  def room_control
+  def users_control
+    @rooms = Room.all
   end
 end

@@ -26,4 +26,16 @@ class RoomCollection
   def persisted?
     false
   end
+
+  def save
+    ActiveRecord::Base.transaction do
+      collection.each do |result|
+        result.save
+      end
+    end
+    rescue
+      p 'エラー'
+  end
+
+
 end

@@ -1,0 +1,40 @@
+.SchoolWrapper
+  .TopNav
+    .Left
+      .Left__userBox
+        %h6 ログイン中のユーザー
+        .Left__userBox__userName 
+          = current_school.school_admin
+      .Left__logOutBox
+        = link_to 'schoolLogOut', destroy_school_session_path, method: :delete, class: "logOutBtn"
+    .Right  
+      .Right__infoHead
+        .Right__infoHead__userschool
+          %h6 学校名
+          .Right__infoHead__userschool__schoolName
+            = current_school.school_name
+        .Right__infoHead__headBox
+      .Right__infoMenu
+        %ul.breadCrumbsLink
+          %li
+            クラスを登録します
+  .MainNav
+    .MainNav__Wrapper
+      %ul.roomsRegistration
+        %li.roomRegistration
+          = link_to '１年教室登録', new1_rooms_path, class: "roomSelectLink"
+        %li.roomRegistration
+          = link_to '２年教室登録', new2_rooms_path, class: "roomSelectLink"
+        %li.roomRegistration
+          = link_to '３年教室登録', new3_rooms_path, class: "roomSelectLink"
+        %li.roomRegistration
+          = link_to '４年教室登録', new4_rooms_path, class: "roomSelectLink"
+        %li.roomRegistration
+          = link_to '５年教室登録', new5_rooms_path, class: "roomSelectLink"
+        %li.roomRegistration
+          = link_to '６年教室登録', new6_rooms_path, class: "roomSelectLink"
+        %li.roomRegistration
+          = link_to 'その他教室登録', new7_rooms_path, class: "roomSelectLink"
+        %li.roomRegistration
+          = link_to '登録確認・編集', confirm_rooms_path, class: "roomSelectLink"
+      = link_to '戻る', schools_path, class: "backLink"

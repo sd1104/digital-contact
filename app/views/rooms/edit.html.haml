@@ -19,9 +19,18 @@
           %li
             クラスを登録します
   .MainNav
-    .MainNav__head
-      クラス登録 完了
-    %p.guideline-explanation
-      クラス登録は完了いたしました。
-      お疲れ様でした。
-    = link_to '機能選択へ戻る', schools_path
+    .MainNav__Wrapper
+      .MainNav__Wrapper__head
+        クラス編集
+      .MainNav__Wrapper__editForm
+        = form_with model: @room, method: :patch do |f|
+          .fields
+            .field
+              = f.label :学年, class: "label"
+              = f.number_field :grade
+            .field
+              = f.label :クラス名, class: "label"
+              = f.text_field :number
+            .actions
+              = f.submit
+            = link_to '戻る', confirm_rooms_path, class: "backLink"

@@ -1,0 +1,87 @@
+.SchoolWrapper
+  .TopNav
+    .Left
+      .Left__userBox
+        %h6 ログイン中のユーザー
+        .Left__userBox__userName 
+          = current_school.school_admin
+      .Left__logOutBox
+        = link_to 'schoolLogOut', destroy_school_session_path, method: :delete, class: "logOutBtn"
+    .Right  
+      .Right__infoHead
+        .Right__infoHead__userschool
+          %h6 学校名
+          .Right__infoHead__userschool__schoolName
+            = current_school.school_name
+        .Right__infoHead__headBox
+      .Right__infoMenu
+        %ul.breadCrumbsLink
+          %li
+            クラスを登録します
+  .MainNav
+    .MainNav__Wrapper
+      .RoomEditSelect
+        .roomsConfirm
+          .roomsConfirm__head
+            １年
+          - @rooms.where(grade: 1).each do |room|
+            .room
+              .room__name
+                = room.number
+                = link_to '編集', edit_room_path(room), class: "roomEditLink"
+                = link_to '削除', room_path(room), method: :delete, class: "roomEditLink"
+        .roomsConfirm
+          .roomsConfirm__head
+            ２年
+          - @rooms.where(grade: 2).each do |room|
+            .room
+              .room__name
+                = room.number
+                = link_to '編集', edit_room_path(room), class: "roomEditLink"
+                = link_to '削除', room_path(room), method: :delete, class: "roomEditLink"
+        .roomsConfirm
+          .roomsConfirm__head
+            ３年
+          - @rooms.where(grade: 3).each do |room|
+            .room
+              .room__name
+                = room.number
+                = link_to '編集', edit_room_path(room), class: "roomEditLink"
+                = link_to '削除', room_path(room), method: :delete, class: "roomEditLink"
+        .roomsConfirm
+          .roomsConfirm__head
+            ４年
+          - @rooms.where(grade: 4).each do |room|
+            .room
+              .room__name
+                = room.number
+                = link_to '編集', edit_room_path(room), class: "roomEditLink"
+                = link_to '削除', room_path(room), method: :delete, class: "roomEditLink"
+        .roomsConfirm
+          .roomsConfirm__head
+            ５年
+          - @rooms.where(grade: 5).each do |room|
+            .room
+              .room__name
+                = room.number
+                = link_to '編集', edit_room_path(room), class: "roomEditLink"
+                = link_to '削除', room_path(room), method: :delete, class: "roomEditLink"
+        .roomsConfirm
+          .roomsConfirm__head
+            ６年
+          - @rooms.where(grade: 6).each do |room|
+            .room
+              .room__name
+                = room.number
+                = link_to '編集', edit_room_path(room), class: "roomEditLink"
+                = link_to '削除', room_path(room), method: :delete, class: "roomEditLink"
+        .roomsConfirm
+          .roomsConfirm__head
+            その他
+          - @rooms.where(grade: 7).each do |room|
+            .room
+              .room__name
+                = room.number
+                = link_to '編集', edit_room_path(room), class: "roomEditLink"
+                = link_to '削除', room_path(room), method: :delete, class: "roomEditLink"
+      = link_to '戻る', control_rooms_path, class: "backLink"
