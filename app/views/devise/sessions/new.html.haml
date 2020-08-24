@@ -1,4 +1,4 @@
-.wrapper
+.UserWrapper
   .wall
     .FormBox
       %p ログイン
@@ -16,5 +16,5 @@
             = f.check_box :remember_me
             = f.label :ログインしたままにしておく
         .actions
-          = f.submit "ログイン"
+          = f.submit "ログイン", class: "submitBtn"
       = render "devise/shared/links"

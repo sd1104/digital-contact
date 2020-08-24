@@ -2,6 +2,11 @@ label {
   font-size: 16px;
 }
 
+h2 {
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+
 #user_school_id {
   height: 50px;
   width: 300px;
@@ -15,7 +20,12 @@ label {
 #user_child_name,
 #user_email,
 #user_password,
-#user_password_confirmation {
+#user_password_confirmation,
+#school_email,
+#school_password,
+#school_school_name,
+#school_school_admin,
+#school_password_confirmation {
   height: 50px;
   width: 300px;
   border: 2px solid #aaaaaa;
@@ -34,6 +44,12 @@ label {
   padding-left: 5px;
 }
 
+.UserWrapper {
+  height: calc( 100vh - 115px );
+  overflow: hidden;
+  overflow-y: scroll;
+  background-color: lightgray;
+}
 .wall {
   padding: 30px 0;
   background-color: lightgray;

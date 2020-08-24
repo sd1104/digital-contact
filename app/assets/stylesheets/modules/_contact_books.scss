@@ -46,13 +46,22 @@ body {
 // application'scss
 header {
   height:80px;
-  color: #ffffff;
-  font-weight: bold;
-  background-color: green;
-  font-size: 40px;
+  background-color: ghostwhite;
+  border-top: 1px solid darkgray;
+  border-bottom: 1px solid forestgreen;
   text-align: center;
-  line-height: 77px;
-  border-bottom: 3px solid forestgreen;
+  .fas.fa-book-open {
+    color: forestgreen;
+    font-size: 30px;
+    background-color: ghostwhite;
+  }
+  h2 {
+    display: inline-block;
+    color: forestgreen;
+    font-weight: bold;
+    font-size: 35px;
+    line-height: 77px;
+  }
 }
 
 footer {
@@ -70,7 +79,7 @@ footer {
 
 // index view's scss
 .wrapper {
-  height: calc( 100vh - 245px );
+  height: calc( 100vh - 115px );
   background-color: lightgray;
   display: flex;
   .sideBar {
@@ -95,7 +104,7 @@ footer {
     }
     &__logOutBox {
       height: 50px;
-      background-color: ivory;
+      background-color: #dddddd;
       border-bottom: 1px solid forestgreen;
       display: flex;
       justify-content: center;
@@ -117,7 +126,7 @@ footer {
     }
     &__roomIndex {
       height:calc( 100% - 130px);
-      background-color: ivory;
+      background-color: #dddddd;
       color: black;
       font-weight: bolder;
       padding: 10px 0;
@@ -173,7 +182,7 @@ footer {
   .infoArea {
     display: inline-block;
     width: calc( 100% - 150px );
-    background-color: ivory;
+    background-color: #dddddd;
     overflow: hidden;
     overflow: scroll;
     &__infoHead {
@@ -245,7 +254,7 @@ footer {
     &__infoMenu {
       height:50px;
       color: black;
-      background-color: ivory;
+      background-color: #dddddd;
       border-bottom: 1px solid forestgreen;
       display: flex;
       align-items: center;
@@ -259,7 +268,7 @@ footer {
 
     &__infoContent {
       height:calc(100% - 130px);
-      background-color: ivory;
+      background-color: #dddddd;
       overflow: hidden;
       overflow-y: scroll;
       padding: 50px 0 0 50px;
@@ -370,8 +379,9 @@ footer {
 
 // new view's scss
 .Wall {
+  height: calc( 100vh - 115px );
   padding-top: 30px;
-  background-color: white;
+  background-color: #dddddd;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -386,10 +396,11 @@ footer {
 
     .head {
       font-size: 30px;
+      margin-bottom: 20px;
     }
     .FormField {
-      width: 650px;
-      padding: 10px 50px 30px 50px;
+      width: 530px;
+      padding: 10px 50px;
       border: 1px solid black;
       &__labelDate,
       &__labelLetter,
@@ -397,7 +408,7 @@ footer {
       &__labelHomework,
       &__labelbring,
       &__labelInform {
-        font-size: 20px;
+        font-size: 25px;
       }
       &__inputDate,
       &__inputLetter,
@@ -405,27 +416,46 @@ footer {
       &__inputHomework,
       &__inputbring,
       &__inputInform {
-        font-size: 25px;
-        margin: 10px 0 0 40px;
-        .scheduleInput {
-          width: 400px;
+        color: #fff;
+        font-size: 20px;
+        margin: 10px 0 0 20px;
+        #contact_book_date_1i,
+        #contact_book_date_2i,
+        #contact_book_date_3i {
+          height: 50px;
+          width: 129px;
+          color: #333;
+          border: 2px solid #cccccc;
+          border-radius: 3px;
+          background-color: #fff;
+          padding-left: 5px;
         }
-        .homeworkInput {
+        .scheduleInput,
+        .homeworkInput,
+        .inputBring,
+        .informInput,
+        #contact_book_letter {
           height: 50px;
           width: 400px;
-        }
-        .inputBring {
-          height: 150px;
-          width: 400px;
-        }
-        .informInput {
-          height: 300px;
-          width: 400px;
+          color: #333;
+          border: 2px solid #cccccc;
+          border-radius: 3px;
+          background-color: #fff;
+          padding-left: 5px;
         }
       }
       &__submit {
-        font-size: 40px;
-        margin: 30px 0 0 80px;
+        text-align: center;
+        margin: 60px auto;
+        .submit-btn {
+          height: 40px;
+          width: 150px;
+          color: #fff;
+          border: 2px solid #cccccc;
+          border-radius: 3px;
+          background-color: #aaaaaa;
+          padding-left: 5px;
+        }
       }
     }
   }

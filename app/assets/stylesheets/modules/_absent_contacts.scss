@@ -3,9 +3,11 @@
     display: flex;
     .contactHead {
       margin: 20px 5px 10px 5px;
-      border-bottom: 1px solid lightgray;
+      border-bottom: 2px solid darkgray;
       text-align: center;
-      background:linear-gradient(0deg, #eeeeee 10%, #eeeeee 10%, #eeeeee 10%, white 10%);
+      background-color: gray;
+      color: white;
+      // background:linear-gradient(0deg, #eeeeee 10%, #eeeeee 10%, #eeeeee 10%, white 10%);
     }
     .contactDateHead {
       @extend  .contactHead;
@@ -112,8 +114,6 @@
 
 .infoArea {
   &__AbsentContact {
-    overflow: hidden;
-    overflow: scroll;
     &__contactsHistory {
       padding: 40px 40px;
       &__title {

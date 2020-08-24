@@ -1,13 +1,13 @@
 .wrapper
   .Wall
     .CotactBookField
-      %p.head "連絡帳アップロードフォーム"
+      %p.head 連絡帳アップロードフォーム
       =form_with model: [@room, @contact_book], local: true do |f|
         .FormField
           .FormField__labelDate
             = f.label :"日付", class: "Date"
           .FormField__inputDate
-            = f.date_select :date, placeholder: "日付"
+            = f.date_select :date, placeholder: "日付", class: "date"
           .FormField__labelLetter
             = f.label :"手紙"
           .FormField__inputLetter

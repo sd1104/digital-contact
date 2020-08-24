@@ -1,4 +1,4 @@
-.wrapper
+.UserWrapper
   .wall
     .FormBox
       %p ユーザー登録
@@ -24,7 +24,7 @@
           = f.label :password
           - if @minimum_password_length
             %em
-              (#{@minimum_password_length} characters minimum)
+              (#{@minimum_password_length} 文字以上)
           %br/
           = f.password_field :password, autocomplete: "new-password"
         .field
@@ -32,8 +32,5 @@
           %br/
           = f.password_field :password_confirmation, autocomplete: "new-password"
         .actions
-          = f.submit "登録する"
+          = f.submit "登録する", class: "submitBtn"
       = render "devise/shared/links"
-
--# = f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, selected: 27
--# = f.collection_select :category_id, @category_parent_array, :id, :name,{ include_blank: "選択してください"}, {class: "product-form__details-container__category-box", id: 'parent_category'}

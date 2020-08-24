@@ -1,4 +1,4 @@
-.wrapper  
+.SchoolWrapper
   .wall
     .FormBox
       %h2 学校登録画面
@@ -28,5 +28,5 @@
           %br/
           = f.password_field :password_confirmation, autocomplete: "new-password"
         .actions
-          = f.submit "登録する"
+          = f.submit "登録する", class: "submitBtn"
       = render "schools/shared/links"

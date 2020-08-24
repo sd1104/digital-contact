@@ -27,6 +27,7 @@
   height: calc( 100vh - 115px );
   overflow: hidden;
   overflow-y: scroll;
+  background-color: lightgray;
   .TopNav {
     height: 130px;
     background-color: #bbbbbb;
@@ -36,6 +37,7 @@
       &__userBox {
         height:80px;
         color: black;
+        border-right: 1px solid forestgreen;
         border-bottom: 2px groove orange;
         padding: 2px 0  0 2px;
         @include headline_greenColor();

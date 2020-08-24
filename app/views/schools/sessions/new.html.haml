@@ -1,4 +1,4 @@
-.wrapper
+.SchoolWrapper
   .wall
     .FormBox
       %h2 学校管理者ログイン
@@ -16,5 +16,5 @@
             = f.check_box :remember_me
             = f.label :ログインを保持する
         .actions
-          = f.submit "ログイン"
+          = f.submit "ログイン", class: "submitBtn"
       = render "schools/shared/links"
