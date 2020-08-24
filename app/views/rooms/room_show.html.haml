@@ -1,102 +1,11 @@
 .SchoolWrapper
-  .TopNav
-    .Left
-      .Left__userBox
-        %h6 ログイン中のユーザー
-        .Left__userBox__userName 
-          = current_school.school_admin
-      .Left__logOutBox
-        = link_to 'schoolLogOut', destroy_school_session_path, method: :delete, class: "logOutBtn"
-    .Right  
-      .Right__infoHead
-        .Right__infoHead__userschool
-          %h6 学校名
-          .Right__infoHead__userschool__schoolName
-            = current_school.school_name
-        .Right__infoHead__headBox
-      .Right__infoMenu
-        %ul.breadCrumbsLink
-          %li
-            クラスを登録します
+  = render partial: "/rooms/top_nav"
   .MainNav
-    .MainNav__Wrapper
-      .MainNav__Wrapper__head
+    .MainNav__RoomShow
+      .MainNav__RoomShow__head
         登録者管理
-      .RoomMemberIndex
-        - @rooms.where(grade: 1).each do |room|
-          .Room
-            .RoomName
-              = room.number
-            - room.users.each do |user|
-              .RoomUser
-                .RoomUser__name
-                  = user.parent_name
-                .RoomUser__delete  
-                  = link_to '削除', user_path(user), method: :delete, class: "DeleteUserLink"
-      .RoomMemberIndex
-        - @rooms.where(grade: 2).each do |room|
-          .Room
-            .RoomName
-              = room.number
-            - room.users.each do |user|
-              .RoomUser
-                .RoomUser__name
-                  = user.parent_name
-                .RoomUser__delete  
-                  = link_to '削除', user_path(user), method: :delete, class: "DeleteUserLink"
-      .RoomMemberIndex
-        - @rooms.where(grade: 3).each do |room|
-          .Room
-            .RoomName
-              = room.number
-            - room.users.each do |user|
-              .RoomUser
-                .RoomUser__name
-                  = user.parent_name
-                .RoomUser__delete  
-                  = link_to '削除', user_path(user), method: :delete, class: "DeleteUserLink"
-      .RoomMemberIndex
-        - @rooms.where(grade: 4).each do |room|
-          .Room
-            .RoomName
-              = room.number
-            - room.users.each do |user|
-              .RoomUser
-                .RoomUser__name
-                  = user.parent_name
-                .RoomUser__delete  
-                  = link_to '削除', user_path(user), method: :delete, class: "DeleteUserLink"
-      .RoomMemberIndex
-        - @rooms.where(grade: 5).each do |room|
-          .Room
-            .RoomName
-              = room.number
-            - room.users.each do |user|
-              .RoomUser
-                .RoomUser__name
-                  = user.parent_name
-                .RoomUser__delete  
-                  = link_to '削除', user_path(user), method: :delete, class: "DeleteUserLink"
-      .RoomMemberIndex
-        - @rooms.where(grade: 6).each do |room|
-          .Room
-            .RoomName
-              = room.number
-            - room.users.each do |user|
-              .RoomUser
-                .RoomUser__name
-                  = user.parent_name
-                .RoomUser__delete  
-                  = link_to '削除', user_path(user), method: :delete, class: "DeleteUserLink"
-      .RoomMemberIndex
-        - @rooms.where(grade: 7).each do |room|
-          .Room
-            .RoomName
-              = room.number
-            - room.users.each do |user|
-              .RoomUser
-                .RoomUser__name
-                  = user.parent_name
-                .RoomUser__delete  
-                  = link_to '削除', user_path(user), method: :delete, class: "DeleteUserLink"
-      = link_to '戻る', schools_path, class: "backLink"
+      - 7.times do |num|
+        .RoomMemberIndex
+          - @rooms.where(grade: (num+1)).each do |room|
+            = render partial: '/rooms/room_show', locals: { room: room}
+        = link_to '戻る', control_rooms_path, class: "backLink"

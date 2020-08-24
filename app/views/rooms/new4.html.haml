@@ -1,47 +1,10 @@
 .SchoolWrapper
-  .TopNav
-    .Left
-      .Left__userBox
-        %h6 ログイン中のユーザー
-        .Left__userBox__userName 
-          = current_school.school_admin
-      .Left__logOutBox
-        = link_to 'schoolLogOut', destroy_school_session_path, method: :delete, class: "logOutBtn"
-    .Right  
-      .Right__infoHead
-        .Right__infoHead__userschool
-          %h6 学校名
-          .Right__infoHead__userschool__schoolName
-            = current_school.school_name
-        .Right__infoHead__headBox
-      .Right__infoMenu
-        %ul.breadCrumbsLink
-          %li
-            クラスを登録します
+  = render partial: "/rooms/top_nav"
   .MainNav
     .MainNav__Wrapper
       .MainNav__Wrapper__head
         クラス登録４年
-      %p.guideline-explanation
-        ・クラス名は必ず学年と組をセットで入力してください。例）１−１、１年１組
-        %br/
-        ・登録が必要なクラスは必ずチェックボックスにチェックを入れてください。
-        %br/
-        ・最後に必ず「登録する」ボタンを押して完了してください。
+      = render partial: "/rooms/roomRegistrationExplanation"
       .MainNav__Wrapper__form
-        = form_for @rooms, url: create_new4_rooms_path do |form|
-          - @rooms.collection.each do |room|
-            = fields_for 'rooms[]', room do |field|
-              .fields
-                .field
-                  = field.label :登録, class: "label"
-                  = field.select :school_id, {"#{current_school.school_name}": current_school.id}, { include_blank: true}
-                .field
-                  = field.label :学年, class: "label"
-                  = field.number_field :grade
-                .field
-                  = field.label :クラス名, class: "label"
-                  = field.text_field :number
-          .actions
-            = form.submit class: "roomSubmitBtn"
+        = render partial: "/rooms/room_collection_form"
         = link_to '戻る', control_rooms_path, class: "backLink"

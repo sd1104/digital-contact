@@ -1,23 +1,5 @@
 .SchoolWrapper
-  .TopNav
-    .Left
-      .Left__userBox
-        %h6 ログイン中のユーザー
-        .Left__userBox__userName 
-          = current_school.school_admin
-      .Left__logOutBox
-        = link_to 'schoolLogOut', destroy_school_session_path, method: :delete, class: "logOutBtn"
-    .Right  
-      .Right__infoHead
-        .Right__infoHead__userschool
-          %h6 学校名
-          .Right__infoHead__userschool__schoolName
-            = current_school.school_name
-        .Right__infoHead__headBox
-      .Right__infoMenu
-        %ul.breadCrumbsLink
-          %li
-            クラスを登録します
+  = render partial: "/rooms/top_nav"
   .MainNav
     .MainNav__Wrapper
       .MainNav__Wrapper__head
@@ -32,5 +14,5 @@
               = f.label :クラス名, class: "label"
               = f.text_field :number
             .actions
-              = f.submit
+              = f.submit id: "updateBtn"
             = link_to '戻る', confirm_rooms_path, class: "backLink"

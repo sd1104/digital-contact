@@ -14,7 +14,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def create_teacher
-    binding.pry
     @teacher = User.new(sign_up_params)
     if @teacher.save
       redirect_to schools_path

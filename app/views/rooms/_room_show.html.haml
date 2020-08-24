@@ -1,0 +1,9 @@
+.Room
+  .RoomName
+    = room.number
+  - room.users.each do |user|
+    .RoomUser
+      .RoomUser__name
+        = user.parent_name
+      .RoomUser__delete  
+        = link_to '削除', user_path(user), method: :delete, class: "DeleteUserLink"

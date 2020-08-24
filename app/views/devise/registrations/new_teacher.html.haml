@@ -1,56 +1,38 @@
 .SchoolWrapper
-  .TopNav
-    .Left
-      .Left__userBox
-        %h6 ログイン中のユーザー
-        .Left__userBox__userName 
-          = current_school.school_admin
-      .Left__logOutBox
-        = link_to 'schoolLogOut', destroy_school_session_path, method: :delete, class: "logOutBtn"
-    .Right  
-      .Right__infoHead
-        .Right__infoHead__userschool
-          %h6 学校名
-          .Right__infoHead__userschool__schoolName
-            = current_school.school_name
-        .Right__infoHead__headBox
-      .Right__infoMenu
-        %ul.breadCrumbsLink
-          %li
-            以下よりクラスを選んでください。
-  .wrapper
-    .wall
-      .FormBox
-        %p ユーザー登録
-        = form_for @teacher, url: users_registrations_create_teacher_path(@teacher) do |f|
-          .field
-            = f.label :学校名
-            %br/
-            = f.collection_select :school_id, School.all.collect, :id, :id, { include_blank: "選択してください"}
-          .field
-            = f.label :保護者名
-            %br/
-            = f.text_field :parent_name, autofocus: true, autocomplete: "parent_name"
-          .field
-            = f.label :児童名
-            %br/
-            = f.text_field :child_name, autofocus: true, autocomplete: "child_name"
-          .field
-            = f.label :email
-            %br/
-            = f.email_field :email, autofocus: true, autocomplete: "email"
-          .field
-            = f.label :password
-            - if @minimum_password_length
-              %em
-                (#{@minimum_password_length} characters minimum)
-            %br/
-            = f.password_field :password, autocomplete: "new-password"
-          .field
-            = f.label :password_confirmation
-            %br/
-            = f.password_field :password_confirmation, autocomplete: "new-password"
-          .field
-            = f.hidden_field :admin, value: 1
-          .actions
-            = f.submit "登録する"
+  = render partial: "/rooms/top_nav"
+  .wall
+    .FormBox
+      %p ユーザー登録
+      = form_for @teacher, url: users_registrations_create_teacher_path(@teacher) do |f|
+        .field
+          = f.label :学校名
+          %br/
+          = f.text_field :school_id, value: "#{current_school.school_name}", readonly:true
+        .field
+          = f.label :先生名
+          %br/
+          = f.text_field :parent_name, autofocus: true, autocomplete: "parent_name"
+        .field
+          = f.label :先生名
+          %br/
+          = f.text_field :child_name, autofocus: true, autocomplete: "child_name"
+        .field
+          = f.label :email
+          %br/
+          = f.email_field :email, autofocus: true, autocomplete: "email"
+        .field
+          = f.label :password
+          - if @minimum_password_length
+            %em
+              (#{@minimum_password_length} characters minimum)
+          %br/
+          = f.password_field :password, autocomplete: "new-password"
+        .field
+          = f.label :password_confirmation
+          %br/
+          = f.password_field :password_confirmation, autocomplete: "new-password"
+        .field
+          = f.hidden_field :admin, value: 1
+        .actions
+          = f.submit "登録する", class: "submitBtn"
+      = link_to '戻る', schools_path, class: "backLink"

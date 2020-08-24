@@ -70,8 +70,8 @@ footer {
 
 // index view's scss
 .wrapper {
-  height: calc( 100% - 115px );
-  background-color: ivory;
+  height: calc( 100vh - 245px );
+  background-color: lightgray;
   display: flex;
   .sideBar {
     width: 150px;

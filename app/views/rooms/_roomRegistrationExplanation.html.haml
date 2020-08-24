@@ -1,0 +1,19 @@
+%p.guideline-explanation
+  例
+  = form_with do |f|
+    .fieldsExample
+      .fieldExample
+        = f.label :登録, class: "label"
+        = f.select :school_id, {"#{current_school.school_name}": current_school.id}, { include_blank: true}
+        .explanation
+          ⬅︎登録する場合は学校を必ず選んでください
+      .fieldExample
+        = f.label :学年, class: "label"
+        = f.number_field :grade
+        .explanation
+          ⬅︎登録する場合は学年を必ず選択してください
+      .fieldExample
+        = f.label :クラス名, class: "label"
+        = f.text_field :number
+        .explanation
+          ⬅︎必ず学年と組を両方書いてください。例）１−１、１年１組

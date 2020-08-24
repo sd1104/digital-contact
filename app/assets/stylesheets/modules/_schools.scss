@@ -24,6 +24,7 @@
   background: linear-gradient(to top, #f7f7f7 0%, #bbbbbb 100%);
 }
 .SchoolWrapper {
+  height: calc( 100vh - 115px );
   overflow: hidden;
   overflow-y: scroll;
   .TopNav {
@@ -222,6 +223,7 @@
     line-height: 100px;
   }
 }
+
 
 // ドロップダウン
 .dropdwn{
