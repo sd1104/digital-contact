@@ -1,0 +1,30 @@
+.UserWrapper
+  .wall
+    .FormBox
+      %p ユーザー登録　クラス選択
+      = form_for @user, url: users_registrations_room_select_path(@user), method: :patch do |f|
+        .field
+          = f.hidden_field :school_id, value: "#{current_user.school_id}", readonly:true
+        .field
+          = f.label :クラス
+          %br/
+          = f.collection_select :room_id, Room.includes(:school).where(school_id: current_user.school_id), :id, :number, prompt: "選択"
+        .field
+          = f.hidden_field :parent_name, autofocus: true, autocomplete: "parent_name"
+        .field
+          = f.hidden_field :child_name, autofocus: true, autocomplete: "child_name"
+        .field
+          = f.hidden_field :email, autofocus: true, autocomplete: "email"
+        .field
+          = f.label :password
+          - if @minimum_password_length
+            %em
+              (#{@minimum_password_length} 文字以上)
+          %br/
+          = f.password_field :password, value: current_user.password
+        .field
+          = f.label :password_confirmation
+          %br/
+          = f.password_field :password_confirmation, autocomplete: "new-password"
+        .actions
+          = f.submit "登録する", class: "submitBtn"

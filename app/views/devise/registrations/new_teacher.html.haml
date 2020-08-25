@@ -5,15 +5,18 @@
       %p ユーザー登録
       = form_for @teacher, url: users_registrations_create_teacher_path(@teacher) do |f|
         .field
-          = f.label :学校名
+          = f.hidden_field :school_id, value: "#{current_school.id}", readonly:true
+        .field
+          = f.label :クラス
           %br/
-          = f.text_field :school_id, value: "#{current_school.school_name}", readonly:true
+          = f.collection_select :room_id, Room.all.where(school_id: current_school.id), :id, :number, prompt: "選択"
         .field
           = f.label :先生名
           %br/
           = f.text_field :parent_name, autofocus: true, autocomplete: "parent_name"
         .field
           = f.label :先生名
+          (上と同じものを入力してください)
           %br/
           = f.text_field :child_name, autofocus: true, autocomplete: "child_name"
         .field

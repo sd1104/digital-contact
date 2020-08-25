@@ -7,14 +7,26 @@
     = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logOutBtn"
   .sideBar__roomIndex
     .RoomIndex
-      - @rooms.each do |r|
-        %ul
-          %li
-            = link_to room_path(r), class: "roomNumberLink" do
-              = r.number
-          - if current_user && current_user.admin? && ( AbsentContact.includes(:room).where(room_id: r.id, t_checked: false).count != 0 )
-            .noticeImage
-              %i.far.fa-paper-plane
-              .yet_notice_count
-                = AbsentContact.includes(:room).where(room_id: r.id, t_checked: false).count
+      - if current_user.admin?
+        - @rooms.each do |r|
+          %ul
+            %li
+              = link_to room_path(r), class: "roomNumberLink" do
+                = r.number
+            - if current_user && current_user.admin? && ( AbsentContact.includes(:room).where(room_id: r.id, t_checked: false).count != 0 )
+              .noticeImage
+                %i.far.fa-paper-plane
+                .yet_notice_count
+                  = AbsentContact.includes(:room).where(room_id: r.id, t_checked: false).count
+      - elsif !current_user.room_id?
+        .userRoomRegistration
+          %p
+            クラス登録は
+          = link_to 'コチラ', users_registrations_new2_path
+      - else
+        - @rooms.each do |r|
+          %ul
+            %li
+              = link_to room_path(r), class: "roomNumberLink" do
+                = r.number
       

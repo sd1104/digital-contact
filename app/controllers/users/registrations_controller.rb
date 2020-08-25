@@ -5,12 +5,32 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  def new
-    super
+  # def new
+  #   super
+  # end
+  
+  def new2
+    @rooms = Room.includes(:school).where(school_id: current_user.school_id)
+    @user = User.find(current_user.id)
+  end
+
+  def room_select
+    @user = User.find(current_user.id)
+    if @user.update(sign_up_params)
+      sign_in(:user, @user)
+      redirect_to rooms_path
+    else
+      render :new2
+    end
   end
 
   def new_teacher
-    @teacher = User.new
+    @rooms = Room.includes(:school).where(school_id: current_school.id)
+    if @rooms
+      @teacher = User.new
+    else
+      redirect_to schools_path
+    end
   end
 
   def create_teacher

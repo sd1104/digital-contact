@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   devise_scope :user do
     get "users/registrations/new_teacher"
     post "users/registrations/create_teacher"
+    get "users/registrations/new2"
+    patch "users/registrations/room_select"
   end
 
   root "rooms#index"

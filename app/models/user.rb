@@ -4,8 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   belongs_to :school, optional: true
-  has_many :room_users, dependent: :destroy
-  has_many :rooms, through: :room_users
+  belongs_to :room, optional: true
   has_many :absent_contacts
 
   def admin?
