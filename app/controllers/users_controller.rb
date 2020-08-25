@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     if @user.destroy
-      binding.pry
       redirect_to schools_path
     else
       redirect_to schools_path

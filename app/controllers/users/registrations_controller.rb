@@ -18,7 +18,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.find(current_user.id)
     if @user.update(sign_up_params)
       sign_in(:user, @user)
-      redirect_to rooms_path
+      redirect_to root_path
     else
       render :new2
     end

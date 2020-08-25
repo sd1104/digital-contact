@@ -10,9 +10,12 @@
         - if current_user.room_id?
           = current_user.room.number
         - else
-          クラス登録が必要です
+          クラス登録
     .infoArea__infoHead__headBox
   .infoArea__infoMenu
     %ul.breadCrumbsLink
       %li
-        サイドバーからクラスを登録して下さい
+        - if !current_user.room_id?
+          サイドバーからクラスを登録して下さい。クラス登録後再度ログインすることで、利用が可能になります。
+        - else
+          クラスを選択して下さい。
