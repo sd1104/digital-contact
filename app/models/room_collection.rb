@@ -4,7 +4,7 @@ class RoomCollection
   extend ActiveModel::Translation
   include ActiveModel::AttributeMethods
   include ActiveModel::Validations
-  ROOM_NUM = 10  # 同時にユーザーを作成する数
+  ROOM_NUM = 15  # 同時にユーザーを作成する数
   attr_accessor :collection  # ここに作成したルームモデルが格納される
 
   # 初期化メソッド

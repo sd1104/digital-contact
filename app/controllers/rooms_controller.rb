@@ -13,82 +13,16 @@ class RoomsController < ApplicationController
     @rooms = Room.includes(:school).where(school_id: current_school.id)
   end
 
-  def new1
-    @rooms = RoomCollection.new
-  end
-  def new2
-    @rooms = RoomCollection.new
-  end
-  def new3
-    @rooms = RoomCollection.new
-  end
-  def new4
-    @rooms = RoomCollection.new
-  end
-  def new5
-    @rooms = RoomCollection.new
-  end
-  def new6
-    @rooms = RoomCollection.new
-  end
-  def new7
+  def new
     @rooms = RoomCollection.new
   end
 
-  def create_new1
+  def create
     @rooms = RoomCollection.new(rooms_params)
     if @rooms.save
       redirect_to control_rooms_path
     else
       render :new1
-    end
-  end
-  def create_new2
-    @rooms = RoomCollection.new(rooms_params)
-    if @rooms.save
-      redirect_to control_rooms_path
-    else
-      render :new2
-    end
-  end
-  def create_new3
-    @rooms = RoomCollection.new(rooms_params)
-    if @rooms.save
-      redirect_to control_rooms_path
-    else
-      render :new3
-    end
-  end
-  def create_new4
-    @rooms = RoomCollection.new(rooms_params)
-    if @rooms.save
-      redirect_to control_rooms_path
-    else
-      render :new4
-    end
-  end
-  def create_new5
-    @rooms = RoomCollection.new(rooms_params)
-    if @rooms.save
-      redirect_to control_rooms_path
-    else
-      render :new5
-    end
-  end
-  def create_new6
-    @rooms = RoomCollection.new(rooms_params)
-    if @rooms.save
-      redirect_to control_rooms_path
-    else
-      render :new6
-    end
-  end
-  def create_new7
-    @rooms = RoomCollection.new(rooms_params)
-    if @rooms.save
-      redirect_to control_rooms_path
-    else
-      render :new7
     end
   end
 
@@ -120,7 +54,7 @@ class RoomsController < ApplicationController
   def destroy
     @room = Room.find(params[:id])
     if @room.destroy
-      redirect_to control_rooms_path
+      redirect_to confirm_rooms_path
     else
       render :confirm
     end

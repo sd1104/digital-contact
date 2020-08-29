@@ -4,19 +4,7 @@
     .MainNav__Wrapper
       %ul.roomsRegistration
         %li.roomRegistration
-          = link_to '１年教室登録', new1_rooms_path, class: "roomSelectLink"
+          = link_to '教室登録', new_room_path, class: "roomSelectLink"
         %li.roomRegistration
-          = link_to '２年教室登録', new2_rooms_path, class: "roomSelectLink"
-        %li.roomRegistration
-          = link_to '３年教室登録', new3_rooms_path, class: "roomSelectLink"
-        %li.roomRegistration
-          = link_to '４年教室登録', new4_rooms_path, class: "roomSelectLink"
-        %li.roomRegistration
-          = link_to '５年教室登録', new5_rooms_path, class: "roomSelectLink"
-        %li.roomRegistration
-          = link_to '６年教室登録', new6_rooms_path, class: "roomSelectLink"
-        %li.roomRegistration
-          = link_to 'その他教室登録', new7_rooms_path, class: "roomSelectLink"
-        %li.roomRegistration
-          = link_to 'ユーザー一覧・削除', confirm_rooms_path, class: "roomSelectLink"
+          = link_to '教室編集・削除', confirm_rooms_path, class: "roomSelectLink"
       = link_to '戻る', schools_path, class: "backLink"
