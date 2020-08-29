@@ -49,15 +49,6 @@ ActiveRecord::Schema.define(version: 2020_08_01_090539) do
     t.index ["room_id"], name: "index_letters_on_room_id"
   end
 
-  create_table "room_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "room_id"
-    t.bigint "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["room_id"], name: "index_room_users_on_room_id"
-    t.index ["user_id"], name: "index_room_users_on_user_id"
-  end
-
   create_table "rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "number"
     t.integer "grade"
@@ -104,8 +95,6 @@ ActiveRecord::Schema.define(version: 2020_08_01_090539) do
   add_foreign_key "absent_contacts", "users"
   add_foreign_key "contact_books", "rooms"
   add_foreign_key "letters", "rooms"
-  add_foreign_key "room_users", "rooms"
-  add_foreign_key "room_users", "users"
   add_foreign_key "rooms", "schools"
   add_foreign_key "users", "rooms"
   add_foreign_key "users", "schools"
