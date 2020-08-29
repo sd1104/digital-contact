@@ -33,4 +33,7 @@
           = f.password_field :password_confirmation, autocomplete: "new-password"
         .actions
           = f.submit "登録する", class: "submitBtn"
+      = render 'devise/sessions/sample-parent-login.html.haml'
+      = render 'devise/sessions/sample-teacher-login.html.haml'
+      %br/
       = render "devise/shared/links"

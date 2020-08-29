@@ -17,4 +17,7 @@
             = f.label :ログインを保持する
         .actions
           = f.submit "ログイン", class: "submitBtn"
+      = render 'schools/sessions/sample-login'
+      %br/
       = render "schools/shared/links"
+      = link_to '一般ユーザーログイン', new_user_session_path

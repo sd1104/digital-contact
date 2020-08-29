@@ -17,4 +17,8 @@
             = f.label :ログインしたままにしておく
         .actions
           = f.submit "ログイン", class: "submitBtn"
+      = render 'devise/sessions/sample-parent-login.html.haml'
+      = render 'devise/sessions/sample-teacher-login.html.haml'
+      %br/
       = render "devise/shared/links"
+      = link_to '学校管理者ログイン' ,new_school_session_path

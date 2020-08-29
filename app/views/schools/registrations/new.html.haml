@@ -29,4 +29,6 @@
           = f.password_field :password_confirmation, autocomplete: "new-password"
         .actions
           = f.submit "登録する", class: "submitBtn"
+      = render 'schools/sessions/sample-login'
+      %br/
       = render "schools/shared/links"

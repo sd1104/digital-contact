@@ -37,12 +37,21 @@ h2 {
 
 .submitBtn {
   height: 40px;
-  width: 150px;
+  width: 300px;
   color: #fff;
   border: 2px solid #cccccc;
   border-radius: 3px;
   background-color: #aaaaaa;
   padding-left: 5px;
+}
+.submitBtn:hover {
+  color: black;
+  background-color: darkgray;
+  opacity: 0.4;
+}
+.submitBtn:active {
+  position: relative;
+  top: 2px;
 }
 
 .UserWrapper {
