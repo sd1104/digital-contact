@@ -1,13 +1,30 @@
 README
 
 ## DigitalContact/デジタル連絡帳
+小学校で教師と保護者間で行われる欠席の連絡にまつわる問題を解決するために作ったアプリです。
 
+## アプリ開発背景
+##### 問題の背景（小学校で子どもが欠席することになったら）
+- 欠席連絡は次の２つの方法のいずれかによって行われる
+  - 保護者が電話で口頭連絡。
+  - 連絡帳による文通形式。近所の子どもに連絡帳を預けて届けてもらう。
 
-## アプリ紹介
+##### 小学校における欠席連絡問題
+![スクリーンショット 2020-08-30 22 12 13](https://user-images.githubusercontent.com/67669319/91659939-e3f7ee00-eb0d-11ea-9eda-bf51ec3c66ab.png)
+結果、保護者、教師ともに多くの時間と労力を取られている。  
+さらに、連絡帳を預け忘れや、電話に出られずに、連絡がうまく伝わらない場合もある。
 
+##### 問題の解決方法
+- 欠席の連絡をWEB上で行えるようにする。
+- その日の連絡帳と手紙をWEB上で閲覧できるようにする。
 
-##### 主な機能
-
+## 主な機能
+#### 1. 学校としてログインした場合
+![スクリーンショット 2020-08-30 22 30 51](https://user-images.githubusercontent.com/67669319/91660415-b1032980-eb10-11ea-9690-e0ebd205907d.png)
+#### 2. 保護者・先生としてログインした場合。
+- userのadminカラムがtrueの場合が教師、falseの場合は保護者となる。  
+- 保護者としてログインした場合と教師としてログインした場合で表示内容や機能が分かれる。  
+![スクリーンショット 2020-08-30 22 33 10](https://user-images.githubusercontent.com/67669319/91660438-d132e880-eb10-11ea-968b-21d05b7f79cc.png)
 
 ## インストール使用まで
 #### 1. Git-Hubからクローンする。
@@ -31,7 +48,7 @@ Rails 6.0.3.2
 mysql  
 
 ## データベース設計
-##schoolsテーブル
+### schoolsテーブル
 |Colum|Type|Options|
 |-----|----|-------|
 |school_name|string|null:false|
@@ -39,19 +56,19 @@ mysql
 |email|string|null:false, unique:true|
 |password|string|null:false, unique:true|
 
-###Association
+#### Association
 - has_many :users
 - has_many :rooms
 
 
-##roomsテーブル
+### roomsテーブル
 |Colum|Type|Options|
 |-----|----|-------|
 |number|string|null:false|
 |grade|integer|null:false|
 |school_id|references|null:false, foreign_key: true|
 
-###Association
+#### Association
 - belongs_to :school
 - has_many :users
 - has_many :absent_contacts
@@ -59,7 +76,7 @@ mysql
 - has_many :letters
 
 
-##usersテーブル
+### usersテーブル
 |Colum|Type|Options|
 |-----|----|-------|
 |p_name|string|null:false|
@@ -70,12 +87,12 @@ mysql
 |school_id|references|null:false, foreign_key: true|
 |admin|boolean|default: false|
 
-###Association
+#### Association
 - belongs_to :room
 - has_many :absent_contacts
 
 
-##absent_contactsテーブル
+### absent_contactsテーブル
 |Colum|Type|Options|
 |-----|----|-------|
 |arised_at|date|null:false|
@@ -84,12 +101,12 @@ mysql
 |room_id|references|null:false, foreign_key: true|
 |user_id|references|null:false, foreign_key: true|
 
-###Association
+#### Association
 - belongs_to :room
 - belongs_to :user
 
 
-##contact_booksテーブル
+### contact_booksテーブル
 |Colum|Type|Options|
 |-----|----|-------|
 |date|datetime|null:false|
@@ -100,11 +117,11 @@ mysql
 |inform|text||
 |room_id|references|null:false, foreign_key: true|
 
-###Association
+#### Association
 - belongs_to :room
 
 
-##lettersテーブル
+### lettersテーブル
 |Colum|Type|Options|
 |-----|----|-------|
 |release_at|date|null:false|
@@ -112,5 +129,5 @@ mysql
 |pdf|string|null:false|
 |room_id|references|null:false, foreign_key: true|
 
-###Association
+#### Association
 - belongs_to :room
