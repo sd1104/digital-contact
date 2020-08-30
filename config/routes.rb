@@ -1,9 +1,36 @@
 Rails.application.routes.draw do
-  devise_for :users
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  devise_for :schools, controllers: {
+    sessions:      'schools/sessions',
+    passwords:     'schools/passwords',
+    registrations: 'schools/registrations'
+  }
+  resources :schools, only: :index do
+    collection do
+      get 'users_control'
+    end
+  end
+  devise_for :users, controllers: {
+    sessions:      'users/sessions',
+    passwords:     'users/passwords',
+    registrations: 'users/registrations',
+  }
+  devise_scope :user do
+    get "users/registrations/new_teacher"
+    post "users/registrations/create_teacher"
+    get "users/registrations/new2"
+    patch "users/registrations/room_select"
+  end
+
   root "rooms#index"
   
-  resources :rooms, only: [:index, :show] do
+  resources :users, only: :destroy
+  resources :rooms do
+    collection do
+      get 'control'
+      get 'confirm'
+      get 'room_edit'
+      get 'room_show'
+    end
     resources :contact_books
     resources :letters, only:[:index, :new, :create, :destroy]
     resources :absent_contacts, only: [:index, :create, :edit, :update, :destroy] do
@@ -12,5 +39,4 @@ Rails.application.routes.draw do
       end
     end
   end
-
 end

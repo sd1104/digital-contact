@@ -1,0 +1,15 @@
+= form_for @rooms, url: rooms_path do |form|
+  - @rooms.collection.each do |room|
+    = fields_for 'rooms[]', room do |field|
+      .fields
+        .field
+          = field.label :登録, class: "label"
+          = field.select :school_id, {"#{current_school.school_name}": current_school.id}, { include_blank: true}
+        .field
+          = field.label :学年, class: "label"
+          = field.number_field :grade
+        .field
+          = field.label :クラス名, class: "label"
+          = field.text_field :number
+  .actions
+    = form.submit class: "roomSubmitBtn"

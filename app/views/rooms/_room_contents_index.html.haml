@@ -1,11 +1,21 @@
 .infoArea
   .infoArea__infoHead
+    .infoArea__infoHead__userschool
+      %h6 学校名
+      .infoArea__infoHead__userschool__schoolName
+        = current_user.school.school_name
     .infoArea__infoHead__userRoom
-      %h6 選択中のクラス
+      %h6 あなたのクラス
       .infoArea__infoHead__userRoom__roomName
-        未選択
+        - if current_user.room_id?
+          = current_user.room.number
+        - else
+          クラス登録
     .infoArea__infoHead__headBox
   .infoArea__infoMenu
     %ul.breadCrumbsLink
       %li
-        サイドバーからクラスを選んでください
+        - if !current_user.room_id?
+          サイドバーからクラスを登録して下さい。クラス登録後再度ログインすることで、利用が可能になります。
+        - else
+          クラスを選択して下さい。

@@ -1,0 +1,10 @@
+.SchoolWrapper
+  = render partial: "/rooms/top_nav"
+  .MainNav
+    .MainNav__Wrapper
+      %ul.roomsRegistration
+        %li.roomRegistration
+          = link_to '教室登録', new_room_path, class: "roomSelectLink"
+        %li.roomRegistration
+          = link_to '教室編集・削除', confirm_rooms_path, class: "roomSelectLink"
+      = link_to '戻る', schools_path, class: "backLink"

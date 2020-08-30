@@ -1,4 +1,5 @@
 class AbsentContactsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_foreign_instance
   
   def index

@@ -1,0 +1,11 @@
+.SchoolWrapper
+  = render partial: "/rooms/top_nav"
+  .MainNav
+    .MainNav__RoomShow
+      .MainNav__RoomShow__head
+        登録者管理
+      - 7.times do |num|
+        .RoomMemberIndex
+          - @rooms.where(grade: (num+1)).each do |room|
+            = render partial: '/rooms/room_show', locals: { room: room}
+        = link_to '戻る', control_rooms_path, class: "backLink"

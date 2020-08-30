@@ -1,0 +1,19 @@
+.SchoolWrapper
+  = render partial: "/rooms/top_nav"
+  .MainNav
+    .MainNav__FunctionsBox
+      .MainNav__FunctionsBox__head
+        機 能 選 択
+      %ul.schoolFunctions
+        %li
+          = link_to control_rooms_path, class: "schoolFunction" do
+            .LinkBox
+              教室作成
+        %li
+          = link_to  users_registrations_new_teacher_path, class: "schoolFunction" do
+            .LinkBox
+              先生登録
+        %li
+          = link_to room_show_rooms_path, class: "schoolFunction" do
+            .LinkBox
+              ユーザー管理

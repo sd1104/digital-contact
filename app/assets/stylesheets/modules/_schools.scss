@@ -1,0 +1,226 @@
+// refactoring scss
+@mixin headline_greenColor {
+  background: #f7f7f7;
+  background: -webkit-gradient(linear, left top, left bottom, from(#f7f7f7), to(#bbbbbb));
+  background: -webkit-linear-gradient(top, #f7f7f7 0%, #bbbbbb 100%);
+  background: linear-gradient(to bottom, #f7f7f7 0%, #bbbbbb 100%);
+  -webkit-box-shadow: inset 1px 1px 1px #fff;
+  box-shadow: inset 1px 1px 1px #fff;
+}
+
+@mixin headBtn_greenColor {
+  border: 1px solid #ccc;
+  background: #f7f7f7;
+  background: -webkit-gradient(linear, left top, left bottom, from(#f7f7f7), to(#bbbbbb));
+  background: -webkit-linear-gradient(top, #f7f7f7 0%, #bbbbbb 100%);
+  background: linear-gradient(to bottom, #f7f7f7 0%, #bbbbbb 100%);
+  -webkit-box-shadow: inset 1px 1px 1px #fff;
+  box-shadow: inset 1px 1px 1px #fff;
+}
+
+@mixin headBtn_greenColor_hover {
+  background: -webkit-gradient(linear, left bottom, left top, from(#f7f7f7), to(#bbbbbb));
+  background: -webkit-linear-gradient(bottom, #f7f7f7 0%, #bbbbbb 100%);
+  background: linear-gradient(to top, #f7f7f7 0%, #bbbbbb 100%);
+}
+.SchoolWrapper {
+  height: calc( 100vh - 115px );
+  overflow: hidden;
+  overflow-y: scroll;
+  background-color: lightgray;
+  .TopNav {
+    height: 130px;
+    background-color: #bbbbbb;
+    display: flex;
+    .Left {
+      width: 250px;
+      &__userBox {
+        height:80px;
+        color: black;
+        border-right: 1px solid forestgreen;
+        border-bottom: 2px groove orange;
+        padding: 2px 0  0 2px;
+        @include headline_greenColor();
+        h6 {
+          font-size: 6px;
+        }
+        &__userName {
+          height: 64px;
+          line-height: 64px;
+          font-size: 20px;
+          font-weight: bolder;
+          text-align: center;
+          border-bottom: 2px solid orange;
+        }
+      }
+      &__logOutBox {
+        height: 50px;
+        background-color: #e0e0e0;
+        border-bottom: 1px solid forestgreen;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .logOutBtn {
+          border: 1px solid royalblue;
+          color: royalblue;
+          font-size: 12px;
+          font-weight: bolder;
+          text-align: center;
+          text-decoration: none;
+          background-color: #ffffff;
+          // padding: 5px 3px;
+          padding: 0.3rem 0.4rem;
+          cursor: pointer;
+          letter-spacing: 0.2em;
+          border-radius: 0.5rem;
+        }
+      }
+    }
+    .Right {
+      display: inline-block;
+      width: 100%;
+      background-color: #e0e0e0;
+      &__infoHead {
+        height:80px;
+        border-bottom: 2px groove orange;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-end;
+        @include headline_greenColor();
+        &__userschool {
+          height: 80px;
+          width: 300px;
+          padding: 4px 0 0 4px;
+          border-right: 1px solid forestgreen;
+          h6 {
+            font-size: 6px;
+          }
+          &__schoolName {
+            line-height: 80px;
+            font-weight: bolder;
+            line-height: 60px;
+            text-align: center;
+            color: black;
+          }
+        }
+        &__userRoom {
+          height: 80px;
+          width: 15%;
+          padding: 4px 0 0 4px;
+          border-right: 1px solid forestgreen;
+          h6 {
+            font-size: 6px;
+          }
+          &__roomName {
+            line-height: 80px;
+            font-weight: bolder;
+            line-height: 60px;
+            text-align: center;
+            color: black;
+          }
+        }
+        &__headBox {
+          width: 85%;
+          .headBtns {
+            display: flex;
+            justify-content: space-around;
+            .headBtn {
+              width: 200px;
+              background-color: pink;
+              display: flex;
+              align-items: flex-end;
+              .HeadBtn {
+                color: black;
+                width: 100%;
+                text-decoration: none;
+                font-size: 30px;
+                text-align: center;
+                @include headBtn_greenColor()
+              }
+              .HeadBtn:hover {
+                @include headBtn_greenColor_hover()
+              }
+            } 
+          }
+        }
+      }
+      &__infoMenu {
+        height:50px;
+        color: black;
+        background-color: #e0e0e0;
+        border-left: 1px solid forestgreen;
+        border-bottom: 1px solid forestgreen;
+        display: flex;
+        align-items: center;
+        .breadCrumbsLink {
+          padding-left: 40px;
+        }
+      }
+    }
+  }
+  .MainNav {
+    min-height: calc(100vh - 245px);
+    overflow: hidden;
+    overflow-y: scroll;
+    background-color:#e0e0e0;
+    padding: 80px;
+    display: flex;
+    justify-content: center;
+    &__FunctionsBox {
+      width: 700px;
+      &__head {
+        height: 100px;
+        width: 700px;
+        background-color: #eeeeee;
+        font-size: 25px;
+        text-align: center;
+        border-bottom: 1px solid #aaaaaa;
+        line-height: 100px;
+      }
+      .schoolFunctions {
+        padding: 70px;
+        background-color: #ededed;
+        li {
+          background-color: none;
+          .schoolFunction {
+            color: #fff;
+            font-size: 15px;
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            .LinkBox {
+              height: 60px;
+              width: 330px;
+              background-color: #aaaaaa;
+              text-align: center;
+              border-bottom: 1px solid #dddddd;
+              border-radius: 4px;
+              line-height: 60px;
+            }
+            .LinkBox:hover {
+              color: black;
+              background-color: #bbbbbb;
+              opacity: 0.4;
+            }
+            .LinkBox:active {
+              position: relative;
+              top: 2px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.MainNav__userSelect {
+  &__head {
+    width: 1200px;
+    color: #fff;
+    background-color: #aaaaaa;
+    font-size: 25px;
+    text-align: center;
+    border-bottom: 1px solid #eeeeee;
+    line-height: 100px;
+  }
+}

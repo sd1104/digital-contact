@@ -1,7 +1,11 @@
 .infoArea
   .infoArea__infoHead
+    .infoArea__infoHead__userschool
+      %h6 学校名
+      .infoArea__infoHead__userschool__schoolName
+        = current_user.school.school_name
     .infoArea__infoHead__userRoom
-      %h6 選択中のクラス
+      %h6 あなたのクラス
       .infoArea__infoHead__userRoom__roomName
         = @room.number
     .infoArea__infoHead__headBox
