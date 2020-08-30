@@ -1,26 +1,59 @@
-# README
+README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## DigitalContact/デジタル連絡帳
 
-Things you may want to cover:
 
-* Ruby version
-  2.6.5
-* System dependencies
+## アプリ紹介
 
-* Configuration
 
-* Database creation
+##### 主な機能
+
+
+## インストール使用まで
+#### 1. Git-Hubからクローンする。
+`$ git clone `
+#### 2. bundleをインストールする。
+`$ bundle install`
+#### 3. データベースを作る。
+`$ rails db:create`
+#### 4. マイグレーションをする。
+`$ rails db:migrate`
+#### 5. 初期データを入れる。
+`$ rails db:seed`
+#### 6. ローカルサーバーを起動する。
+`$　rails s`
+#### 7. ブラウザに表示。
+[http://localhost:3000/]をたたく。
+
+## バージョン
+ruby 2.6.5  
+Rails 6.0.3.2  
+mysql  
+
+## データベース設計
+##schoolsテーブル
+|Colum|Type|Options|
+|-----|----|-------|
+|school_name|string|null:false|
+|school_admin|integer|null:false|
+|email|string|null:false, unique:true|
+|password|string|null:false, unique:true|
+
+###Association
+- has_many :users
+- has_many :rooms
+
 
 ##roomsテーブル
 |Colum|Type|Options|
 |-----|----|-------|
-|number|string|null:false, unique:true|
+|number|string|null:false|
+|grade|integer|null:false|
+|school_id|references|null:false, foreign_key: true|
 
 ###Association
-- has_many :room_users
-- has_many :users, through: :room_users
+- belongs_to :school
+- has_many :users
 - has_many :absent_contacts
 - has_many :contact_books
 - has_many :letters
@@ -34,23 +67,12 @@ Things you may want to cover:
 |email|string|null:false, unique:true|
 |password|string|null:false, unique:true|
 |room_id|references|null:false, foreign_key: true|
+|school_id|references|null:false, foreign_key: true|
 |admin|boolean|default: false|
 
 ###Association
-- has_many :room_users
-- has_many :rooms, through: :room_users
-- has_many :absent_contacts
-
-
-##room_usersテーブル
-|Colum|Type|Options|
-|-----|----|-------|
-|room_id|references|null:false, foreign_key: true|
-|user_id|references|null:false, foreign_key: true|
-
-###Association
 - belongs_to :room
-- belongs_to :user
+- has_many :absent_contacts
 
 
 ##absent_contactsテーブル
@@ -92,14 +114,3 @@ Things you may want to cover:
 
 ###Association
 - belongs_to :room
-
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
