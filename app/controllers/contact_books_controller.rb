@@ -83,7 +83,14 @@ class ContactBooksController < ApplicationController
   end
 
   def contact_book_params
-    params.require(:contact_book).permit(:date, :letter, :bring, :schedule, :homework, :inform).merge(room_id: params[:room_id])
+    params.require(:contact_book).permit(
+      :date,
+      :letter,
+      :bring,
+      :schedule,
+      :homework,
+      :inform
+    ).merge(room_id: params[:room_id])
   end
 
 end
