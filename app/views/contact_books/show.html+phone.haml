@@ -3,7 +3,7 @@
     .SPWrap__Wrapper__header
       = render 'layouts/sp-header-belongs'
     .SPWrap__Wrapper__Logout
-      = link_to '戻る', rooms_path, class: "LongoutButton"
+      = link_to '戻る', room_contact_books_path(current_user.room_id), class: "LongoutButton"
   .SPWrap__BodyContents
     .SPWrap__BodyContents__BOX
       .SPWrap__BodyContents__BOX__head

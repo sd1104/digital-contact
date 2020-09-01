@@ -33,11 +33,12 @@
               確認済
             - else
               未確認
-          .contact_edit_delete_btn
-            = "編集・削除："
-            = link_to edit_room_absent_contact_path(@room, @absent_contact), class: "EditBtn" do
-              %i.fas.fa-file-signature
-            = "・"
-            = link_to room_absent_contact_path(@room, @absent_contact), method: :delete, class: "DeleteBtn" do
-              %i.fas.fa-trash-alt
+          -if @absent_contact.absent_at >= Date.today
+            .contact_edit_delete_btn
+              = "編集・削除："
+              = link_to edit_room_absent_contact_path(@room, @absent_contact), class: "EditBtn" do
+                %i.fas.fa-file-signature
+              = "・"
+              = link_to room_absent_contact_path(@room, @absent_contact), method: :delete, class: "DeleteBtn" do
+                %i.fas.fa-trash-alt
       %hr/

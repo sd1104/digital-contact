@@ -10,8 +10,8 @@
         本日の連絡
       %hr/
       .SPWrap__BodyContents__BOX__body
-        - if !@today_absent_contact_for_parent
-          今日は出席ですね
+        - if !@today_absent_contact_for_parent.present?
+          今日は出席です
         - else
           .contactDate
             = @today_absent_contact_for_parent[0].set_date
@@ -34,10 +34,10 @@
               未確認
           .contact_edit_delete_btn
             = "編集・削除:"
-            = link_to edit_room_absent_contact_path(@room, @today_absent_contact_for_parent), class: "EditBtn" do
+            = link_to edit_room_absent_contact_path(@room, @today_absent_contact_for_parent[0].id), class: "EditBtn" do
               %i.fas.fa-file-signature
             = "・"
-            = link_to room_absent_contact_path(@room, @today_absent_contact_for_parent), method: :delete, class: "DeleteBtn" do
+            = link_to room_absent_contact_path(@room, @today_absent_contact_for_parent[0].id), method: :delete, class: "DeleteBtn" do
               %i.fas.fa-trash-alt
       %hr/
       .SPWrap__BodyContents__BOX__NEW

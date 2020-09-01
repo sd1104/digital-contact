@@ -1,5 +1,6 @@
 .infoArea
-  =render 'contact_books/headButtonLinks'
+  .infoArea__infoHead
+    =render 'contact_books/headButtonLinks'
 
   .infoArea__infoMenu
     %ul.breadCrumbsLink
@@ -18,13 +19,7 @@
       .infoArea__infoContent__todayContactBook__todayContactBookTitle
         本日の連絡帳
       .infoArea__infoContent__todayContactBook__TodayContactBook
-        - if !@today_contact_book.present?
-          %i.fa.fa-hammer
-          .makingMessage ただいま作成中です
-          %i.fa.fa-hammer
-        - else
-          =render partial: "today_contact_book", collection: @today_contact_book
-
+        = render partial: 'today_contact_book'
 
     - if current_user && current_user.admin?
       .infoArea__infoContent__historyContactBookTitle

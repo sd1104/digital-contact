@@ -1,21 +1,7 @@
 .infoArea
   .infoArea__infoHead
-    .infoArea__infoHead__userschool
-      %h6 学校名
-      .infoArea__infoHead__userschool__schoolName
-        = current_user.school.school_name
-    .infoArea__infoHead__userRoom
-      %h6 あなたのクラス
-      .infoArea__infoHead__userRoom__roomName
-        = @room.number
-    .infoArea__infoHead__headBox
-      %ul.headBtns
-        %li.headBtn
-          = link_to '欠席連絡', room_absent_contacts_path(@room), class: "HeadBtn abscentContact"
-        %li.headBtn
-          = link_to '連絡帳', room_contact_books_path(@room), class: "HeadBtn contactBook"
-        %li.headBtn
-          = link_to '配布手紙', room_letters_path(@room), class: "HeadBtn letters"
+    =render 'contact_books/headButtonLinks'
+
   .infoArea__infoMenu
     %ul.breadCrumbsLink
       %li
