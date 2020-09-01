@@ -4,6 +4,7 @@ class RoomsController < ApplicationController
   before_action :set_rooms, only: [ :index, :show ]
 
   def index
+    @user = User.find(current_user.id)
   end
 
   def control

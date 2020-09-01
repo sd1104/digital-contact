@@ -1,0 +1,73 @@
+.SPWrap
+  .SPWrap__Wrapper
+    .SPWrap__Wrapper__header
+      = render 'layouts/sp-header-belongs'
+    .SPWrap__Wrapper__Logout
+      = link_to '戻る', rooms_path, class: "LongoutButton"
+  .SPWrap__BodyContents
+    .SPWrap__BodyContents__BOX
+      .SPWrap__BodyContents__BOX__head
+        本日の連絡
+      %hr/
+      .SPWrap__BodyContents__BOX__body
+        - if !@today_absent_contact_for_parent
+          今日は出席ですね
+        - else
+          .contactDate
+            = @today_absent_contact_for_parent[0].set_date
+          .contactName
+            = "児--童--名:#{@today_absent_contact_for_parent[0].user.child_name}"
+          .contactKind
+            = "----種類----:"
+            = t("activerecord.attributes.absent_contact.kind.#{@today_absent_contact_for_parent[0].kind}")
+          .contactReason
+            = "----理由----:" 
+            = @today_absent_contact_for_parent[0].reason
+          .contactAfterContact
+            = "放課後連絡:"
+            = t("activerecord.attributes.absent_contact.after_contact.#{@today_absent_contact_for_parent[0].after_contact}")
+          .contact_T_Confirm
+            = "先生・確認:"
+            - if @today_absent_contact_for_parent[0].t_checked == true
+              確認済
+            - else
+              未確認
+          .contact_edit_delete_btn
+            = "編集・削除:"
+            = link_to edit_room_absent_contact_path(@room, @today_absent_contact_for_parent), class: "EditBtn" do
+              %i.fas.fa-file-signature
+            = "・"
+            = link_to room_absent_contact_path(@room, @today_absent_contact_for_parent), method: :delete, class: "DeleteBtn" do
+              %i.fas.fa-trash-alt
+      %hr/
+      .SPWrap__BodyContents__BOX__NEW
+        = link_to '欠席連絡', new_room_absent_contact_path(@room, @today_absent_contact_for_parent), class: "AbsentContactNew"
+      %hr/
+    .SPWrap__BodyContents__Archive
+      .SPWrap__BodyContents__Archive__head
+        先の連絡
+      %hr/
+      .SPWrap__BodyContents__Archive__body
+        - if !@future_absent_contacts_for_parent.present?
+          .MakingMessage ありません
+        - @future_absent_contacts_for_parent.each do |month|
+          .PastContactbook-Links
+            %ul.Links
+              %li.link
+                = link_to room_absent_contact_path(@room, month),class: "ContactBookLink" do
+                  = month.set_date
+      %hr/
+    .SPWrap__BodyContents__Archive
+      - if !@past_absent_contacts_for_parent.present?
+        .MakingMessage ありません
+      .SPWrap__BodyContents__Archive__head
+        過去の連絡
+      %hr/
+      .SPWrap__BodyContents__Archive__body
+        - @past_absent_contacts_for_parent.each do |month|
+          .PastContactbook-Links
+            %ul.Links
+              %li.link
+                = link_to room_absent_contact_path(@room, month),class: "ContactBookLink" do
+                  = month.set_date
+      %hr/

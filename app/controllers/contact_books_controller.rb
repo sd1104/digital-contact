@@ -3,6 +3,7 @@ class ContactBooksController < ApplicationController
   before_action :set_foreign_instance
   
   def index
+    @contact_book = ContactBook.find_by(date: Date.today, room_id: current_user.room_id)
     @all_contact_books = ContactBook.includes(:room).omit_today.where(room_id: (params[:room_id])).order("date ASC")
     @today_contact_book = ContactBook.includes(:room).get_today.where(room_id: (params[:room_id])).order("date ASC")
     @april_contact_books = ContactBook.includes(:room).get_april.get_past.where(room_id: (params[:room_id])).order("date ASC")

@@ -1,0 +1,30 @@
+.SPWrap
+  .SPWrap__Wrapper
+    .SPWrap__Wrapper__header
+      = render 'layouts/sp-header-belongs'
+    .SPWrap__Wrapper__Logout
+      = link_to '戻る', rooms_path, class: "LongoutButton"
+  .SPWrap__BodyContents
+    .SPWrap__BodyContents__BOX
+      .SPWrap__BodyContents__BOX__head
+        = @contact_book.set_date
+        の連絡帳
+      %hr/
+      .SPWrap__BodyContents__BOX__body
+        .ContactBooks-letter
+          手　紙：
+          = @contact_book.letter
+          枚
+        .ContactBooks-schedule
+          時間割：
+          = @contact_book.schedule
+        .ContactBooks-homework
+          宿　題：
+          = @contact_book.homework
+        .ContactBooks-bring
+          持ち物：
+          = @contact_book.bring
+        .ContactBooks-inform
+          連　絡：
+          = @contact_book.inform
+      %hr/

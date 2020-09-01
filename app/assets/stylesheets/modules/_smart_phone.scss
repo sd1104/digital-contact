@@ -1,0 +1,200 @@
+$pararel: 390px;
+$para: 170px;
+
+.SPWrap {
+  // rooms#indexのhaml
+  min-height: calc(100vh - 115px);
+  padding: 50px 11px;
+  background-color: lightgray;
+  &__Wrapper {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: column;
+    &__header {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      flex-direction: column;
+      &__UserName {
+        width: $pararel;
+        font-size: 28px;
+        margin-bottom: 10px;
+      }
+      &__Belongs {
+        width: $pararel;
+        background-color: #dddddd;
+        &__User {
+          height: 50px;
+          width: $pararel;
+          border: 1px solid #cccccc;
+          &__head {
+            font-size: 10px;
+            margin-bottom: 5px;
+          }
+          &__word {
+            font-size: 15px;
+            padding-left: 15px;
+          }
+
+        }
+
+      }
+    }
+
+    
+    &__Contents {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      &__ButtonsBox{
+        width: $pararel;
+        background-color: #dddddd;
+        padding: 50px;
+        display: flex;
+        justify-content: center;
+        .WrapperButtons {
+          .WrapperButton {
+            width: 200px;
+            height: 56px;
+            background-color: #cccccc;
+            border: 1px solid #cccccc;
+            font-size: 25px;
+            line-height: 50px;
+            text-align: center;
+            padding: 3px;
+            margin: 2px 0;
+            .menuButton {
+              text-decoration: none;
+            }
+          }
+          .WrapperButton:active {
+            position: relative;
+            top: 3px;
+          }
+        }
+      }
+    }
+
+    &__Logout {
+      height: 50px;
+      width: $pararel;
+      background-color: #dddddd;
+      line-height: 50px;
+      text-align: center;
+      border: 1px solid #cccccc;
+      .LogoutButton {
+      }
+    }
+  }
+
+  // contact-booksのhaml
+  &__BodyContents {
+    margin-top: 30px;
+    padding: 20px;
+    &__BOX {
+      &__head {
+        font-size: 20px;
+      }
+      &__body {
+        padding-left: 20px;
+        font-size: 16px;
+        .letter {
+          margin: 10px 0 20px 0;
+          .releasedAtBox {
+            font-size: 14px;
+            padding-left: 23px;
+            
+          }
+        }
+      }
+      &__LetterBody {
+        @extend .SPWrap__BodyContents__BOX__body;
+        height: 330px;
+        overflow: visible;
+        overflow-y: scroll;
+      }
+      &__NEW {
+        text-align: center;
+        padding: 30px 0;
+        .AbsentContactNew {
+          padding: 15px 40px;
+          border: 1px solid black;
+          border-radius: 10px;
+          background-color: #dddddd;
+        }
+        .AbsentContactNew:active {
+          position: relative;
+          top: 3px;
+        }
+      }
+      #ParentSubmit {
+        .InputBox {
+          .absent {
+            .label {
+              text-align: start;
+              display: block;
+              width: 100%;
+            }
+            #absent_contact_absent_at,
+            #absent_contact_kind,
+            #absent_contact_after_contact {
+              height: 40px;
+              width: 310px;
+              background-color: #ffffff;
+              border: 2px solid #aaaaaa;
+              border-radius: 10px;
+              padding-left: 10px;
+            }
+            #absent_contact_reason {
+              width: 310px;
+              background-color: #ffffff;
+              border: 2px solid #aaaaaa;
+              border-radius: 10px;
+            }
+          }
+          .SubmitBtn {
+            margin: 30px 0 20px 0;
+            text-align: center;
+            .sp-submit-btn {
+              height: 40px;
+              width: 200px;
+              background-color: #ffffff;
+              border: 2px solid #aaaaaa;
+              border-radius: 10px;
+            }
+          }
+        }
+      }
+    }
+    &__Archive {
+      margin-top: 30px;
+      &__head {
+
+      }
+      &__body {
+        height: 200px;
+        overflow: visible;
+        overflow-y: scroll;
+        padding-left: 20px;
+        .PastContactbook-month {
+          font-weight: bold;
+        }
+        .PastContactbook-Links {
+          margin: 5px 0;
+          padding-left: 20px;
+          .Links {
+            padding: 5px 0;
+            .Link {
+              .ContactBookLink {
+
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

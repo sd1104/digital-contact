@@ -1,0 +1,43 @@
+.SPWrap
+  .SPWrap__Wrapper
+    .SPWrap__Wrapper__header
+      = render 'layouts/sp-header-belongs'
+    .SPWrap__Wrapper__Logout
+      = link_to '戻る', room_absent_contacts_path(current_user.room_id), class: "LongoutButton"
+  .SPWrap__BodyContents
+    .SPWrap__BodyContents__BOX
+      .SPWrap__BodyContents__BOX__head
+        = "#{@absent_contact.set_date}の欠席連絡"
+      %hr/
+      .SPWrap__BodyContents__BOX__body
+        - if !@absent_contact
+          今日は出席ですね
+        - else
+          .contactDate
+            = @absent_contact.set_date
+          .contactName
+            = "児--童---名："
+            = @absent_contact.user.child_name
+          .contactKind
+            = "----種類----："
+            = t("activerecord.attributes.absent_contact.kind.#{@absent_contact.kind}")
+          .contactReason
+            = "----理由----：" 
+            = @absent_contact.reason
+          .contactAfterContact
+            = "放課後連絡："
+            = t("activerecord.attributes.absent_contact.after_contact.#{@absent_contact.after_contact}")
+          .contact_T_Confirm
+            = "先生・確認："
+            - if @absent_contact.t_checked == true
+              確認済
+            - else
+              未確認
+          .contact_edit_delete_btn
+            = "編集・削除："
+            = link_to edit_room_absent_contact_path(@room, @absent_contact), class: "EditBtn" do
+              %i.fas.fa-file-signature
+            = "・"
+            = link_to room_absent_contact_path(@room, @absent_contact), method: :delete, class: "DeleteBtn" do
+              %i.fas.fa-trash-alt
+      %hr/

@@ -1,0 +1,47 @@
+// sub reset scss
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height:100%;
+  width: 100%;
+}
+
+body {
+  min-height: 100%;
+
+}
+
+// application'scss
+header {
+  height:80px;
+  background-color: #dddddd;
+  border-top: 1px solid darkgray;
+  border-bottom: 1px solid forestgreen;
+  text-align: center;
+  .fas.fa-book-open {
+    color: forestgreen;
+    font-size: 30px;
+    background-color: #dddddd;
+  }
+  h2 {
+    display: inline-block;
+    color: forestgreen;
+    font-weight: bold;
+    font-size: 35px;
+    line-height: 77px;
+  }
+}
+
+footer {
+  height: 35px;
+  color: #999999;
+  background-color: ghostwhite;
+  font-size: 12px;
+  text-align: end;
+  line-height: 35px;
+  padding-right: 15px;
+  border-top: 1px solid darkgray;
+}
+

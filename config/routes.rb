@@ -33,7 +33,7 @@ Rails.application.routes.draw do
     end
     resources :contact_books
     resources :letters, only:[:index, :new, :create, :destroy]
-    resources :absent_contacts, only: [:index, :create, :edit, :update, :destroy] do
+    resources :absent_contacts do
       collection do
         patch 'absent_contact_t_checked' 
       end
