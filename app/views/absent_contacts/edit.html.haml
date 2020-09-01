@@ -1,5 +1,4 @@
 -# absent_contact#edit
-
 .wrapper
   .sideBar
     .sideBar__userBox
@@ -7,21 +6,42 @@
       .sideBar__userBox__userName 
         = current_user.parent_name
     .sideBar__logOutBox
-    %ul.sideBar__roomIndex
+      = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logOutBtn"
+    - if current_user.admin?
+      .sideBar__roomIndex
+        .RoomIndex
+          - @rooms.each do |r|
+            %ul
+              %li
+                = link_to room_path(r), class: "roomNumberLink" do
+                  = r.number
+              - if current_user && current_user.admin? && ( AbsentContact.includes(:room).where(room_id: r.id, t_checked: false).count != 0 )
+                .noticeImage
+                  %i.far.fa-paper-plane
+                  .yet_notice_count
+                    = AbsentContact.includes(:room).where(room_id: r.id, t_checked: false).count
 
   .infoArea
     .infoArea__infoHead
-      .infoArea__infoHead__userRoom
-        %h6 選択中のクラス
-        .infoArea__infoHead__userRoom__roomName
-          = @room.number
-      .infoArea__infoHead__headBox
+      =render 'contact_books/headButtonLinks'
+
     .infoArea__infoMenu
-      欠席連絡編集中
+      %ul.breadCrumbsLink
+        %li
+          = link_to 'HOME', root_path, class: "roomSelectBtn"
+        %li
+          %i.fa.fa-chevron-right
+        %li
+          = link_to '欠席連絡', room_absent_contacts_path(@room.id), class: "roomSelectBtn"
+        %li
+          %i.fa.fa-chevron-right
+        %li
+          %p.letterSelect 欠席連絡編集
+      
     .infoArea__AbsentContact
       .infoArea__AbsentContact__contactsHistory
         .infoArea__AbsentContact__contactsHistory__title
-          連絡フォーム
+          連絡編集フォーム
         .infoArea__AbsentContact__contactsHistory__FormBox
           = form_with model: [@room, @absent_contact], class: "IputForm", local: true do |f|
             .InputBox
