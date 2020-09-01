@@ -81,13 +81,19 @@ class AbsentContactsController < ApplicationController
   end
 
   def get_parent_records
-    @future_absent_contacts_for_parent = AbsentContact.parent_record(current_user.id, params[:room_id]).get_future
-    @past_absent_contacts_for_parent = AbsentContact.parent_record(current_user.id, params[:room_id]).get_past
-    @today_absent_contact_for_parent = AbsentContact.parent_record(current_user.id, params[:room_id]).get_today
+    @future_absent_contacts_for_parent = AbsentContact.parent_record(current_user.id, current_user.room_id).get_future
+    @past_absent_contacts_for_parent = AbsentContact.parent_record(current_user.id, current_user.room_id).get_past
+    @today_absent_contact_for_parent = AbsentContact.parent_record(current_user.id, current_user.room_id).get_today
   end
 
   def absent_contact_params
-    params.require(:absent_contact).permit(:absent_at, :kind, :reason, :after_contact, :t_checked).merge(room_id: params[:room_id], user_id: current_user.id)
+    params.require(:absent_contact).permit(
+      :absent_at,
+      :kind,
+      :reason,
+      :after_contact,
+      :t_checked
+    ).merge(room_id: params[:room_id], user_id: current_user.id)
   end
 
   def confirm_params

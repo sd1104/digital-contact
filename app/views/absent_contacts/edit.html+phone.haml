@@ -1,0 +1,28 @@
+.SPWrap
+  .SPWrap__Wrapper
+    .SPWrap__Wrapper__header
+      = render 'layouts/sp-header-belongs'
+    .SPWrap__Wrapper__Logout
+      = link_to '戻る', room_absent_contacts_path(current_user.room_id), class: "LongoutButton"
+  .SPWrap__BodyContents
+    .SPWrap__BodyContents__BOX
+      .SPWrap__BodyContents__BOX__head
+        欠席連絡フォーム
+      %hr/
+      .SPWrap__BodyContents__BOX__body
+        = form_with model: [@room, @absent_contact], class: "IputForm", id: "ParentSubmit", local: true do |f|
+          .InputBox
+            .absent
+              = f.label :日付：, class: "label"
+              = f.date_field :absent_at, class: "inputAbsentAT"
+            .absent
+              = f.label :種類：, class: "label"
+              = f.select :kind, AbsentContact.kinds_i18n.invert, {}, class: "inputKind"
+            .absent
+              = f.label :理由・連絡：, class: "label"
+              = f.text_area :reason, class: "inputReason"
+            .absent
+              = f.label :担任連絡：, class: "label"
+              = f.select :after_contact, AbsentContact.after_contacts_i18n.invert, {}, class: "inputAfterContact"
+            .SubmitBtn
+              = f.submit '更新', class: "sp-submit-btn" 
