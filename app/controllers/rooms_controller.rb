@@ -8,13 +8,6 @@ class RoomsController < ApplicationController
     @user = User.find(current_user.id)
   end
 
-  def control
-  end
-
-  def confirm
-    @rooms = Room.includes(:school).where(school_id: current_school.id)
-  end
-
   def new
     @rooms = RoomCollection.new
   end
@@ -26,14 +19,6 @@ class RoomsController < ApplicationController
     else
       render :new1
     end
-  end
-
-  def room_show
-    @rooms = Room.all
-  end
-
-  def room_edit
-    @rooms = Room.new(rooms_params).where(school_id: current_school.id)
   end
 
   def show
@@ -56,6 +41,21 @@ class RoomsController < ApplicationController
     else
       render :confirm
     end
+  end
+
+  def control
+  end
+
+  def confirm
+    @rooms = Room.includes(:school).where(school_id: current_school.id)
+  end
+
+  def room_show
+    @rooms = Room.all
+  end
+
+  def room_edit
+    @rooms = Room.new(rooms_params).where(school_id: current_school.id)
   end
 
   private
