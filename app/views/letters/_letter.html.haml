@@ -2,7 +2,8 @@
   = link_to image_url("#{letter.pdf}"), class: "letterFile" do
     %i.fa.fa-file-pdf
     = letter.name
-  配布日：
+  .distributeday
+    配布日：
   .releasedAtBox
     = letter.set_date
   - if current_user && current_user.admin?
