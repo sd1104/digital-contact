@@ -13,7 +13,6 @@ class AbsentContactsController < ApplicationController
   end
 
   def new
-    @absent_contact = AbsentContact.new
   end
 
   def create
@@ -37,10 +36,6 @@ class AbsentContactsController < ApplicationController
       flash.now[:alert] = '本日以降の日付を入力してください。'
       render :index
     end
-  end
-
-  def show
-    @absent_contact = AbsentContact.find(params[:id])
   end
 
   def edit
@@ -90,3 +85,5 @@ class AbsentContactsController < ApplicationController
   end
 
 end
+
+

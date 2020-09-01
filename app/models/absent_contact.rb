@@ -2,11 +2,11 @@ class AbsentContact < ApplicationRecord
   belongs_to :room
   belongs_to :user
 
-  validates :absent_at, presence: true
-  validates :kind, presence: true
-  validates :reason, presence: true
-  validates :after_contact, presence: true
-  validates :t_checked, presence: true
+  # validates :absent_at, presence: true
+  # validates :kind, presence: true
+  # validates :reason, presence: true
+  # validates :after_contact, presence: true
+  # validates :t_checked, presence: true
 
   enum kind: { absent: 0, latein: 1, earlyout: 2 }
   enum after_contact: { unnecessary: false, necessary: true }
@@ -20,4 +20,13 @@ class AbsentContact < ApplicationRecord
   scope :get_today, -> { where(absent_at: Date.today) }
   scope :get_future, -> { where( 'absent_at > ?', Date.today )}
   scope :get_past, -> { where( 'absent_at < ?', Date.today )}
+
+  def self.parent_record(user_id, room_id)
+    AbsentContact.includes(:room, :user).where(user_id: user_id, room_id: room_id).order('absent_at DESC')
+  end
+
+  def self.teacher_record(room_id)
+    AbsentContact.includes(:room, :user).where(room_id: room_id).order('absent_at DESC')
+  end
 end
+
