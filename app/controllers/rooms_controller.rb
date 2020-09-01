@@ -2,6 +2,7 @@ class RoomsController < ApplicationController
   before_action :authenticate_user!, only: [:index, :show]
   before_action :authenticate_school!, only: :new
   before_action :set_rooms, only: [ :index, :show ]
+  before_action :find_room_id, only: [ :show, :edit, :update, :destroy ]
 
   def index
     @user = User.find(current_user.id)
@@ -36,15 +37,12 @@ class RoomsController < ApplicationController
   end
 
   def show
-    @room = Room.find(params[:id])
   end
 
   def edit
-    @room = Room.find(params[:id])
   end
 
   def update
-    @room = Room.find(params[:id])
     if @room.update(room_params)
       redirect_to control_rooms_path
     else
@@ -53,7 +51,6 @@ class RoomsController < ApplicationController
   end
 
   def destroy
-    @room = Room.find(params[:id])
     if @room.destroy
       redirect_to confirm_rooms_path
     else
@@ -61,10 +58,13 @@ class RoomsController < ApplicationController
     end
   end
 
-
   private
   def set_rooms
     @rooms = Room.includes(:contact_books).order("number ASC")
+  end
+
+  def find_room_id
+    @room = Room.find(params[:id])
   end
 
   def rooms_params
