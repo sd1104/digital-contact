@@ -135,11 +135,7 @@
   }
 
   .infoArea {
-    display: inline-block;
     width: calc( 100% - 150px );
-    background-color: #dddddd;
-    overflow: hidden;
-    overflow: scroll;
     &__infoHead {
       height:80px;
       border-bottom: 2px groove orange;
