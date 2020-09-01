@@ -2,7 +2,7 @@ class AbsentContactsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_foreign_instance
   before_action :find_absent_contact_id, only: [:show, :edit, :update, :destroy]
-  before_action :new_record, only: [:index, :new, :create]
+  before_action :new_record, only: [:index, :new]
   before_action :get_teacher_records, only: :index
   before_action :get_parent_records, only: [:index, :create]
   
@@ -13,12 +13,12 @@ class AbsentContactsController < ApplicationController
   end
 
   def create
-    @absent_contact = @room.absent_contacts.new(absent_contact_params)
+    @absent_contact = AbsentContact.new(absent_contact_params)
     if @absent_contact.absent_at.nil? || @absent_contact.reason.blank?
-       flash.now[:alert] = '入力してください。'
+      flash.now[:alert] = '入力してください。'
       render :index
     elsif @absent_contact.absent_at >= Date.today
-      AbsentContact.create(absent_contact_params)
+      @absent_contact.save
       flash[:notice] = "送信しました。"
       redirect_to room_absent_contacts_path(@room)
     else
