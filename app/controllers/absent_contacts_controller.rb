@@ -2,6 +2,7 @@ class AbsentContactsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_foreign_instance
   before_action :find_absent_contact_id, only: [:show, :edit, :update, :destroy]
+  before_action :new_record, only: [:index, :new, :create]
   
   def index
     @future_absent_contacts_for_parent = AbsentContact.includes(:room, :user).get_future.where(user_id: current_user.id, room_id: (params[:room_id])).order('absent_at DESC')
@@ -10,7 +11,6 @@ class AbsentContactsController < ApplicationController
     @past_absent_contacts_for_teacher = AbsentContact.includes(:room, :user).get_past.where(room_id: (params[:room_id])).order('absent_at DESC')
     @today_absent_contact_for_parent = AbsentContact.includes(:room, :user).get_today.where(user_id: current_user.id, room_id: (params[:room_id])).order('absent_at DESC')
     @today_absent_contact_for_teacher = AbsentContact.includes(:room, :user).get_today.where(room_id: (params[:room_id])).order('absent_at DESC')
-    @absent_contact = AbsentContact.new
   end
 
   def new
@@ -22,7 +22,6 @@ class AbsentContactsController < ApplicationController
       @future_absent_contacts_for_parent = AbsentContact.includes(:room, :user).get_future.where(user_id: current_user.id, room_id: (params[:room_id])).order('absent_at DESC')
       @past_absent_contacts_for_parent = AbsentContact.includes(:room, :user).get_past.where(user_id: current_user.id, room_id: (params[:room_id])).order('absent_at DESC')
       @today_absent_contact_for_parent = AbsentContact.includes(:room, :user).get_today.where(user_id: current_user.id, room_id: (params[:room_id])).order('absent_at DESC')
-      @absent_contact = AbsentContact.new
       flash.now[:alert] = '入力してください。'
       render :index
     elsif @absent_contact.absent_at >= Date.today
@@ -33,7 +32,6 @@ class AbsentContactsController < ApplicationController
       @future_absent_contacts_for_parent = AbsentContact.includes(:room, :user).get_future.where(user_id: current_user.id, room_id: (params[:room_id])).order('absent_at DESC')
       @past_absent_contacts_for_parent = AbsentContact.includes(:room, :user).get_past.where(user_id: current_user.id, room_id: (params[:room_id])).order('absent_at DESC')
       @today_absent_contact_for_parent = AbsentContact.includes(:room, :user).get_today.where(user_id: current_user.id, room_id: (params[:room_id])).order('absent_at DESC')
-      @absent_contact = AbsentContact.new
       flash.now[:alert] = '本日以降の日付を入力してください。'
       render :index
     end
@@ -75,6 +73,10 @@ class AbsentContactsController < ApplicationController
   def set_foreign_instance
     @rooms = Room.includes(:contact_books).order("number ASC")
     @room = Room.find(params[:room_id])
+  end
+
+  def new_record
+    @absent_contact = AbsentContact.new
   end
 
   def find_absent_contact_id
