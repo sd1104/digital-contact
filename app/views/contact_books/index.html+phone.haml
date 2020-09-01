@@ -1,4 +1,6 @@
 .SPWrap
+  -# - @tests.each do |test|
+  -#   = test.letter
   .SPWrap__Wrapper
     .SPWrap__Wrapper__header
       = render 'layouts/sp-header-belongs'
@@ -16,23 +18,23 @@
           %i.fa.fa-hammer
         - else
           .ContactBooks-date
-            = @contact_book.set_date
+            = @today_contact_book.set_date
           .ContactBooks-letter
             手　紙：
-            = @contact_book.letter
+            = @today_contact_book.letter
             枚
           .ContactBooks-schedule
             時間割：
-            = @contact_book.schedule
+            = @today_contact_book.schedule
           .ContactBooks-homework
             宿　題：
-            = @contact_book.homework
+            = @today_contact_book.homework
           .ContactBooks-bring
             持ち物：
-            = @contact_book.bring
+            = @today_contact_book.bring
           .ContactBooks-inform
             連　絡：
-            = @contact_book.inform
+            = @today_contact_book.inform
       %hr/
     .SPWrap__BodyContents__Archive
       .SPWrap__BodyContents__Archive__head
