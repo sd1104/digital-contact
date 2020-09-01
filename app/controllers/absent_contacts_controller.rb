@@ -3,14 +3,10 @@ class AbsentContactsController < ApplicationController
   before_action :set_foreign_instance
   before_action :find_absent_contact_id, only: [:show, :edit, :update, :destroy]
   before_action :new_record, only: [:index, :new, :create]
+  before_action :get_teacher_records, only: :index
+  before_action :get_parent_records, only: [:index, :create]
   
   def index
-    @future_absent_contacts_for_parent = AbsentContact.includes(:room, :user).get_future.where(user_id: current_user.id, room_id: (params[:room_id])).order('absent_at DESC')
-    @future_absent_contacts_for_teacher = AbsentContact.includes(:room, :user).get_future.where(room_id: (params[:room_id])).order('absent_at DESC')
-    @past_absent_contacts_for_parent = AbsentContact.includes(:room, :user).get_past.where(user_id: current_user.id, room_id: (params[:room_id])).order('absent_at DESC')
-    @past_absent_contacts_for_teacher = AbsentContact.includes(:room, :user).get_past.where(room_id: (params[:room_id])).order('absent_at DESC')
-    @today_absent_contact_for_parent = AbsentContact.includes(:room, :user).get_today.where(user_id: current_user.id, room_id: (params[:room_id])).order('absent_at DESC')
-    @today_absent_contact_for_teacher = AbsentContact.includes(:room, :user).get_today.where(room_id: (params[:room_id])).order('absent_at DESC')
   end
 
   def new
@@ -19,19 +15,13 @@ class AbsentContactsController < ApplicationController
   def create
     @absent_contact = @room.absent_contacts.new(absent_contact_params)
     if @absent_contact.absent_at.nil? || @absent_contact.reason.blank?
-      @future_absent_contacts_for_parent = AbsentContact.includes(:room, :user).get_future.where(user_id: current_user.id, room_id: (params[:room_id])).order('absent_at DESC')
-      @past_absent_contacts_for_parent = AbsentContact.includes(:room, :user).get_past.where(user_id: current_user.id, room_id: (params[:room_id])).order('absent_at DESC')
-      @today_absent_contact_for_parent = AbsentContact.includes(:room, :user).get_today.where(user_id: current_user.id, room_id: (params[:room_id])).order('absent_at DESC')
-      flash.now[:alert] = '入力してください。'
+       flash.now[:alert] = '入力してください。'
       render :index
     elsif @absent_contact.absent_at >= Date.today
       AbsentContact.create(absent_contact_params)
       flash[:notice] = "送信しました。"
       redirect_to room_absent_contacts_path(@room)
     else
-      @future_absent_contacts_for_parent = AbsentContact.includes(:room, :user).get_future.where(user_id: current_user.id, room_id: (params[:room_id])).order('absent_at DESC')
-      @past_absent_contacts_for_parent = AbsentContact.includes(:room, :user).get_past.where(user_id: current_user.id, room_id: (params[:room_id])).order('absent_at DESC')
-      @today_absent_contact_for_parent = AbsentContact.includes(:room, :user).get_today.where(user_id: current_user.id, room_id: (params[:room_id])).order('absent_at DESC')
       flash.now[:alert] = '本日以降の日付を入力してください。'
       render :index
     end
@@ -81,6 +71,18 @@ class AbsentContactsController < ApplicationController
 
   def find_absent_contact_id
     @absent_contact = AbsentContact.find(params[:id])
+  end
+
+  def get_teacher_records
+    @future_absent_contacts_for_teacher = AbsentContact.teacher_record(params[:room_id]).get_future
+    @past_absent_contacts_for_teacher = AbsentContact.teacher_record(params[:room_id]).get_past
+    @today_absent_contact_for_teacher = AbsentContact.teacher_record(params[:room_id]).get_today
+  end
+
+  def get_parent_records
+    @future_absent_contacts_for_parent = AbsentContact.parent_record(current_user.id, params[:room_id]).get_future
+    @past_absent_contacts_for_parent = AbsentContact.parent_record(current_user.id, params[:room_id]).get_past
+    @today_absent_contact_for_parent = AbsentContact.parent_record(current_user.id, params[:room_id]).get_today
   end
 
   def absent_contact_params

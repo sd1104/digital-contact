@@ -1,6 +1,18 @@
 .infoArea
   .infoArea__infoHead
-    =render 'contact_books/headButtonLinks'
+    .infoArea__infoHead__userschool
+      %h6 学校名
+      .infoArea__infoHead__userschool__schoolName
+        = current_user.school.school_name
+    .infoArea__infoHead__userRoom
+      - if current_user.admin?
+        %h6 選択中のクラス
+        .infoArea__infoHead__userRoom__roomName
+          選択中
+      - else
+        %h6 あなたのクラス
+        .infoArea__infoHead__userRoom__roomName
+          = current_user.room.number
     .infoArea__infoHead__headBox
   .infoArea__infoMenu
     %ul.breadCrumbsLink
