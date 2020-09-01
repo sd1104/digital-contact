@@ -95,11 +95,11 @@ $para: 170px;
     padding: 20px;
     &__BOX {
       &__head {
-        font-size: 22px;
+        font-size: 20px;
       }
       &__body {
         padding-left: 20px;
-        font-size: 18px;
+        font-size: 16px;
         .letter {
           margin: 10px 0 20px 0;
           .releasedAtBox {
@@ -115,13 +115,65 @@ $para: 170px;
         overflow: visible;
         overflow-y: scroll;
       }
+      &__NEW {
+        text-align: center;
+        padding: 30px 0;
+        .AbsentContactNew {
+          padding: 15px 40px;
+          border: 1px solid black;
+          border-radius: 10px;
+          background-color: #dddddd;
+        }
+        .AbsentContactNew:active {
+          position: relative;
+          top: 3px;
+        }
+      }
+      #ParentSubmit {
+        .InputBox {
+          .absent {
+            .label {
+              text-align: start;
+              display: block;
+              width: 100%;
+            }
+            #absent_contact_absent_at,
+            #absent_contact_kind,
+            #absent_contact_after_contact {
+              height: 40px;
+              width: 310px;
+              background-color: #ffffff;
+              border: 2px solid #aaaaaa;
+              border-radius: 10px;
+              padding-left: 10px;
+            }
+            #absent_contact_reason {
+              width: 310px;
+              background-color: #ffffff;
+              border: 2px solid #aaaaaa;
+              border-radius: 10px;
+            }
+          }
+          .SubmitBtn {
+            margin: 30px 0 20px 0;
+            text-align: center;
+            .sp-submit-btn {
+              height: 40px;
+              width: 200px;
+              background-color: #ffffff;
+              border: 2px solid #aaaaaa;
+              border-radius: 10px;
+            }
+          }
+        }
+      }
     }
     &__Archive {
       margin-top: 30px;
       &__head {
 
       }
-      &__PastContactBooks {
+      &__body {
         height: 200px;
         overflow: visible;
         overflow-y: scroll;
