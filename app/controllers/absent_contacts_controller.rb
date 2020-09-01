@@ -14,15 +14,16 @@ class AbsentContactsController < ApplicationController
 
   def create
     @absent_contact = AbsentContact.new(absent_contact_params)
-    if @absent_contact.absent_at.nil? || @absent_contact.reason.blank?
-      flash.now[:alert] = '入力してください。'
-      render :index
-    elsif @absent_contact.absent_at >= Date.today
-      @absent_contact.save
-      flash[:notice] = "送信しました。"
-      redirect_to room_absent_contacts_path(@room)
+    if @absent_contact.absent_at >= Date.today
+      if @absent_contact.save
+        flash[:notice] = "送信しました"
+        redirect_to room_absent_contacts_path(@room)
+      else
+        flash.now[:alert] = '失敗しました。未入力がありませんか。'
+        render :index
+      end
     else
-      flash.now[:alert] = '本日以降の日付を入力してください。'
+      flash.now[:alert] = '本日以降の日付を入力してください'
       render :index
     end
   end

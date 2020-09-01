@@ -2,11 +2,10 @@ class AbsentContact < ApplicationRecord
   belongs_to :room
   belongs_to :user
 
-  # validates :absent_at, presence: true
-  # validates :kind, presence: true
-  # validates :reason, presence: true
-  # validates :after_contact, presence: true
-  # validates :t_checked, presence: true
+  validates :absent_at, presence: true
+  validates :kind, presence: true
+  validates :reason, presence: true
+  validates :after_contact, presence: true
 
   enum kind: { absent: 0, latein: 1, earlyout: 2 }
   enum after_contact: { unnecessary: false, necessary: true }
