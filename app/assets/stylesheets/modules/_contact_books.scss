@@ -24,14 +24,25 @@
   background: linear-gradient(to top, #C3EC52 0%, #0BA29D 100%);
 }
 
+@mixin GinghamCheck {
+	background-size: 20px 20px;
+	background-color: #43A047;
+	background-image:
+	linear-gradient(45deg, rgba(56, 142, 60, 0.5) 25%, transparent 25%,
+	 transparent 50%, rgba(56, 142, 60, 0.5) 50%, rgba(56, 142, 60, 0.5) 75%,
+	 transparent 75%, transparent),
+	linear-gradient(-45deg, rgba(56, 142, 60, 0.5) 25%, transparent 25%,
+	 transparent 50%, rgba(56, 142, 60, 0.5) 50%, rgba(56, 142, 60, 0.5) 75%,
+	 transparent 75%, transparent);
+}
+
 // index view's scss
 .wrapper {
   height: calc( 100vh - 115px );
-  background-color: lightgray;
+  background-color: #dddddd;
   display: flex;
   .sideBar {
     width: 150px;
-    border-right: 1px solid forestgreen;
     &__userBox {
       height:80px;
       color: black;
@@ -52,6 +63,7 @@
     &__logOutBox {
       height: 50px;
       background-color: #dddddd;
+      border-right: 1px solid forestgreen;
       border-bottom: 1px solid forestgreen;
       display: flex;
       justify-content: center;
@@ -64,7 +76,6 @@
         text-align: center;
         text-decoration: none;
         background-color: #ffffff;
-        // padding: 5px 3px;
         padding: 0.3rem 0.4rem;
         cursor: pointer;
         letter-spacing: 0.2em;
@@ -76,11 +87,9 @@
       background-color: #dddddd;
       color: black;
       font-weight: bolder;
-      padding: 10px 0;
       overflow: hidden;
       overflow-y: scroll;
       .RoomIndex {
-        padding: 10px 0;
         .userRoomRegistration {
           display: flex;
           align-items: center;
@@ -135,7 +144,7 @@
   }
 
   .infoArea {
-    width: calc( 100% - 150px );
+    width: 100%;
     &__infoHead {
       height:80px;
       border-bottom: 2px groove orange;
@@ -225,6 +234,7 @@
       padding: 50px 0 0 50px;
       &__todayContactBook {
         &__todayContactBookTitle {
+          width: 800px;
           font-size: 20px;
           padding: 2px;
           border-bottom: 2px solid black;
@@ -232,7 +242,8 @@
         }
         &__TodayContactBook {
           display: flex;
-          justify-content: center;
+          justify-content: flex-start;
+          padding-left: 50px;
           .fa.fa-hammer {
             font-size: 40px;
             padding: 55px 0;
@@ -274,12 +285,14 @@
         }
       }
       &__historyContactBookTitle {
+        width: 800px;
         font-size: 20px;
         padding: 2px;
         border-bottom: 2px solid black;
         margin-bottom: 20px;
       }
       &__historyContactBookBox {
+        width: 800px;
         &__title {
           font-size: 16px;
           text-align: left;

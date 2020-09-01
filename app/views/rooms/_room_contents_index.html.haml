@@ -14,10 +14,18 @@
         .infoArea__infoHead__userRoom__roomName
           = current_user.room.number
     .infoArea__infoHead__headBox
+      %ul.headBtns
+        %li.headBtn
+          = link_to '欠席連絡', room_absent_contacts_path(current_user.room_id), class: "HeadBtn abscentContact"
+        %li.headBtn
+          = link_to '連絡帳', room_contact_books_path(current_user.room_id), class: "HeadBtn contactBook"
+        %li.headBtn
+          = link_to '配布手紙', room_letters_path(current_user.room_id), class: "HeadBtn letters"
   .infoArea__infoMenu
     %ul.breadCrumbsLink
       %li
-        - if !current_user.room_id?
-          サイドバーからクラスを登録して下さい。クラス登録後再度ログインすることで、利用が可能になります。
-        - else
-          クラスを選択して下さい。
+        = link_to 'クラス選択', root_path, class: "roomSelectBtn"
+      %li
+        %i.fa.fa-chevron-right
+      %li
+        %p 機能選択

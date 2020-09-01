@@ -27,5 +27,6 @@ class AbsentContact < ApplicationRecord
   def self.teacher_record(room_id)
     AbsentContact.includes(:room, :user).where(room_id: room_id).order('absent_at DESC')
   end
+
 end
 

@@ -19,7 +19,7 @@ class AbsentContactsController < ApplicationController
         flash[:notice] = "送信しました"
         redirect_to room_absent_contacts_path(@room)
       else
-        flash.now[:alert] = '失敗しました。未入力がありませんか。'
+        flash.now[:alert] = '失敗しました。未入力がありませんか'
         render :index
       end
     else

@@ -34,8 +34,11 @@
 }
 
 .infoArea__infoContent {
-  padding: 10px 100px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   &__HeadTitle {
+    width: 600px;
     border-bottom: 1px solid black;
     margin-bottom: 30px;
     .headTitle {
@@ -44,6 +47,7 @@
     }
   }
   &__lettersBox {
+    width: 500px;
     display: flex;
     align-items: center;
     flex-direction: column;
