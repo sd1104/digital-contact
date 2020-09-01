@@ -18,11 +18,6 @@
                 %i.far.fa-paper-plane
                 .yet_notice_count
                   = AbsentContact.includes(:room).where(room_id: r.id, t_checked: false).count
-      - elsif !current_user.room_id?
-        .userRoomRegistration
-          %p
-            クラス登録は
-          = link_to 'コチラ', users_registrations_new2_path
       - else
         - @rooms.each do |r|
           %ul

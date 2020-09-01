@@ -1,21 +1,54 @@
-.SPWrap
-  .SPWrap__Wrapper
-    .SPWrap__Wrapper__header
-      .SPWrap__Wrapper__header__UserName
-        ようこそ
-        = current_user.parent_name
-        さん
-      = render 'layouts/sp-header-belongs'
-      
-    .SPWrap__Wrapper__Contents
-      .SPWrap__Wrapper__Contents__ButtonsBox
-        %ul.WrapperButtons
-          %li.WrapperButton
-            = link_to '欠席連絡', room_absent_contacts_path(current_user.room_id), class: "menuButton"
-          %li.WrapperButton
-            = link_to '連絡帳', room_contact_books_path(current_user.room_id), class: "menuButton"
-          %li.WrapperButton
-            = link_to '配布手紙', room_letters_path(current_user.room_id), class: "menuButton"
+- if current_user.room_id.nil?
+  .UserWrapper
+    .wall
+      .FormBox
+        %p ユーザー登録
+        %p クラス選択
+        = form_for @user, url: users_registrations_room_select_path(@user), method: :patch do |f|
+          .field
+            = f.hidden_field :school_id, value: "#{current_user.school_id}", readonly:true
+          .field
+            = f.label :クラス
+            %br/
+            = f.collection_select :room_id, Room.includes(:school).where(school_id: current_user.school_id), :id, :number, prompt: "選択"
+          .field
+            = f.hidden_field :parent_name, autofocus: true, autocomplete: "parent_name"
+          .field
+            = f.hidden_field :child_name, autofocus: true, autocomplete: "child_name"
+          .field
+            = f.hidden_field :email, autofocus: true, autocomplete: "email"
+          .field
+            = f.label :password
+            - if @minimum_password_length
+              %em
+                (#{@minimum_password_length} 文字以上)
+            %br/
+            = f.password_field :password, value: current_user.password
+          .field
+            = f.label :password_confirmation
+            %br/
+            = f.password_field :password_confirmation, autocomplete: "new-password"
+          .actions
+            = f.submit "登録する", class: "submitBtn"
+- else
+  .SPWrap
+    .SPWrap__Wrapper
+      .SPWrap__Wrapper__header
+        .SPWrap__Wrapper__header__UserName
+          ようこそ
+          = current_user.parent_name
+          さん
+        = render 'layouts/sp-header-belongs'
+        
+      .SPWrap__Wrapper__Contents
+        .SPWrap__Wrapper__Contents__ButtonsBox
+          %ul.WrapperButtons
+            %li.WrapperButton
+              = link_to '欠席連絡', room_absent_contacts_path(current_user.room_id), class: "menuButton"
+            %li.WrapperButton
+              = link_to '連絡帳', room_contact_books_path(current_user.room_id), class: "menuButton"
+            %li.WrapperButton
+              = link_to '配布手紙', room_letters_path(current_user.room_id), class: "menuButton"
 
-    .SPWrap__Wrapper__Logout
-      = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "LongoutButton"
+      .SPWrap__Wrapper__Logout
+        = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "LongoutButton"
