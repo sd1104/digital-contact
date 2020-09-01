@@ -1,0 +1,19 @@
+.SPWrap
+  .SPWrap__Wrapper
+    .SPWrap__Wrapper__header
+      = render 'layouts/sp-header-belongs'
+    .SPWrap__Wrapper__Logout
+      = link_to '戻る', rooms_path, class: "LongoutButton"
+  .SPWrap__BodyContents
+    .SPWrap__BodyContents__BOX
+      .SPWrap__BodyContents__BOX__head
+        配布手紙
+      %hr/
+      .SPWrap__BodyContents__BOX__LetterBody
+        - @letters.each do |letter|
+          .letter
+            = link_to image_url("#{letter.pdf}"), class: "letterFile" do
+              %i.fa.fa-file-pdf
+              = letter.name
+            .releasedAtBox
+              = "配布日:#{letter.set_date}"
