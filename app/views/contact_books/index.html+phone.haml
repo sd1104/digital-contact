@@ -1,0 +1,52 @@
+.SPWrap
+  .SPWrap__Wrapper
+    .SPWrap__Wrapper__header
+      = render 'layouts/sp-header-belongs'
+    .SPWrap__Wrapper__Logout
+      = link_to '戻る', rooms_path, class: "LongoutButton"
+  .SPWrap__BodyContents
+    .SPWrap__BodyContents__BOX
+      .SPWrap__BodyContents__BOX__head
+        本日の連絡帳
+      %hr/
+      .SPWrap__BodyContents__BOX__body
+        - if !@today_contact_book.present?
+          %i.fa.fa-hammer
+          .MakingMessage ただいま作成中です
+          %i.fa.fa-hammer
+        - else
+          .ContactBooks-date
+            = @contact_book.set_date
+          .ContactBooks-letter
+            手　紙：
+            = @contact_book.letter
+            枚
+          .ContactBooks-schedule
+            時間割：
+            = @contact_book.schedule
+          .ContactBooks-homework
+            宿　題：
+            = @contact_book.homework
+          .ContactBooks-bring
+            持ち物：
+            = @contact_book.bring
+          .ContactBooks-inform
+            連　絡：
+            = @contact_book.inform
+      %hr/
+    .SPWrap__BodyContents__Archive
+      .SPWrap__BodyContents__Archive__head
+        過去の連絡帳
+      %hr/
+      .SPWrap__BodyContents__Archive__PastContactBooks
+        -@everymonth.each do |month|
+          - if month[1].present?
+            .PastContactbook-month
+              = month[0]
+            .PastContactbook-Links
+              %ul.Links
+                -month[1].each do |m|
+                  %li.link
+                    = link_to room_contact_book_path(@room, m),class: "ContactBookLink" do
+                      = m.set_date
+      %hr/
