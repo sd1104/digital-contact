@@ -1,6 +1,7 @@
 class AbsentContactsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_foreign_instance
+  before_action :find_absent_contact_id, only: [:show, :edit, :update, :destroy]
   
   def index
     @future_absent_contacts_for_parent = AbsentContact.includes(:room, :user).get_future.where(user_id: current_user.id, room_id: (params[:room_id])).order('absent_at DESC')
@@ -38,12 +39,13 @@ class AbsentContactsController < ApplicationController
     end
   end
 
+  def show
+  end
+
   def edit
-    @absent_contact = AbsentContact.find(params[:id])
   end
 
   def update
-    @absent_contact = AbsentContact.find(params[:id])
     if @absent_contact.update(absent_contact_params)
       flash.now[:notice] = '内容を更新しました。'
       redirect_to room_absent_contacts_path(@room)
@@ -54,8 +56,7 @@ class AbsentContactsController < ApplicationController
   end
 
   def destroy
-    absent_book = AbsentContact.find(params[:id])
-    absent_book.destroy
+    @absent_contact.destroy
     flash[:notice] = "無事削除されました。"
     redirect_to room_absent_contacts_path(@room)
   end
@@ -74,6 +75,10 @@ class AbsentContactsController < ApplicationController
   def set_foreign_instance
     @rooms = Room.includes(:contact_books).order("number ASC")
     @room = Room.find(params[:room_id])
+  end
+
+  def find_absent_contact_id
+    @absent_contact = AbsentContact.find(params[:id])
   end
 
   def absent_contact_params
