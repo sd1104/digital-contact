@@ -53,3 +53,6 @@ production:
   database: digital_contact_production
   username: digital_contact
   password: <%= ENV['DIGITAL_CONTACT_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
