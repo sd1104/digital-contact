@@ -30,16 +30,16 @@ end
   end
 end
 
-12.times do |number|
-  month = number + 1
-  day = number + 1
-  Letter.create(
-    released_at:"2020/#{month}/#{day + 7}",
-    name: "#{month}月学年だより",
-    pdf: open('db/pdf/pdfsample.pdf'),
-    room_id: 1
-  )
-end
+# 12.times do |number|
+#   month = number + 1
+#   day = number + 1
+#   Letter.create(
+#     released_at:"2020/#{month}/#{day + 7}",
+#     name: "#{month}月学年だより",
+#     pdf: open('db/pdf/pdfsample.pdf'),
+#     room_id: 1
+#   )
+# end
 
 User.create(
   :parent_name => "ゲスト先生",

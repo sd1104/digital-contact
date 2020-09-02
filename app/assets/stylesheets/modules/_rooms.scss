@@ -167,6 +167,8 @@ a:hover {
 // room_show.html.haml
 .MainNav__RoomShow {
   width: 100%;
+  overflow: hidden;
+  overflow-x: scroll;
   background-color: lightgray;
   padding: 20px;
   &__head {
@@ -175,15 +177,16 @@ a:hover {
   }
   .RoomMemberIndex {
     display: flex;
+    justify-content: center;
     .Room {
-      width: 130px;
+      width: 200px;
       margin: 0 20px 40px 0;
       .RoomName {
         font-size: 20px;
         font-weight: bold;
       }
       .RoomUser {
-        width: 130px;
+        width: 200px;
         display: flex;
         font-size: 14px;
         background-color: #fff;
@@ -192,7 +195,7 @@ a:hover {
         padding-left: 3px;
         margin: 2px 0;
         &__name {
-          width: 95px;
+          width: 150px;
         }
         &__delete {
           .DeleteUserLink {
