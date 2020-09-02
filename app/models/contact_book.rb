@@ -22,7 +22,7 @@ class ContactBook < ApplicationRecord
   scope :get_november, -> { where(date: (20201101 .. 20201101)) }
   scope :get_december, -> { where(date: (20201201 .. 20201231)) }
   scope :get_january, -> { where(date: (20200101 .. 20200131)) }
-  scope :get_februry, -> { where(date: (20200201 .. 20200231)) }
+  scope :get_februry, -> { where(date: (20200201 .. 20200229)) }
   scope :get_march, -> { where(date: (20200301 .. 20200331)) }
 
   def self.everymonth(room_id)
