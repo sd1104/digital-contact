@@ -1,6 +1,10 @@
 ## DigitalContact/デジタル連絡帳
 小学校で教師と保護者間で行われる欠席連絡にまつわる問題を解決するために作ったアプリです。
 
+接続は[コチラ](https://quotetweet.herokuapp.com　"コチラ")
+※ 新規登録画面とログイン画面のいずれかで、ゲストユーザーとしてログインのボタンを押下していただくと、機能の試用ができます。
+※ 携帯からログインした場合は、保護者機能のみ利用できる仕様になっています。学校ユーザー、先生ユーザーとしての利用はPCから接続願います。
+
 ## アプリ開発背景
 #### 前提（小学校で子どもが欠席することになったら）
 - 欠席連絡は次の２つの方法のいずれかによって行われる。
@@ -51,7 +55,17 @@
 ruby 2.6.5  
 Rails 6.0.3.2  
 
-<!-- ## データベース設計
+## 開発環境　
+- 言語
+  - ruby, ruby on rails, javascript, jQuery
+- ツール
+  -Git-Hub, Git-Hub Desktop, Visual Studio Code
+- DB
+  - (開発)MySQL,(本番) PostgreSQL
+- サーバー
+  - heroku
+
+## データベース設計
 ### schoolsテーブル
 |Colum|Type|Options|
 |-----|----|-------|
@@ -134,4 +148,4 @@ Rails 6.0.3.2
 |room_id|references|null:false, foreign_key: true|
 
 #### Association
-- belongs_to :room -->
+- belongs_to :room
